@@ -1,0 +1,56 @@
+C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ffi-1.17.1-x64-mingw-ucrt/lib/ffi/dynamic_library.rb:94:in `load_library': Could not open library 'libcurl': Failed with error 126: 지정된 모듈을 찾을 수 없습니다. (LoadError)
+.
+Could not open library 'libcurl.dll': Failed with error 126: 지정된 모듈을 찾을 수 없습니다.
+.
+Could not open library 'libcurl.so.4': Failed with error 126: 지정된 모듈을 찾을 수 없습니다.
+.
+Could not open library 'libcurl.so.4.dll': Failed with error 126: 지정된 모듈을 찾을 수 없습니다.
+.
+Searched in <system library path>
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ffi-1.17.1-x64-mingw-ucrt/lib/ffi/library.rb:95:in `block in ffi_lib'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ffi-1.17.1-x64-mingw-ucrt/lib/ffi/library.rb:94:in `map'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ffi-1.17.1-x64-mingw-ucrt/lib/ffi/library.rb:94:in `ffi_lib'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ethon-0.16.0/lib/ethon/curls/settings.rb:10:in `<module:Curl>'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ethon-0.16.0/lib/ethon/curls/settings.rb:3:in `<module:Ethon>'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ethon-0.16.0/lib/ethon/curls/settings.rb:2:in `<top (required)>'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `require'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `block (2 levels) in replace_require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ethon-0.16.0/lib/ethon/curl.rb:28:in `<module:Curl>'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ethon-0.16.0/lib/ethon/curl.rb:14:in `<module:Ethon>'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ethon-0.16.0/lib/ethon/curl.rb:9:in `<top (required)>'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `require'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `block (2 levels) in replace_require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/ethon-0.16.0/lib/ethon.rb:16:in `<top (required)>'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `require'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `block (2 levels) in replace_require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/typhoeus-1.4.1/lib/typhoeus.rb:2:in `<top (required)>'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `require'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `block (2 levels) in replace_require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/html-proofer-5.0.9/lib/html_proofer/url_validator/external.rb:3:in `<top (required)>'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `require'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `block (2 levels) in replace_require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/core_ext/kernel.rb:26:in `require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/cref.rb:60:in `const_get'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/cref.rb:60:in `get'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/loader/eager_load.rb:173:in `block in actual_eager_load_dir'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/loader/helpers.rb:47:in `block in ls'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/loader/helpers.rb:25:in `each'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/loader/helpers.rb:25:in `ls'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/loader/eager_load.rb:168:in `actual_eager_load_dir'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/loader/eager_load.rb:17:in `block (2 levels) in eager_load'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/loader/eager_load.rb:16:in `each'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/loader/eager_load.rb:16:in `block in eager_load'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/loader/eager_load.rb:10:in `synchronize'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/zeitwerk-2.7.1/lib/zeitwerk/loader/eager_load.rb:10:in `eager_load'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/html-proofer-5.0.9/lib/html_proofer.rb:62:in `<top (required)>'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/html-proofer-5.0.9/lib/html-proofer.rb:3:in `require_relative'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/html-proofer-5.0.9/lib/html-proofer.rb:3:in `<top (required)>'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `require'
+	from C:/Ruby33-x64/lib/ruby/3.3.0/bundled_gems.rb:69:in `block (2 levels) in replace_require'
+	from C:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/html-proofer-5.0.9/exe/htmlproofer:8:in `<top (required)>'
+	from C:/Ruby33-x64/bin/htmlproofer:32:in `load'
+	from C:/Ruby33-x64/bin/htmlproofer:32:in `<main>'
