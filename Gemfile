@@ -18,3 +18,4 @@ gem "webrick", "~> 1.9"
 gem "jekyll-sitemap"
 gem "jekyll-seo-tag"
 gem "jekyll-feed"
+gem 'jekyll-archives'
