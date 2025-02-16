@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-02-15T17:49:07+09:00</updated>
+  <updated>2025-02-16T18:05:21+09:00</updated>
   <author>
     <name>LEE_HYEON_JI</name>
     <uri>http://localhost:4000/</uri>
@@ -20,11 +20,11 @@
 
   
   <entry>
-    <title>포스팅 제목</title>
-    <link href="http://localhost:4000/posts/%EC%B2%AB-%ED%8F%AC%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="포스팅 제목" />
-    <published>2025-02-15T00:02:00+09:00</published>
+    <title>[멋사 부트캠프] 그로스 마케팅 지원</title>
+    <link href="http://localhost:4000/posts/%EC%B2%AB-%ED%8F%AC%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="[멋사 부트캠프] 그로스 마케팅 지원" />
+    <published>2025-02-16T16:30:00+09:00</published>
   
-    <updated>2025-02-15T00:02:00+09:00</updated>
+    <updated>2025-02-16T16:30:00+09:00</updated>
   
     <id>http://localhost:4000/posts/%EC%B2%AB-%ED%8F%AC%EC%8A%A4%ED%8A%B8/</id>
     <content type="text/html" src="http://localhost:4000/posts/%EC%B2%AB-%ED%8F%AC%EC%8A%A4%ED%8A%B8/" />
@@ -34,13 +34,13 @@
 
   
     
-    <category term="메인 카테고리" />
+    <category term="대외활동" />
     
-    <category term="서브 카테고리" />
+    <category term="GM 부트캠프" />
     
   
 
-  <summary></summary>
+  <summary>멋사 링크 🦁멋쟁이사자처럼 그로스 마케팅 부트캠프 1기🦁                          모집기간         24.12.10 ~ 25.01.23                       교육기간         25.01.31 ~ 25.05.23                       교육시간         평일 9:00 ~ 18:00                       학습형태         실시간 온라인 교육                  그로스 마케터란? 마케팅 성과 개선을 위해 데이터 기반 가설 수립과 다양한 실험을 통해  소비자 행동을 정량적으로 구축하고 결과를 향상시키는 사람  &amp;amp;lt;/img&amp;amp;gt;  커리큘럼                         1~2주차       ...</summary>
 
   </entry>
 
