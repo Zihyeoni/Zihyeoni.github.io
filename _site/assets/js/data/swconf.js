@@ -1,6 +1,6 @@
 const swconf = {
   
-    cacheName: 'chirpy-1739754435',resources: [
+    cacheName: 'chirpy-1739755243',resources: [
       '/assets/css/.css',
       '/',
       
@@ -20,6 +20,8 @@ const swconf = {
     interceptor: {paths: [
         
       ],urlPrefixes: [
+        
+          'https://zi-blogcounter.goatcounter.com/counter/'
         
       ]
     },
