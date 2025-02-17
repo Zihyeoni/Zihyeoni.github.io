@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-02-17T00:03:27+09:00</updated>
+  <updated>2025-02-17T10:06:42+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -24,7 +24,7 @@
     <link href="http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%95%A9%EA%B2%A9/" rel="alternate" type="text/html" title="[멋사 부트캠프] 그로스 마케팅 지원" />
     <published>2025-02-16T16:30:00+09:00</published>
   
-    <updated>2025-02-16T22:57:53+09:00</updated>
+    <updated>2025-02-17T00:04:11+09:00</updated>
   
     <id>http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%95%A9%EA%B2%A9/</id>
     <content type="text/html" src="http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%95%A9%EA%B2%A9/" />
