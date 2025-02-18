@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-02-17T10:55:02+09:00</updated>
+  <updated>2025-02-19T00:17:27+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -20,11 +20,37 @@
 
   
   <entry>
+    <title>[GM 예제] 1인가구 비즈니스 설계</title>
+    <link href="http://localhost:4000/posts/GM-Pandas/" rel="alternate" type="text/html" title="[GM 예제] 1인가구 비즈니스 설계" />
+    <published>2025-02-07T20:00:00+09:00</published>
+  
+    <updated>2025-02-07T20:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/GM-Pandas/</id>
+    <content type="text/html" src="http://localhost:4000/posts/GM-Pandas/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Python" />
+    
+  
+
+  <summary>🏠서울시 1인가구 Dataset으로 신규 비즈니스 설계  그로스 마케팅 프로모션 절차대로 진행해 볼 것이다. Dataset은 서울시 1인가구 관심집단 데이터를 이용하였다.  ➡️ 1인가구관심집단.csv  먼저, Pandas를 import 하고 Dataset을 생성한다. import pandas as pd  df_single = pd.read_csv(&amp;quot;1인가구관심집단.csv&amp;quot;, encoding=&amp;quot;utf-8-sig&amp;quot;) display(df_single) print(df_single.info())     “총인구”, “1인가구수” Dtype이 object이므로 숫자형으로 변경해야 한다. df_single[&amp;quot;총인구&amp;quot;] = pd.to_numeric(df_single[&amp;quot;총인구&amp;quot;], errors=&amp;#39;coerce&amp;#39;)  ...</summary>
+
+  </entry>
+
+  
+  <entry>
     <title>[멋사 부트캠프] 그로스 마케팅 지원</title>
     <link href="http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%95%A9%EA%B2%A9/" rel="alternate" type="text/html" title="[멋사 부트캠프] 그로스 마케팅 지원" />
-    <published>2025-02-16T16:30:00+09:00</published>
+    <published>2025-02-04T20:30:00+09:00</published>
   
-    <updated>2025-02-17T00:04:11+09:00</updated>
+    <updated>2025-02-04T20:30:00+09:00</updated>
   
     <id>http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%95%A9%EA%B2%A9/</id>
     <content type="text/html" src="http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%95%A9%EA%B2%A9/" />

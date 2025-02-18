@@ -1,10 +1,18 @@
 [
   {
+    "title": "[GM 예제] 1인가구 비즈니스 설계",
+    "url": "/posts/GM-Pandas/",
+    "categories": "GM, Python",
+    "tags": "GM, 그로스마케팅, Python, Pandas",
+    "date": "2025-02-07 20:00:00 +0900",
+    "content": "🏠서울시 1인가구 Dataset으로 신규 비즈니스 설계  그로스 마케팅 프로모션 절차대로 진행해 볼 것이다. Dataset은 서울시 1인가구 관심집단 데이터를 이용하였다.  ➡️ 1인가구관심집단.csv  먼저, Pandas를 import 하고 Dataset을 생성한다. import pandas as pd  df_single = pd.read_csv(&quot;..."
+  },
+  {
     "title": "[멋사 부트캠프] 그로스 마케팅 지원",
     "url": "/posts/%EB%A9%8B%EC%82%AC-%ED%95%A9%EA%B2%A9/",
     "categories": "대외활동, GM 부트캠프",
     "tags": "GM, 그로스마케팅, 멋쟁이사자처럼, 멋사, 부트캠프",
-    "date": "2025-02-16 16:30:00 +0900",
+    "date": "2025-02-04 20:30:00 +0900",
     "content": "멋사 그로스마케팅 보러가기 🦁멋쟁이사자처럼 그로스 마케팅 부트캠프 1기🦁  그로스 마케터 (Growth Marketer) 란? 데이터 기반 가설 수립과 다양한 실험을 통해 마케팅 성과를 개선, 결과를 향상시키는 직무  멋사 부트캠프에서는 데이터 분석 능력과 마케팅 경험을 모두 쌓을 수 있다. . !   일정                         ..."
   }
   
