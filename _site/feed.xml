@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-02-19T11:22:59+09:00</updated>
+  <updated>2025-02-20T17:08:50+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -20,14 +20,66 @@
 
   
   <entry>
+    <title>[GM 예제] 고객 행동 패턴 분석</title>
+    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" rel="alternate" type="text/html" title="[GM 예제] 고객 행동 패턴 분석" />
+    <published>2025-02-20T10:00:00+09:00</published>
+  
+    <updated>2025-02-20T10:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Scenario Design" />
+    
+  
+
+  <summary>📊고객 행동 패턴 분석 및 인사이트 도출  EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해 고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출해 보겠다.  1. EDA 활용한 그로스 마케팅 분석 시나리오  그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다. ⬇️ 마케팅에서 중요한 5가지 분석 항목 &amp;amp;amp; 그래프   2. 분석 시나리오  시나리오 개요 한 올라인 쇼핑몰에서 고객 데이터를 활용하여 그로스 마케팅 전략을 개선하고자 한다. 특히, 신규 고객의 행동 패턴을 파악하고 충성 고객을 분석하여 재구매율을 높이는 전략을 세우려 한다.  ⬇️ Dataset 설명   3. EDA를 위한 시각화 코드  !pip install koreanize-ma...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[재구매율 향상 목표] 고객 행동 패턴 분석 보고서</title>
+    <link href="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" rel="alternate" type="text/html" title="[재구매율 향상 목표] 고객 행동 패턴 분석 보고서" />
+    <published>2025-02-20T10:00:00+09:00</published>
+  
+    <updated>2025-02-20T10:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Report" />
+    
+  
+
+  <summary>그로스 마케팅 분석 보고서</summary>
+
+  </entry>
+
+  
+  <entry>
     <title>[GM 예제] 1인가구 비즈니스 설계</title>
-    <link href="http://localhost:4000/posts/GM-Pandas/" rel="alternate" type="text/html" title="[GM 예제] 1인가구 비즈니스 설계" />
+    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-1%EC%9D%B8%EA%B0%80%EA%B5%AC/" rel="alternate" type="text/html" title="[GM 예제] 1인가구 비즈니스 설계" />
     <published>2025-02-07T20:00:00+09:00</published>
   
-    <updated>2025-02-19T10:01:36+09:00</updated>
+    <updated>2025-02-07T20:00:00+09:00</updated>
   
-    <id>http://localhost:4000/posts/GM-Pandas/</id>
-    <content type="text/html" src="http://localhost:4000/posts/GM-Pandas/" />
+    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-1%EC%9D%B8%EA%B0%80%EA%B5%AC/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-1%EC%9D%B8%EA%B0%80%EA%B5%AC/" />
     <author>
       <name>ZI</name>
     </author>
