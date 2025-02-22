@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-02-21T17:03:33+09:00</updated>
+  <updated>2025-02-22T21:16:07+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -20,11 +20,11 @@
 
   
   <entry>
-    <title>[재구매율 향상 목표] 고객 행동 패턴 분석 보고서</title>
-    <link href="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" rel="alternate" type="text/html" title="[재구매율 향상 목표] 고객 행동 패턴 분석 보고서" />
+    <title>[GM 보고서] 재구매율 향상 목표</title>
+    <link href="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" rel="alternate" type="text/html" title="[GM 보고서] 재구매율 향상 목표" />
     <published>2025-02-20T19:00:00+09:00</published>
   
-    <updated>2025-02-20T19:00:00+09:00</updated>
+    <updated>2025-02-21T17:04:09+09:00</updated>
   
     <id>http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/</id>
     <content type="text/html" src="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" />
@@ -40,7 +40,7 @@
     
   
 
-  <summary>그로스 마케팅 분석 보고서 마케터 : 이 * * 2025.02.20    1. 신규 고객 vs 기존 고객 비율  분석      신규 고객이 28.8%, 기존 고객이 71.2%로 나타남   업계의 기존 신규 고객 유입 비율은 일반적으로 10%내외이므로 개선된 효과를 보이고 있음   기존 고객이 71.2%로 상당한 비율의 충성 고객이 있음을 알 수 있음   개선 방향    신규 고객 유입이 향상된 것으로 보아, 추가적인 향상을 위해 현재의 마케팅 예산을 증액하는 것 추천 (기존 마케팅 금액의 10% 이상 증액할 것을 권장   신규 고객 확보에 집중하되, 이탈하는 기존 고객을 Retention 하기 위해 기존 고객을 위한 마케팅 예산도 증액할 것을 권장함     2. 고객별 LTV 분포  분석      LT...</summary>
+  <summary>그로스 마케팅 분석 보고서 마케터 : 이 * * 2025.02.20    1. 신규 고객 vs 기존 고객 비율  분석      신규 고객이 28.8%, 기존 고객이 71.2%로 나타남   업계의 기존 신규 고객 유입 비율은 일반적으로 10%내외이므로 개선된 효과를 보이고 있음   기존 고객이 71.2%로 상당한 비율의 충성 고객이 있음을 알 수 있음   개선 방향    신규 고객 유입이 향상된 것으로 보아, 추가적인 향상을 위해 현재의 마케팅 예산을 증액하는 것 추천 (기존 마케팅 금액의 10% 이상 증액할 것을 권장)   신규 고객 확보에 집중하되, 이탈하는 기존 고객을 Retention 하기 위해 기존 고객을 위한 마케팅 예산도 증액할 것을 권장함     2. 고객별 LTV 분포  분석      L...</summary>
 
   </entry>
 
@@ -67,6 +67,32 @@
   
 
   <summary>📊고객 행동 패턴 분석 및 인사이트 도출  EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해 고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출해 보겠다.  1. EDA 활용한 그로스 마케팅 분석 시나리오  그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다. ⬇️ 마케팅에서 중요한 5가지 분석 항목 &amp;amp;amp; 그래프   2. 분석 시나리오  시나리오 개요 한 올라인 쇼핑몰에서 고객 데이터를 활용하여 그로스 마케팅 전략을 개선하고자 한다. 특히, 신규 고객의 행동 패턴을 파악하고 충성 고객을 분석하여 재구매율을 높이는 전략을 세우려 한다.  ⬇️ Dataset 설명   3. EDA를 위한 시각화 코드  !pip install koreanize-ma...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[GCP] VM 설정</title>
+    <link href="http://localhost:4000/posts/GCP-VM/" rel="alternate" type="text/html" title="[GCP] VM 설정" />
+    <published>2025-02-10T20:00:00+09:00</published>
+  
+    <updated>2025-02-10T20:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/GCP-VM/</id>
+    <content type="text/html" src="http://localhost:4000/posts/GCP-VM/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="GCP" />
+    
+  
+
+  <summary>⚙️GCP VM Instance 생성  GCP(Coogle Cloud Platform)에서 VM Instance를 생성해 볼 것이다. 먼저, GCP에 가입을 해야 한다. Google Cloud 접속     무료로 시작하기 클릭   체크카드 준비, 가입을 위한 정보 입력 (3개월 간 무료 이용 가능)    서버를 생성하고, [인스턴스 만들기]를 클릭한다.    리전은 asia-northeast3(서울)을 선택한다.     이름: 소문자로 시작, 숫자 및 하이픈(-) 가능   API 엑세스 모두 설정   “OS 및 스토리지” 에서 부팅 디스크를 Ubuntu 로 변경한다.   이제 [만들기]를 클릭하면 VM이 생성된다 !    VM 서버 접속  [SSH]를 클릭하면 터미널로 바로 접속이 된다.     서버를...</summary>
 
   </entry>
 
