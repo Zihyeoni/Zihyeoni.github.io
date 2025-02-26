@@ -16,6 +16,14 @@
     "content": "📊고객 행동 패턴 분석 및 인사이트 도출  EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해 고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출해 보겠다.  1. EDA 활용한 그로스 마케팅 분석 시나리오  그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다. ⬇️ 마케팅에서 중요한 5가지 분석 ..."
   },
   {
+    "title": "[GCP] MariaDB",
+    "url": "/posts/GCP-mariaDB/",
+    "categories": "GM, GCP",
+    "tags": "GCP, VM, 가상머신, MariaDB, SQL",
+    "date": "2025-02-11 19:30:00 +0900",
+    "content": "⚙️VM에서 MariaDB 실행  VM Ubuntu에서 MariaDB를 실행시켜 볼 것이다.  MariaDB 란? MySQL에서 파생된 오픈 소스 관계형 데이터베이스 관리 시스템 (RDBMS) MySQL과의 높은 호환성을 유지하며 성능 개선, 보안 강화, 새로운 스토리지 엔진 등의 기능 제공  먼저, 이미 만들어 둔 VM의 SSH에 접속해 MariaD..."
+  },
+  {
     "title": "[GCP] VM 설정",
     "url": "/posts/GCP-VM/",
     "categories": "GM, GCP",

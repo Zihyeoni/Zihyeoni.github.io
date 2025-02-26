@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-02-22T21:16:07+09:00</updated>
+  <updated>2025-02-26T18:27:27+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -24,7 +24,7 @@
     <link href="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" rel="alternate" type="text/html" title="[GM 보고서] 재구매율 향상 목표" />
     <published>2025-02-20T19:00:00+09:00</published>
   
-    <updated>2025-02-21T17:04:09+09:00</updated>
+    <updated>2025-02-22T21:19:58+09:00</updated>
   
     <id>http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/</id>
     <content type="text/html" src="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" />
@@ -67,6 +67,32 @@
   
 
   <summary>📊고객 행동 패턴 분석 및 인사이트 도출  EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해 고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출해 보겠다.  1. EDA 활용한 그로스 마케팅 분석 시나리오  그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다. ⬇️ 마케팅에서 중요한 5가지 분석 항목 &amp;amp;amp; 그래프   2. 분석 시나리오  시나리오 개요 한 올라인 쇼핑몰에서 고객 데이터를 활용하여 그로스 마케팅 전략을 개선하고자 한다. 특히, 신규 고객의 행동 패턴을 파악하고 충성 고객을 분석하여 재구매율을 높이는 전략을 세우려 한다.  ⬇️ Dataset 설명   3. EDA를 위한 시각화 코드  !pip install koreanize-ma...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[GCP] MariaDB</title>
+    <link href="http://localhost:4000/posts/GCP-mariaDB/" rel="alternate" type="text/html" title="[GCP] MariaDB" />
+    <published>2025-02-11T19:30:00+09:00</published>
+  
+    <updated>2025-02-11T19:30:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/GCP-mariaDB/</id>
+    <content type="text/html" src="http://localhost:4000/posts/GCP-mariaDB/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="GCP" />
+    
+  
+
+  <summary>⚙️VM에서 MariaDB 실행  VM Ubuntu에서 MariaDB를 실행시켜 볼 것이다.  MariaDB 란? MySQL에서 파생된 오픈 소스 관계형 데이터베이스 관리 시스템 (RDBMS) MySQL과의 높은 호환성을 유지하며 성능 개선, 보안 강화, 새로운 스토리지 엔진 등의 기능 제공  먼저, 이미 만들어 둔 VM의 SSH에 접속해 MariaDB를 설치한다. sudo apt update sudo apt install mariadb-server -y    설치 후 자동 실행을 설정한다. sudo systemctl start mariadb sudo systemctl enable mariadb   다음은 보안 설정인데, 최초 실행 시에는 설정하지 않아도 된다. sudo mysql_secure_inst...</summary>
 
   </entry>
 
@@ -119,32 +145,6 @@
   
 
   <summary>🏠서울시 1인가구 Dataset으로 신규 비즈니스 설계  그로스 마케팅 프로모션 절차대로 진행해 볼 것이다. Dataset은 서울시 1인가구 관심집단 데이터를 이용하였다.  ➡️ 1인가구관심집단.csv  먼저, Pandas를 import 하고 Dataset을 생성한다. import pandas as pd  df_single = pd.read_csv(&amp;quot;1인가구관심집단.csv&amp;quot;, encoding=&amp;quot;utf-8-sig&amp;quot;) display(df_single) print(df_single.info())     “총인구”, “1인가구수” Dtype이 object이므로 숫자형으로 변경해야 한다. df_single[&amp;quot;총인구&amp;quot;] = pd.to_numeric(df_single[&amp;quot;총인구&amp;quot;], errors=&amp;#39;coerce&amp;#39;)  ...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[멋사 부트캠프] 그로스 마케팅 지원</title>
-    <link href="http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%95%A9%EA%B2%A9/" rel="alternate" type="text/html" title="[멋사 부트캠프] 그로스 마케팅 지원" />
-    <published>2025-02-04T20:30:00+09:00</published>
-  
-    <updated>2025-02-04T20:30:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%95%A9%EA%B2%A9/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%95%A9%EA%B2%A9/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="대외활동" />
-    
-    <category term="GM 부트캠프" />
-    
-  
-
-  <summary>멋사 그로스마케팅 보러가기 🦁멋쟁이사자처럼 그로스 마케팅 부트캠프 1기🦁  그로스 마케터 (Growth Marketer) 란? 데이터 기반 가설 수립과 다양한 실험을 통해 마케팅 성과를 개선, 결과를 향상시키는 직무  멋사 부트캠프에서는 데이터 분석 능력과 마케팅 경험을 모두 쌓을 수 있다. . !   일정                         모집기간         24.12.10 ~ 25.01.23                       교육기간         25.01.31 ~ 25.05.23                       교육시간         평일 9:00 ~ 18:00                       학습형태         실시간 온라인 교육                ...</summary>
 
   </entry>
 
