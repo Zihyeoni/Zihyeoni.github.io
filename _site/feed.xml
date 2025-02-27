@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-02-26T18:27:27+09:00</updated>
+  <updated>2025-02-28T00:24:57+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -72,6 +72,32 @@
 
   
   <entry>
+    <title>[SQL] GM 성과 분석 예제</title>
+    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D(sql%ED%99%9C%EC%9A%A9)/" rel="alternate" type="text/html" title="[SQL] GM 성과 분석 예제" />
+    <published>2025-02-11T23:00:00+09:00</published>
+  
+    <updated>2025-02-11T23:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D(sql%ED%99%9C%EC%9A%A9)/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D(sql%ED%99%9C%EC%9A%A9)/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Scenario Design" />
+    
+  
+
+  <summary>SQL 활용한 마케팅 성과 분석  📝마케팅 시나리오 개요    “e커머스 스타트업 A사는 마케팅 데이터를 활용하여 매출을 극대화하고 광고 효율성을 높이기 위해 고도화된 데이터 분석 시스템을 구축하려 한다. 광고 비용 대비 전환율 최적화, 사용자 리텐션 분석, 마케팅 채널별 ROI 비교, 고객 생애 가치(LTV) 예측, 캠페인 자동 최적화, A/B 테스트 결과 비교, 퍼널 분석, 추천 시스템 최적화, 구독 모델 분석 등의 전략을 적용하려 한다.”   광고 채널별 전환 최적화  시나리오    광고 채널별 전환율(Conversion Rate)을 분석하여, 최적의 광고 채널 결정 및 예산 효과적으로 배분   📊 전환율 = (전환 수 / 클릭 수) × 100  테이블 생성 CREATE TABLE ad_perfo...</summary>
+
+  </entry>
+
+  
+  <entry>
     <title>[GCP] MariaDB</title>
     <link href="http://localhost:4000/posts/GCP-mariaDB/" rel="alternate" type="text/html" title="[GCP] MariaDB" />
     <published>2025-02-11T19:30:00+09:00</published>
@@ -119,32 +145,6 @@
   
 
   <summary>⚙️GCP VM Instance 생성  GCP(Coogle Cloud Platform)에서 VM Instance를 생성해 볼 것이다. 먼저, GCP에 가입을 해야 한다. Google Cloud 접속     무료로 시작하기 클릭   체크카드 준비, 가입을 위한 정보 입력 (3개월 간 무료 이용 가능)    서버를 생성하고, [인스턴스 만들기]를 클릭한다.    리전은 asia-northeast3(서울)을 선택한다.     이름: 소문자로 시작, 숫자 및 하이픈(-) 가능   API 엑세스 모두 설정   “OS 및 스토리지” 에서 부팅 디스크를 Ubuntu 로 변경한다.   이제 [만들기]를 클릭하면 VM이 생성된다 !    VM 서버 접속  [SSH]를 클릭하면 터미널로 바로 접속이 된다.     서버를...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GM 예제] 1인가구 비즈니스 설계</title>
-    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-1%EC%9D%B8%EA%B0%80%EA%B5%AC/" rel="alternate" type="text/html" title="[GM 예제] 1인가구 비즈니스 설계" />
-    <published>2025-02-07T20:00:00+09:00</published>
-  
-    <updated>2025-02-07T20:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-1%EC%9D%B8%EA%B0%80%EA%B5%AC/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-1%EC%9D%B8%EA%B0%80%EA%B5%AC/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="Scenario Design" />
-    
-  
-
-  <summary>🏠서울시 1인가구 Dataset으로 신규 비즈니스 설계  그로스 마케팅 프로모션 절차대로 진행해 볼 것이다. Dataset은 서울시 1인가구 관심집단 데이터를 이용하였다.  ➡️ 1인가구관심집단.csv  먼저, Pandas를 import 하고 Dataset을 생성한다. import pandas as pd  df_single = pd.read_csv(&amp;quot;1인가구관심집단.csv&amp;quot;, encoding=&amp;quot;utf-8-sig&amp;quot;) display(df_single) print(df_single.info())     “총인구”, “1인가구수” Dtype이 object이므로 숫자형으로 변경해야 한다. df_single[&amp;quot;총인구&amp;quot;] = pd.to_numeric(df_single[&amp;quot;총인구&amp;quot;], errors=&amp;#39;coerce&amp;#39;)  ...</summary>
 
   </entry>
 

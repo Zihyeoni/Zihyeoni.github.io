@@ -16,6 +16,14 @@
     "content": "📊고객 행동 패턴 분석 및 인사이트 도출  EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해 고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출해 보겠다.  1. EDA 활용한 그로스 마케팅 분석 시나리오  그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다. ⬇️ 마케팅에서 중요한 5가지 분석 ..."
   },
   {
+    "title": "[SQL] GM 성과 분석 예제",
+    "url": "/posts/%EC%98%88%EC%A0%9C-%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D(sql%ED%99%9C%EC%9A%A9)/",
+    "categories": "GM, Scenario Design",
+    "tags": "GM, 그로스마케팅, GCP, VM, 가상머신, SQL",
+    "date": "2025-02-11 23:00:00 +0900",
+    "content": "SQL 활용한 마케팅 성과 분석  📝마케팅 시나리오 개요    “e커머스 스타트업 A사는 마케팅 데이터를 활용하여 매출을 극대화하고 광고 효율성을 높이기 위해 고도화된 데이터 분석 시스템을 구축하려 한다. 광고 비용 대비 전환율 최적화, 사용자 리텐션 분석, 마케팅 채널별 ROI 비교, 고객 생애 가치(LTV) 예측, 캠페인 자동 최적화, A/B 테스..."
+  },
+  {
     "title": "[GCP] MariaDB",
     "url": "/posts/GCP-mariaDB/",
     "categories": "GM, GCP",
