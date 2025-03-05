@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-02-28T00:24:57+09:00</updated>
+  <updated>2025-03-05T23:08:17+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[Tableau] 기본 사용법</title>
+    <link href="http://localhost:4000/posts/Tableau-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="alternate" type="text/html" title="[Tableau] 기본 사용법" />
+    <published>2025-03-04T19:00:00+09:00</published>
+  
+    <updated>2025-03-04T19:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/Tableau-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Tableau-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Tableau" />
+    
+  
+
+  <summary>📊Tableau 기본 사용법 및 데이터 연결  Tableau 란? 데이터를 시각적으로 분석하고 대시보드를 생성하는 강력한 데이터 시각화 도구 비즈니스 인텔리전스(BI), 데이터 분석, 마케팅 인사이트, 재무 분석 등에 널리 활용  Tableau 주요 기능  ① 데이터 연결    다양한 데이터 소스 연결 가능            Excel, CSV, Google Sheets, JSON       관계형 데이터베이스(MySQL, PostgreSQL, MariaDB 등)       클라우드 데이터(Warehouse: Google BigQuery, AWS Redshift 등)           ② 강력한 데이터 시각화    차트 및 그래프 생성: 막대 그래프, 선 그래프, 히트맵, 파이 차트, 지도 등   대...</summary>
+
+  </entry>
 
   
   <entry>
@@ -119,32 +145,6 @@
   
 
   <summary>⚙️VM에서 MariaDB 실행  VM Ubuntu에서 MariaDB를 실행시켜 볼 것이다.  MariaDB 란? MySQL에서 파생된 오픈 소스 관계형 데이터베이스 관리 시스템 (RDBMS) MySQL과의 높은 호환성을 유지하며 성능 개선, 보안 강화, 새로운 스토리지 엔진 등의 기능 제공  먼저, 이미 만들어 둔 VM의 SSH에 접속해 MariaDB를 설치한다. sudo apt update sudo apt install mariadb-server -y    설치 후 자동 실행을 설정한다. sudo systemctl start mariadb sudo systemctl enable mariadb   다음은 보안 설정인데, 최초 실행 시에는 설정하지 않아도 된다. sudo mysql_secure_inst...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GCP] VM 설정</title>
-    <link href="http://localhost:4000/posts/GCP-VM/" rel="alternate" type="text/html" title="[GCP] VM 설정" />
-    <published>2025-02-10T20:00:00+09:00</published>
-  
-    <updated>2025-02-10T20:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/GCP-VM/</id>
-    <content type="text/html" src="http://localhost:4000/posts/GCP-VM/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="GCP" />
-    
-  
-
-  <summary>⚙️GCP VM Instance 생성  GCP(Coogle Cloud Platform)에서 VM Instance를 생성해 볼 것이다. 먼저, GCP에 가입을 해야 한다. Google Cloud 접속     무료로 시작하기 클릭   체크카드 준비, 가입을 위한 정보 입력 (3개월 간 무료 이용 가능)    서버를 생성하고, [인스턴스 만들기]를 클릭한다.    리전은 asia-northeast3(서울)을 선택한다.     이름: 소문자로 시작, 숫자 및 하이픈(-) 가능   API 엑세스 모두 설정   “OS 및 스토리지” 에서 부팅 디스크를 Ubuntu 로 변경한다.   이제 [만들기]를 클릭하면 VM이 생성된다 !    VM 서버 접속  [SSH]를 클릭하면 터미널로 바로 접속이 된다.     서버를...</summary>
 
   </entry>
 
