@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-03-07T11:13:47+09:00</updated>
+  <updated>2025-03-07T19:27:03+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[Tableau] 서울시 상권 분석 (심화)</title>
+    <link href="http://localhost:4000/posts/Tableau-%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%83%81%EA%B6%8C%EB%B6%84%EC%84%9D2/" rel="alternate" type="text/html" title="[Tableau] 서울시 상권 분석 (심화)" />
+    <published>2025-03-05T23:00:00+09:00</published>
+  
+    <updated>2025-03-05T23:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/Tableau-%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%83%81%EA%B6%8C%EB%B6%84%EC%84%9D2/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Tableau-%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%83%81%EA%B6%8C%EB%B6%84%EC%84%9D2/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Tableau" />
+    
+  
+
+  <summary>🏢서울시 상권 분석 시각화 2️⃣  Dataset은 1번째 분석과 같은 데이터를 사용하였다. 이번 분석은 심화 버전으로 진행하였다.  식료품 업종 시간대별 매출    슈퍼마켓, 편의점, 수산물판매 모두 17 ~ 21시에 가장 매출이 높음 육류판매는 14 ~ 17시에 가장 매출이 높음 편의점은 모든 시간대의 매출이 균등하게 높은 편 (24시간 영업 &amp;amp;amp; 접근성 용이)  저녁 시간대인  17 ~ 21시는 일반적으로 퇴근 이후 시간대이기 때문에, 대부분의 사람들이 퇴근 후에 장을 보는 것으로 판단  식료품 업종별 주중 &amp;amp;amp; 주말 매출    총 매출 1위: 편의점 주말 매출 1위: 수산물판매 주중 매출 1위: 편의점  슈퍼마켓과 육류의 가격 차이에도 불구하고 육류 판매 매출이 가장 낮은 것으로 보아...</summary>
+
+  </entry>
 
   
   <entry>
@@ -119,32 +145,6 @@
   
 
   <summary>📊고객 행동 패턴 분석 및 인사이트 도출  EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해 고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출해 보겠다.  1. EDA 활용한 그로스 마케팅 분석 시나리오  그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다. ⬇️ 마케팅에서 중요한 5가지 분석 항목 &amp;amp;amp; 그래프   2. 분석 시나리오  시나리오 개요 한 올라인 쇼핑몰에서 고객 데이터를 활용하여 그로스 마케팅 전략을 개선하고자 한다. 특히, 신규 고객의 행동 패턴을 파악하고 충성 고객을 분석하여 재구매율을 높이는 전략을 세우려 한다.  ⬇️ Dataset 설명   3. EDA를 위한 시각화 코드  !pip install koreanize-ma...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[SQL] GM 성과 분석 예제</title>
-    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D(sql%ED%99%9C%EC%9A%A9)/" rel="alternate" type="text/html" title="[SQL] GM 성과 분석 예제" />
-    <published>2025-02-11T23:00:00+09:00</published>
-  
-    <updated>2025-02-11T23:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D(sql%ED%99%9C%EC%9A%A9)/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D(sql%ED%99%9C%EC%9A%A9)/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="Scenario Design" />
-    
-  
-
-  <summary>SQL 활용한 마케팅 성과 분석  📝마케팅 시나리오 개요    “e커머스 스타트업 A사는 마케팅 데이터를 활용하여 매출을 극대화하고 광고 효율성을 높이기 위해 고도화된 데이터 분석 시스템을 구축하려 한다. 광고 비용 대비 전환율 최적화, 사용자 리텐션 분석, 마케팅 채널별 ROI 비교, 고객 생애 가치(LTV) 예측, 캠페인 자동 최적화, A/B 테스트 결과 비교, 퍼널 분석, 추천 시스템 최적화, 구독 모델 분석 등의 전략을 적용하려 한다.”   광고 채널별 전환 최적화  시나리오    광고 채널별 전환율(Conversion Rate)을 분석하여, 최적의 광고 채널 결정 및 예산 효과적으로 배분   📊 전환율 = (전환 수 / 클릭 수) × 100  테이블 생성 CREATE TABLE ad_perfo...</summary>
 
   </entry>
 
