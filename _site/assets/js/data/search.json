@@ -1,5 +1,13 @@
 [
   {
+    "title": "[Looker Studio] GM metrics 보고서",
+    "url": "/posts/LookerStudio-GM-metrics/",
+    "categories": "GM, 시각화",
+    "tags": "Looker Studio, 시각화, GM, 그로스마케팅",
+    "date": "2025-03-06 23:00:00 +0900",
+    "content": "GM Metrics 시각화 분석  Looker Studio를 통해 시각화 분석을 해 보겠다. Dataset은 GM metrics를 이용하였다. ➡️ growth_marketing_metrics.csv  Looker Studio에 접속하여 새 보고서를 생성한다.   growth_marketing_metrics.csv 파일을 업로드 한다.    차트 추가..."
+  },
+  {
     "title": "[Looker Studio] 기본 사용법",
     "url": "/posts/LookerStudio-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/",
     "categories": "GM, 시각화",
