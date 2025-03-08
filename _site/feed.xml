@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-03-07T19:27:03+09:00</updated>
+  <updated>2025-03-08T17:17:25+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[Looker Studio] 기본 사용법</title>
+    <link href="http://localhost:4000/posts/LookerStudio-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="alternate" type="text/html" title="[Looker Studio] 기본 사용법" />
+    <published>2025-03-06T19:00:00+09:00</published>
+  
+    <updated>2025-03-06T19:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/LookerStudio-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/</id>
+    <content type="text/html" src="http://localhost:4000/posts/LookerStudio-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="시각화" />
+    
+  
+
+  <summary>📈Looker Studio 기본 사용법 및 데이터 연결  Looker Studio 란? Google에서 제공하는 데이터 시각화 및 보고서 제작 도구 (비즈니스 인텔리전스(BI) 도구로 활용) Google의 다양한 서비스 및 타사 데이터 소스와 연동이 가능해 데이터를 효과적으로 분석 및 공유 가능  주요 특징  ① 다양한 데이터 소스 연결    Google Analytics, Google Ads, BigQuery, Google Sheets 등 Google 제품과 원활히 통합됨   MySQL, PostgreSQL 같은 데이터베이스, CSV 파일, 또는 타사 API를 통해 외부 데이터 연결 가능   ② 사용자 친화적 인터페이스    코딩 지식 없이도 쉽게 대시보드와 보고서를 생성할 수 있는 드래그 앤 드롭 ...</summary>
+
+  </entry>
 
   
   <entry>
@@ -36,7 +62,7 @@
     
     <category term="GM" />
     
-    <category term="Tableau" />
+    <category term="시각화" />
     
   
 
@@ -62,7 +88,7 @@
     
     <category term="GM" />
     
-    <category term="Tableau" />
+    <category term="시각화" />
     
   
 
@@ -88,7 +114,7 @@
     
     <category term="GM" />
     
-    <category term="Tableau" />
+    <category term="시각화" />
     
   
 
@@ -119,32 +145,6 @@
   
 
   <summary>그로스 마케팅 분석 보고서 마케터 : 이 * * 2025.02.20    1. 신규 고객 vs 기존 고객 비율  분석      신규 고객이 28.8%, 기존 고객이 71.2%로 나타남   업계의 기존 신규 고객 유입 비율은 일반적으로 10%내외이므로 개선된 효과를 보이고 있음   기존 고객이 71.2%로 상당한 비율의 충성 고객이 있음을 알 수 있음   개선 방향    신규 고객 유입이 향상된 것으로 보아, 추가적인 향상을 위해 현재의 마케팅 예산을 증액하는 것 추천 (기존 마케팅 금액의 10% 이상 증액할 것을 권장)   신규 고객 확보에 집중하되, 이탈하는 기존 고객을 Retention 하기 위해 기존 고객을 위한 마케팅 예산도 증액할 것을 권장함     2. 고객별 LTV 분포  분석      L...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GM 예제] 고객 행동 패턴 분석</title>
-    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" rel="alternate" type="text/html" title="[GM 예제] 고객 행동 패턴 분석" />
-    <published>2025-02-20T10:00:00+09:00</published>
-  
-    <updated>2025-02-20T10:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="Scenario Design" />
-    
-  
-
-  <summary>📊고객 행동 패턴 분석 및 인사이트 도출  EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해 고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출해 보겠다.  1. EDA 활용한 그로스 마케팅 분석 시나리오  그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다. ⬇️ 마케팅에서 중요한 5가지 분석 항목 &amp;amp;amp; 그래프   2. 분석 시나리오  시나리오 개요 한 올라인 쇼핑몰에서 고객 데이터를 활용하여 그로스 마케팅 전략을 개선하고자 한다. 특히, 신규 고객의 행동 패턴을 파악하고 충성 고객을 분석하여 재구매율을 높이는 전략을 세우려 한다.  ⬇️ Dataset 설명   3. EDA를 위한 시각화 코드  !pip install koreanize-ma...</summary>
 
   </entry>
 
