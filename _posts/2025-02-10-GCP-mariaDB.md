@@ -1,7 +1,7 @@
 ---
 title: "[GCP] MariaDB"
 date: 2025-02-11 19:30:00 +09:00
-categories: [GM, GCP]
+categories: [GCP]
 tags:
   [
     GCP,

@@ -116,6 +116,22 @@
     </url>
     
     <url>
+        <loc>http://localhost:4000/posts/GCP-python%EC%97%B0%EB%8F%99/</loc>
+        
+        <lastmod>2025-02-13T20:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-join&union%ED%99%9C%EC%9A%A9/</loc>
         
         <lastmod>2025-02-12T23:00:00+09:00</lastmod>
