@@ -56,6 +56,14 @@
     "content": "📊고객 행동 패턴 분석 및 인사이트 도출  EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해 고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출해 보겠다.  1. EDA 활용한 그로스 마케팅 분석 시나리오  그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다. ⬇️ 마케팅에서 중요한 5가지 분석 ..."
   },
   {
+    "title": "[SQL] JOIN & UNION 활용한 그로스 마케팅",
+    "url": "/posts/%EC%98%88%EC%A0%9C-join&union%ED%99%9C%EC%9A%A9/",
+    "categories": "GM, Scenario Design",
+    "tags": "GM, 그로스마케팅, GCP, VM, 가상머신, SQL, JOIN, UNION",
+    "date": "2025-02-12 23:00:00 +0900",
+    "content": "📑JOIN &amp;amp; UNION 활용한 그로스 마케팅  JOIN &amp;amp; UNION  JOIN: 두 개 이상의 테이블을 기준이 되는 공통 필드를 통해 결합하여 새로운 데이터를 생성하는 방식    주로 고객 정보, 마케팅 캠페인, 거래 데이터 등을 통합하여 보다 정밀한 분석을 수행할 때 사용   UNION: 여러 테이블에서 가져온 데이터를 동일한 컬럼..."
+  },
+  {
     "title": "[SQL] GM 성과 분석 예제",
     "url": "/posts/%EC%98%88%EC%A0%9C-%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D(sql%ED%99%9C%EC%9A%A9)/",
     "categories": "GM, Scenario Design",
