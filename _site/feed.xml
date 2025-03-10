@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-03-10T15:23:11+09:00</updated>
+  <updated>2025-03-10T18:00:21+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[GM 보고서] 고객 전환율 분석</title>
+    <link href="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%EC%A0%84%ED%99%98%EC%9C%A8%EB%B6%84%EC%84%9D/" rel="alternate" type="text/html" title="[GM 보고서] 고객 전환율 분석" />
+    <published>2025-03-10T17:00:00+09:00</published>
+  
+    <updated>2025-03-10T17:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%EC%A0%84%ED%99%98%EC%9C%A8%EB%B6%84%EC%84%9D/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%EC%A0%84%ED%99%98%EC%9C%A8%EB%B6%84%EC%84%9D/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Report" />
+    
+  
+
+  <summary>그로스 마케팅 보고서  마케터 : 이 * * 2025.03.10    1. 개요  본 보고서는 광고 비용, 웹사이트 방문 수, 소셜 미디어 상호작용, 할인 제공 여부가 고객 전환율(Conversion Rate)에 미치는 영향을 분석하기 위해 로지스틱 회귀 모델을 활용하였다. 이를 통해 마케팅 예산을 최적화하고 전환율을 증가시키기 위한 전략을 도출한다.  2. 데이터 개요     데이터셋: 고객 전환율 분석 (conversion_rate_analysis.csv)   데이터 크기: 500개 샘플   변수 정의:            광고 비용(Ad Spend, $): 디지털 마케팅에 지출한 광고 비용       웹사이트 방문 수(Website Visits): 사용자의 웹사이트 방문 횟수       소셜 미디...</summary>
+
+  </entry>
 
   
   <entry>
@@ -119,32 +145,6 @@
   
 
   <summary>🏢서울시 상권 분석 시각화  홍대 및 연남동을 기준으로 분석하였고, Dataset은 서울시 상권 분석 데이터를 이용하였다. ➡️서울시_상권분석서비스(추정매출-상권)_2022년.csv  홍대 근처 상권별 월 매출    최고 매출: 홍대입구역 (588,228,254,591원) 최저 매출: 상수역 (61,829,216,473원)  홍대입구역    유동 인구가 가장 많음   인근에 병원 등 높은 매출 단가가 예상되는 상권이 밀집되어 있어 가장 높은 매출액을 기록했을 것으로 추정   연남동    연트럴파크 등 핫플레이스가 많고, 홍대 및 신촌과 인접하여 유동 인구가 높음   합정역    홍대와 인접하여 카페 및 레스토랑 등의 데이트 코스로 유명하나, 비교적 유동 인구가 적음   망원역    대부분이 주거상권으로...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[Tableau] 기본 사용법</title>
-    <link href="http://localhost:4000/posts/Tableau-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="alternate" type="text/html" title="[Tableau] 기본 사용법" />
-    <published>2025-03-04T19:00:00+09:00</published>
-  
-    <updated>2025-03-08T17:18:16+09:00</updated>
-  
-    <id>http://localhost:4000/posts/Tableau-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/</id>
-    <content type="text/html" src="http://localhost:4000/posts/Tableau-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="시각화" />
-    
-  
-
-  <summary>📊Tableau 기본 사용법 및 데이터 연결  Tableau 란? 데이터를 시각적으로 분석하고 대시보드를 생성하는 강력한 데이터 시각화 도구 비즈니스 인텔리전스(BI), 데이터 분석, 마케팅 인사이트, 재무 분석 등에 널리 활용  Tableau 주요 기능  ① 데이터 연결    다양한 데이터 소스 연결 가능            Excel, CSV, Google Sheets, JSON       관계형 데이터베이스(MySQL, PostgreSQL, MariaDB 등)       클라우드 데이터(Warehouse: Google BigQuery, AWS Redshift 등)           ② 강력한 데이터 시각화    차트 및 그래프 생성: 막대 그래프, 선 그래프, 히트맵, 파이 차트, 지도 등   대...</summary>
 
   </entry>
 

@@ -1,5 +1,13 @@
 [
   {
+    "title": "[GM 보고서] 고객 전환율 분석",
+    "url": "/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%EC%A0%84%ED%99%98%EC%9C%A8%EB%B6%84%EC%84%9D/",
+    "categories": "GM, Report",
+    "tags": "GM, 그로스마케팅, 로지스틱, 회귀분석",
+    "date": "2025-03-10 17:00:00 +0900",
+    "content": "그로스 마케팅 보고서  마케터 : 이 * * 2025.03.10    1. 개요  본 보고서는 광고 비용, 웹사이트 방문 수, 소셜 미디어 상호작용, 할인 제공 여부가 고객 전환율(Conversion Rate)에 미치는 영향을 분석하기 위해 로지스틱 회귀 모델을 활용하였다. 이를 통해 마케팅 예산을 최적화하고 전환율을 증가시키기 위한 전략을 도출한다...."
+  },
+  {
     "title": "[Looker Studio] GM metrics 보고서",
     "url": "/posts/LookerStudio-GM-metrics/",
     "categories": "GM, 시각화",
