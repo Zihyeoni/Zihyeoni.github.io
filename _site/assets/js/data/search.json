@@ -1,5 +1,13 @@
 [
   {
+    "title": "[Web] 고객 구매 예측",
+    "url": "/posts/Web-%EA%B3%A0%EA%B0%9D%EA%B5%AC%EB%A7%A4%EC%98%88%EC%B8%A1/",
+    "categories": "GM, Web Service",
+    "tags": "GM, 그로스마케팅, 로지스틱, 회귀분석, K-NN, 알고리즘",
+    "date": "2025-03-12 14:00:00 +0900",
+    "content": "👔K-NN 알고리즘 이용한 의류상품 추천 웹사이트  신규고객에 대한 의류상품 추천이 가능하도록 Flask를 활용해 Web service를 구축해 보겠다. Dataset은 고객들의 의류 구매 데이터를 이용하였다. ➡️sales.csv  sales.csv   Directory 구조   app.py from flask import Flask, request..."
+  },
+  {
     "title": "[GM 보고서] 고객 전환율 분석",
     "url": "/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%EC%A0%84%ED%99%98%EC%9C%A8%EB%B6%84%EC%84%9D/",
     "categories": "GM, Report",
