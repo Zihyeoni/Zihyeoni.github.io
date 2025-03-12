@@ -1,5 +1,13 @@
 [
   {
+    "title": "[Web] 고객 충성도 등급 예측",
+    "url": "/posts/Web-%EA%B3%A0%EA%B0%9D%EC%B6%A9%EC%84%B1%EB%8F%84%EB%93%B1%EA%B8%89%EC%98%88%EC%B8%A1/",
+    "categories": "GM, Web Service",
+    "tags": "GM, 그로스마케팅, 로지스틱, 회귀분석, 다중 클래스",
+    "date": "2025-03-12 17:00:00 +0900",
+    "content": "🛍️고객 충성도 등급 예측 웹사이트  고객의 충성도 예측이 가능하도록 Flask를 활용해 Web service를 구축해 보겠다.  고객 충성도 등급                 0 (낮음)       구매 빈도가 낮고, 재방문 가능성 낮음                 1 (중간)       일정 수준의 구매와 재방문 기록이 있음             ..."
+  },
+  {
     "title": "[Web] 고객 구매 예측",
     "url": "/posts/Web-%EA%B3%A0%EA%B0%9D%EA%B5%AC%EB%A7%A4%EC%98%88%EC%B8%A1/",
     "categories": "GM, Web Service",

@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-03-12T14:57:20+09:00</updated>
+  <updated>2025-03-12T17:29:41+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[Web] 고객 충성도 등급 예측</title>
+    <link href="http://localhost:4000/posts/Web-%EA%B3%A0%EA%B0%9D%EC%B6%A9%EC%84%B1%EB%8F%84%EB%93%B1%EA%B8%89%EC%98%88%EC%B8%A1/" rel="alternate" type="text/html" title="[Web] 고객 충성도 등급 예측" />
+    <published>2025-03-12T17:00:00+09:00</published>
+  
+    <updated>2025-03-12T17:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/Web-%EA%B3%A0%EA%B0%9D%EC%B6%A9%EC%84%B1%EB%8F%84%EB%93%B1%EA%B8%89%EC%98%88%EC%B8%A1/</id>
+    <content type="text/html" src="http://localhost:4000/posts/Web-%EA%B3%A0%EA%B0%9D%EC%B6%A9%EC%84%B1%EB%8F%84%EB%93%B1%EA%B8%89%EC%98%88%EC%B8%A1/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Web Service" />
+    
+  
+
+  <summary>🛍️고객 충성도 등급 예측 웹사이트  고객의 충성도 예측이 가능하도록 Flask를 활용해 Web service를 구축해 보겠다.  고객 충성도 등급                 0 (낮음)       구매 빈도가 낮고, 재방문 가능성 낮음                 1 (중간)       일정 수준의 구매와 재방문 기록이 있음                 2 (높음)       높은 구매 빈도와 충성도를 보이며, 장기 고객이 될 가능성 큼           Directory 구조   DataFrame   app.py from flask import Flask, request, jsonify, render_template import numpy as np import pandas as pd from s...</summary>
+
+  </entry>
 
   
   <entry>
@@ -119,32 +145,6 @@
   
 
   <summary>📈Looker Studio 기본 사용법 및 데이터 연결  Looker Studio 란? Google에서 제공하는 데이터 시각화 및 보고서 제작 도구 (비즈니스 인텔리전스(BI) 도구로 활용) Google의 다양한 서비스 및 타사 데이터 소스와 연동이 가능해 데이터를 효과적으로 분석 및 공유 가능  주요 특징  ① 다양한 데이터 소스 연결    Google Analytics, Google Ads, BigQuery, Google Sheets 등 Google 제품과 원활히 통합됨   MySQL, PostgreSQL 같은 데이터베이스, CSV 파일, 또는 타사 API를 통해 외부 데이터 연결 가능   ② 사용자 친화적 인터페이스    코딩 지식 없이도 쉽게 대시보드와 보고서를 생성할 수 있는 드래그 앤 드롭 ...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[Tableau] 서울시 상권 분석 (심화)</title>
-    <link href="http://localhost:4000/posts/Tableau-%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%83%81%EA%B6%8C%EB%B6%84%EC%84%9D2/" rel="alternate" type="text/html" title="[Tableau] 서울시 상권 분석 (심화)" />
-    <published>2025-03-05T23:00:00+09:00</published>
-  
-    <updated>2025-03-08T17:18:16+09:00</updated>
-  
-    <id>http://localhost:4000/posts/Tableau-%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%83%81%EA%B6%8C%EB%B6%84%EC%84%9D2/</id>
-    <content type="text/html" src="http://localhost:4000/posts/Tableau-%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%83%81%EA%B6%8C%EB%B6%84%EC%84%9D2/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="시각화" />
-    
-  
-
-  <summary>🏢서울시 상권 분석 시각화 2️⃣  Dataset은 1번째 분석과 같은 데이터를 사용하였다. 이번 분석은 심화 버전으로 진행하였다.  식료품 업종 시간대별 매출    슈퍼마켓, 편의점, 수산물판매 모두 17 ~ 21시에 가장 매출이 높음 육류판매는 14 ~ 17시에 가장 매출이 높음 편의점은 모든 시간대의 매출이 균등하게 높은 편 (24시간 영업 &amp;amp;amp; 접근성 용이)  저녁 시간대인  17 ~ 21시는 일반적으로 퇴근 이후 시간대이기 때문에, 대부분의 사람들이 퇴근 후에 장을 보는 것으로 판단  식료품 업종별 주중 &amp;amp;amp; 주말 매출    총 매출 1위: 편의점 주말 매출 1위: 수산물판매 주중 매출 1위: 편의점  슈퍼마켓과 육류의 가격 차이에도 불구하고 육류 판매 매출이 가장 낮은 것으로 보아...</summary>
 
   </entry>
 
