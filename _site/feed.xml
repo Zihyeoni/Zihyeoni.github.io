@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-03-12T17:29:41+09:00</updated>
+  <updated>2025-03-12T18:32:23+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,110 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[회귀분석] 고객 활동 기반 구독 플랜 추천</title>
+    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%ED%94%8C%EB%9E%9C%EC%B6%94%EC%B2%9C/" rel="alternate" type="text/html" title="[회귀분석] 고객 활동 기반 구독 플랜 추천" />
+    <published>2025-03-12T18:15:00+09:00</published>
+  
+    <updated>2025-03-12T18:15:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%ED%94%8C%EB%9E%9C%EC%B6%94%EC%B2%9C/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%ED%94%8C%EB%9E%9C%EC%B6%94%EC%B2%9C/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Scenario Design" />
+    
+  
+
+  <summary>고객 활동 기반 구독 플랜 추천  📝마케팅 시나리오    “D사는 여러 개의 구독 플랜(베이직, 스탠다드, 프리미엄)을 제공하는 온라인 서비스 플랫폼을 운영하고 있다. 신규 가입자가 첫 7일 동안 보여주는 행동 패턴을 바탕으로, 그들이 최종적으로 어떤 구독 플랜을 선택할 가능성이 높은지 예측하고자 한다. 이를 통해, 고객 맞춤형 마케팅 전략을 수립하고 적절한 프로모션을 제공할 수 있다.”   목표    신규 가입자의 초기 사용 데이터를 바탕으로 최종적으로 선택할 구독 플랜을 예측   다중 클래스 분류 모델(소프트맥스 로지스틱 회귀)을 활용하여 고객이 베이직, 스탠다드, 프리미엄 중 어떤 플랜을 선택할지 예측   예측된 결과를 기반으로 구독 플랜별 맞춤 마케팅 전략을 최적화   데이터 설명    고객 특...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[회귀분석] 구독 기간 예측</title>
+    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%EA%B8%B0%EA%B0%84%EC%98%88%EC%B8%A1/" rel="alternate" type="text/html" title="[회귀분석] 구독 기간 예측" />
+    <published>2025-03-12T18:15:00+09:00</published>
+  
+    <updated>2025-03-12T18:15:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%EA%B8%B0%EA%B0%84%EC%98%88%EC%B8%A1/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%EA%B8%B0%EA%B0%84%EC%98%88%EC%B8%A1/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Scenario Design" />
+    
+  
+
+  <summary>구독 기간 예측  📝마케팅 시나리오    “C사는 온라인 구독 서비스를 운영하고 있으며, 신규 가입자의 초기 사용 패턴을 바탕으로 얼마나 오랫동안 구독을 유지할지를 예측하고자 한다. 이를 통해 구독 기간이 짧을 가능성이 높은 고객을 사전에 파악하여 맞춤형 혜택(할인 쿠폰, 추가 콘텐츠 제공 등)을 제공할 수 있다.”   목표    신규 가입자의 초기 사용 데이터를 바탕으로 구독 기간(일)을 예측   회귀 모델(선형 회귀)을 활용하여 특정 고객이 평균적으로 몇 일 동안 구독할지를 예측   예측된 결과를 기반으로 고객 유지 전략을 최적화   데이터 설명    고객 특성 데이터            age (나이)       num_logins (가입 후 첫 7일 동안 로그인 횟수)       num_watc...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[회귀분석] 이메일 마케팅 캠페인 반응 예측</title>
+    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%9D%B4%EB%A9%94%EC%9D%BC%EC%BA%A0%ED%8E%98%EC%9D%B8-%EB%B0%98%EC%9D%91%EC%98%88%EC%B8%A1/" rel="alternate" type="text/html" title="[회귀분석] 이메일 마케팅 캠페인 반응 예측" />
+    <published>2025-03-12T18:00:00+09:00</published>
+  
+    <updated>2025-03-12T18:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%9D%B4%EB%A9%94%EC%9D%BC%EC%BA%A0%ED%8E%98%EC%9D%B8-%EB%B0%98%EC%9D%91%EC%98%88%EC%B8%A1/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%9D%B4%EB%A9%94%EC%9D%BC%EC%BA%A0%ED%8E%98%EC%9D%B8-%EB%B0%98%EC%9D%91%EC%98%88%EC%B8%A1/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Scenario Design" />
+    
+  
+
+  <summary>이메일 마케팅 캠페인의 반응 예측  📝마케팅 시나리오    “B사는 이메일 마케팅을 통해 고객들에게 새로운 프로모션을 안내하고 있다. 하지만 모든 고객이 이메일을 열어보거나 클릭하는 것은 아니다. 이에 따라 특정 고객이 이메일을 열어볼 가능성이 높은지를 예측하는 모델을 구축하여, 반응 가능성이 높은 고객에게 더 많은 마케팅 자원을 집중하고, 낮은 고객에게는 다른 접근 방식을 시도하려 한다.”   목표    고객의 과거 이메일 반응 및 인구통계 데이터를 바탕으로 이메일 오픈 가능성 예측   로지스틱 회귀를 활용하여 이메일 오픈 확률 계산   타겟 마케팅 전략을 개선하여 효과적인 이메일 캠페인 실행   데이터 설명    고객 특성 데이터            age (나이)       num_emails_r...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[회귀분석] 광고 캠페인 전환율 예측</title>
+    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B4%91%EA%B3%A0%EC%A0%84%ED%99%98%EC%9C%A8%EC%98%88%EC%B8%A1/" rel="alternate" type="text/html" title="[회귀분석] 광고 캠페인 전환율 예측" />
+    <published>2025-03-12T17:30:00+09:00</published>
+  
+    <updated>2025-03-12T17:30:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B4%91%EA%B3%A0%EC%A0%84%ED%99%98%EC%9C%A8%EC%98%88%EC%B8%A1/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B4%91%EA%B3%A0%EC%A0%84%ED%99%98%EC%9C%A8%EC%98%88%EC%B8%A1/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Scenario Design" />
+    
+  
+
+  <summary>광고 캠페인 전환율 예측  📝마케팅 시나리오    “A사의 마케팅팀은 신규 온라인 광고 캠페인을 실행하고 있으며, 특정 고객이 광고를 본 후 실제 구매(전환)를 할 가능성이 높은지를 예측하고 싶다. 이를 통해 광고 예산을 최적화하고, 전환 가능성이 높은 고객에게 더 많은 마케팅 자원을 집중할 수 있다.”   목표    고객의 인구통계 및 행동 데이터를 기반으로 전환(구매) 여부 예측   로지스틱 회귀를 활용하여 고객이 전환할 확률 계산   예측 결과를 기반으로 맞춤형 마케팅 전략 수립   데이터 설명    고객 특성 데이터            age (나이)       income (소득 수준)       browsing_time (웹사이트 체류 시간)       num_clicks (클릭 횟수)   ...</summary>
+
+  </entry>
 
   
   <entry>
@@ -41,110 +145,6 @@
   
 
   <summary>🛍️고객 충성도 등급 예측 웹사이트  고객의 충성도 예측이 가능하도록 Flask를 활용해 Web service를 구축해 보겠다.  고객 충성도 등급                 0 (낮음)       구매 빈도가 낮고, 재방문 가능성 낮음                 1 (중간)       일정 수준의 구매와 재방문 기록이 있음                 2 (높음)       높은 구매 빈도와 충성도를 보이며, 장기 고객이 될 가능성 큼           Directory 구조   DataFrame   app.py from flask import Flask, request, jsonify, render_template import numpy as np import pandas as pd from s...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[Web] 고객 구매 예측</title>
-    <link href="http://localhost:4000/posts/Web-%EA%B3%A0%EA%B0%9D%EA%B5%AC%EB%A7%A4%EC%98%88%EC%B8%A1/" rel="alternate" type="text/html" title="[Web] 고객 구매 예측" />
-    <published>2025-03-12T14:00:00+09:00</published>
-  
-    <updated>2025-03-12T14:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/Web-%EA%B3%A0%EA%B0%9D%EA%B5%AC%EB%A7%A4%EC%98%88%EC%B8%A1/</id>
-    <content type="text/html" src="http://localhost:4000/posts/Web-%EA%B3%A0%EA%B0%9D%EA%B5%AC%EB%A7%A4%EC%98%88%EC%B8%A1/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="Web Service" />
-    
-  
-
-  <summary>👔K-NN 알고리즘 이용한 의류상품 추천 웹사이트  신규고객에 대한 의류상품 추천이 가능하도록 Flask를 활용해 Web service를 구축해 보겠다. Dataset은 고객들의 의류 구매 데이터를 이용하였다. ➡️sales.csv  sales.csv   Directory 구조   app.py from flask import Flask, request, render_template import pandas as pd from sklearn.model_selection import train_test_split from sklearn.neighbors import KNeighborsClassifier  app = Flask(__name__)  # 데이터셋 로드 file_path = &amp;#39;sales.csv&amp;#39; ...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GM 보고서] 고객 전환율 분석</title>
-    <link href="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%EC%A0%84%ED%99%98%EC%9C%A8%EB%B6%84%EC%84%9D/" rel="alternate" type="text/html" title="[GM 보고서] 고객 전환율 분석" />
-    <published>2025-03-10T17:00:00+09:00</published>
-  
-    <updated>2025-03-10T17:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%EC%A0%84%ED%99%98%EC%9C%A8%EB%B6%84%EC%84%9D/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%EC%A0%84%ED%99%98%EC%9C%A8%EB%B6%84%EC%84%9D/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="Report" />
-    
-  
-
-  <summary>그로스 마케팅 보고서  마케터 : 이 * * 2025.03.10    1. 개요  본 보고서는 광고 비용, 웹사이트 방문 수, 소셜 미디어 상호작용, 할인 제공 여부가 고객 전환율(Conversion Rate)에 미치는 영향을 분석하기 위해 로지스틱 회귀 모델을 활용하였다. 이를 통해 마케팅 예산을 최적화하고 전환율을 증가시키기 위한 전략을 도출한다.  2. 데이터 개요     데이터셋: 고객 전환율 분석 (conversion_rate_analysis.csv)   데이터 크기: 500개 샘플   변수 정의:            광고 비용(Ad Spend, $): 디지털 마케팅에 지출한 광고 비용       웹사이트 방문 수(Website Visits): 사용자의 웹사이트 방문 횟수       소셜 미디...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[Looker Studio] GM metrics 보고서</title>
-    <link href="http://localhost:4000/posts/LookerStudio-GM-metrics/" rel="alternate" type="text/html" title="[Looker Studio] GM metrics 보고서" />
-    <published>2025-03-06T23:00:00+09:00</published>
-  
-    <updated>2025-03-06T23:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/LookerStudio-GM-metrics/</id>
-    <content type="text/html" src="http://localhost:4000/posts/LookerStudio-GM-metrics/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="시각화" />
-    
-  
-
-  <summary>GM Metrics 시각화 분석  Looker Studio를 통해 시각화 분석을 해 보겠다. Dataset은 GM metrics를 이용하였다. ➡️ growth_marketing_metrics.csv  Looker Studio에 접속하여 새 보고서를 생성한다.   growth_marketing_metrics.csv 파일을 업로드 한다.    차트 추가 및 구성    날짜별 방문자 수 추이 (시계열 차트)   회원 가입 수 &amp;amp;amp; 전환 수 비교 (막대 차트)   매출 추이 분석 (영역 차트)   고객 획득 비용 대비 고객 유지율 (산점도 차트)   주요 성과 지표 (스코어카드)     보고서 디자인 및 공유  ① 디자인 조정     레이아웃: 차트 &amp;amp;amp; 스코어카드의 위치와 크기를 조정하여 깔끔한...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[Looker Studio] 기본 사용법</title>
-    <link href="http://localhost:4000/posts/LookerStudio-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="alternate" type="text/html" title="[Looker Studio] 기본 사용법" />
-    <published>2025-03-06T19:00:00+09:00</published>
-  
-    <updated>2025-03-06T19:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/LookerStudio-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/</id>
-    <content type="text/html" src="http://localhost:4000/posts/LookerStudio-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="시각화" />
-    
-  
-
-  <summary>📈Looker Studio 기본 사용법 및 데이터 연결  Looker Studio 란? Google에서 제공하는 데이터 시각화 및 보고서 제작 도구 (비즈니스 인텔리전스(BI) 도구로 활용) Google의 다양한 서비스 및 타사 데이터 소스와 연동이 가능해 데이터를 효과적으로 분석 및 공유 가능  주요 특징  ① 다양한 데이터 소스 연결    Google Analytics, Google Ads, BigQuery, Google Sheets 등 Google 제품과 원활히 통합됨   MySQL, PostgreSQL 같은 데이터베이스, CSV 파일, 또는 타사 API를 통해 외부 데이터 연결 가능   ② 사용자 친화적 인터페이스    코딩 지식 없이도 쉽게 대시보드와 보고서를 생성할 수 있는 드래그 앤 드롭 ...</summary>
 
   </entry>
 
