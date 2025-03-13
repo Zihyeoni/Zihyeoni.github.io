@@ -1,7 +1,7 @@
 ---
 title: "[SQL] JOIN & UNION 활용한 그로스 마케팅"
 date: 2025-02-12 23:00:00 +09:00
-categories: [GM, Scenario Design]
+categories: [GM, Scenario | Analysis]
 tags:
   [
     GM,

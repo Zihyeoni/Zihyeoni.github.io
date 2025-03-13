@@ -2,7 +2,7 @@
   {
     "title": "[회귀분석] 고객 활동 기반 구독 플랜 추천",
     "url": "/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%ED%94%8C%EB%9E%9C%EC%B6%94%EC%B2%9C/",
-    "categories": "GM, Scenario Design",
+    "categories": "GM, Scenario | Analysis",
     "tags": "GM, 그로스마케팅, 다중 클래스, 로지스틱, 회귀분석",
     "date": "2025-03-12 18:15:00 +0900",
     "content": "고객 활동 기반 구독 플랜 추천  📝마케팅 시나리오    “D사는 여러 개의 구독 플랜(베이직, 스탠다드, 프리미엄)을 제공하는 온라인 서비스 플랫폼을 운영하고 있다. 신규 가입자가 첫 7일 동안 보여주는 행동 패턴을 바탕으로, 그들이 최종적으로 어떤 구독 플랜을 선택할 가능성이 높은지 예측하고자 한다. 이를 통해, 고객 맞춤형 마케팅 전략을 수립하고..."
@@ -10,7 +10,7 @@
   {
     "title": "[회귀분석] 구독 기간 예측",
     "url": "/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%EA%B8%B0%EA%B0%84%EC%98%88%EC%B8%A1/",
-    "categories": "GM, Scenario Design",
+    "categories": "GM, Scenario | Analysis",
     "tags": "GM, 그로스마케팅, 선형, Linear, 회귀분석",
     "date": "2025-03-12 18:15:00 +0900",
     "content": "구독 기간 예측  📝마케팅 시나리오    “C사는 온라인 구독 서비스를 운영하고 있으며, 신규 가입자의 초기 사용 패턴을 바탕으로 얼마나 오랫동안 구독을 유지할지를 예측하고자 한다. 이를 통해 구독 기간이 짧을 가능성이 높은 고객을 사전에 파악하여 맞춤형 혜택(할인 쿠폰, 추가 콘텐츠 제공 등)을 제공할 수 있다.”   목표    신규 가입자의 초기 ..."
@@ -18,7 +18,7 @@
   {
     "title": "[회귀분석] 이메일 마케팅 캠페인 반응 예측",
     "url": "/posts/%EC%98%88%EC%A0%9C-%EC%9D%B4%EB%A9%94%EC%9D%BC%EC%BA%A0%ED%8E%98%EC%9D%B8-%EB%B0%98%EC%9D%91%EC%98%88%EC%B8%A1/",
-    "categories": "GM, Scenario Design",
+    "categories": "GM, Scenario | Analysis",
     "tags": "GM, 그로스마케팅, 로지스틱, 회귀분석",
     "date": "2025-03-12 18:00:00 +0900",
     "content": "이메일 마케팅 캠페인의 반응 예측  📝마케팅 시나리오    “B사는 이메일 마케팅을 통해 고객들에게 새로운 프로모션을 안내하고 있다. 하지만 모든 고객이 이메일을 열어보거나 클릭하는 것은 아니다. 이에 따라 특정 고객이 이메일을 열어볼 가능성이 높은지를 예측하는 모델을 구축하여, 반응 가능성이 높은 고객에게 더 많은 마케팅 자원을 집중하고, 낮은 고객..."
@@ -26,7 +26,7 @@
   {
     "title": "[회귀분석] 광고 캠페인 전환율 예측",
     "url": "/posts/%EC%98%88%EC%A0%9C-%EA%B4%91%EA%B3%A0%EC%A0%84%ED%99%98%EC%9C%A8%EC%98%88%EC%B8%A1/",
-    "categories": "GM, Scenario Design",
+    "categories": "GM, Scenario | Analysis",
     "tags": "GM, 그로스마케팅, 로지스틱, 회귀분석",
     "date": "2025-03-12 17:30:00 +0900",
     "content": "광고 캠페인 전환율 예측  📝마케팅 시나리오    “A사의 마케팅팀은 신규 온라인 광고 캠페인을 실행하고 있으며, 특정 고객이 광고를 본 후 실제 구매(전환)를 할 가능성이 높은지를 예측하고 싶다. 이를 통해 광고 예산을 최적화하고, 전환 가능성이 높은 고객에게 더 많은 마케팅 자원을 집중할 수 있다.”   목표    고객의 인구통계 및 행동 데이터를..."
@@ -106,10 +106,50 @@
   {
     "title": "[GM 예제] 고객 행동 패턴 분석",
     "url": "/posts/%EC%98%88%EC%A0%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/",
-    "categories": "GM, Scenario Design",
+    "categories": "GM, Scenario | Analysis",
     "tags": "GM, 그로스마케팅, Python, Pandas, EDA",
     "date": "2025-02-20 10:00:00 +0900",
     "content": "📊고객 행동 패턴 분석 및 인사이트 도출  EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해 고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출해 보겠다.  1. EDA 활용한 그로스 마케팅 분석 시나리오  그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다. ⬇️ 마케팅에서 중요한 5가지 분석 ..."
+  },
+  {
+    "title": "[GM 예제] 캠페인별 설문조사 분석",
+    "url": "/posts/%EC%98%88%EC%A0%9C-%EC%BA%A0%ED%8E%98%EC%9D%B8%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC/",
+    "categories": "GM, Scenario | Analysis",
+    "tags": "GM, 그로스마케팅, 설문조사",
+    "date": "2025-02-18 22:00:00 +0900",
+    "content": "📋그로스 마케팅 캠페인별 설문조사    1. 설문조사 응답 데이터를 하드코딩하여 CSV 파일로 저장  import pandas as pd  # 설문조사 데이터 생성 (하드코딩된 응답 포함) survey_data = pd.DataFrame({     &quot;캠페인명&quot;: [&quot;SNS 광고&quot;, &quot;유튜브 광고&quot;, &quot;이메일 마케팅&quot;, &quot;인플루언서 협업&quot;, &quot;검색 광고..."
+  },
+  {
+    "title": "[GM 예제] 설문조사 데이터 분석",
+    "url": "/posts/%EC%98%88%EC%A0%9C-%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC%EB%B6%84%EC%84%9D/",
+    "categories": "GM, Scenario | Analysis",
+    "tags": "GM, 그로스마케팅, 설문조사",
+    "date": "2025-02-18 20:00:00 +0900",
+    "content": "📑설문조사 데이터 &amp;amp; 외부 데이터셋 활용  데이터 설명    설문조사 데이터: 고객들의 광고 인식 및 제품 만족도   외부 데이터: 구글 트렌드 검색량, SNS 언급량, 온라인 판매량   import pandas as pd  # 설문조사 데이터 (고객 만족도 및 광고 효과 조사) survey_data = pd.DataFrame({     &quot;연령..."
+  },
+  {
+    "title": "[GM 보고서] 사용자 행동 흐름 분석",
+    "url": "/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EC%82%AC%EC%9A%A9%EC%9E%90%ED%96%89%EB%8F%99%ED%9D%90%EB%A6%84%EB%B6%84%EC%84%9D/",
+    "categories": "GM, Report",
+    "tags": "GM, 그로스마케팅, API",
+    "date": "2025-02-17 21:00:00 +0900",
+    "content": "사용자 행동 흐름 분석 보고서 마케터 : 이 * * 2025.02.17    분석 항목                 분석 항목       설명                       Landing Page (랜딩 페이지)       사용자가 처음 방문한 페이지                 Exit Page (종료 페이지)       사용자가 사이트를 ..."
+  },
+  {
+    "title": "[GM 보고서] 트래픽 소스 데이터 분석",
+    "url": "/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%ED%8A%B8%EB%9E%98%ED%94%BD%EC%86%8C%EC%8A%A4%EB%B6%84%EC%84%9D/",
+    "categories": "GM, Report",
+    "tags": "GM, 그로스마케팅, API",
+    "date": "2025-02-17 20:00:00 +0900",
+    "content": "트래픽 소스 데이터 분석 보고서 마케터 : 이 * * 2025.02.17    주요 지표 요약                 지표       값                       총 방문자 수       66,300                 평균 전환율       3.21%           1. 트래픽 소스별 방문자 수 분석  주요 내용   ..."
+  },
+  {
+    "title": "[GM 보고서] 사용자 행동 데이터 분석",
+    "url": "/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EC%82%AC%EC%9A%A9%EC%9E%90%ED%96%89%EB%8F%99%EB%B6%84%EC%84%9D/",
+    "categories": "GM, Report",
+    "tags": "GM, 그로스마케팅, API",
+    "date": "2025-02-17 19:00:00 +0900",
+    "content": "사용자 행동 데이터 분석 보고서 마케터 : 이 * * 2025.02.17    주요 지표 요약                 지표       값                       총 새션 수       59,850                 총 사용자 수       47,970                 총 신규 사용자 수       22,94..."
   },
   {
     "title": "[GCP] Python & SQL 연동",
@@ -122,7 +162,7 @@
   {
     "title": "[SQL] JOIN & UNION 활용한 그로스 마케팅",
     "url": "/posts/%EC%98%88%EC%A0%9C-join&union%ED%99%9C%EC%9A%A9/",
-    "categories": "GM, Scenario Design",
+    "categories": "GM, Scenario | Analysis",
     "tags": "GM, 그로스마케팅, GCP, VM, 가상머신, SQL, JOIN, UNION",
     "date": "2025-02-12 23:00:00 +0900",
     "content": "📑JOIN &amp;amp; UNION 활용한 그로스 마케팅  JOIN &amp;amp; UNION  JOIN: 두 개 이상의 테이블을 기준이 되는 공통 필드를 통해 결합하여 새로운 데이터를 생성하는 방식    주로 고객 정보, 마케팅 캠페인, 거래 데이터 등을 통합하여 보다 정밀한 분석을 수행할 때 사용   UNION: 여러 테이블에서 가져온 데이터를 동일한 컬럼..."
@@ -130,7 +170,7 @@
   {
     "title": "[SQL] GM 성과 분석 예제",
     "url": "/posts/%EC%98%88%EC%A0%9C-%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D(sql%ED%99%9C%EC%9A%A9)/",
-    "categories": "GM, Scenario Design",
+    "categories": "GM, Scenario | Analysis",
     "tags": "GM, 그로스마케팅, GCP, VM, 가상머신, SQL",
     "date": "2025-02-11 23:00:00 +0900",
     "content": "SQL 활용한 마케팅 성과 분석  📝마케팅 시나리오 개요    “e커머스 스타트업 A사는 마케팅 데이터를 활용하여 매출을 극대화하고 광고 효율성을 높이기 위해 고도화된 데이터 분석 시스템을 구축하려 한다. 광고 비용 대비 전환율 최적화, 사용자 리텐션 분석, 마케팅 채널별 ROI 비교, 고객 생애 가치(LTV) 예측, 캠페인 자동 최적화, A/B 테스..."
@@ -154,7 +194,7 @@
   {
     "title": "[GM 예제] 1인가구 비즈니스 설계",
     "url": "/posts/%EC%98%88%EC%A0%9C-1%EC%9D%B8%EA%B0%80%EA%B5%AC/",
-    "categories": "GM, Scenario Design",
+    "categories": "GM, Scenario | Analysis",
     "tags": "GM, 그로스마케팅, Python, Pandas",
     "date": "2025-02-07 20:00:00 +0900",
     "content": "🏠서울시 1인가구 Dataset으로 신규 비즈니스 설계  그로스 마케팅 프로모션 절차대로 진행해 볼 것이다. Dataset은 서울시 1인가구 관심집단 데이터를 이용하였다.  ➡️ 1인가구관심집단.csv  먼저, Pandas를 import 하고 Dataset을 생성한다. import pandas as pd  df_single = pd.read_csv(&quot;..."
