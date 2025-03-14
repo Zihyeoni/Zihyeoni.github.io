@@ -1,5 +1,21 @@
 [
   {
+    "title": "[GM 보고서] 기업 마케팅 성과 분석",
+    "url": "/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-GreenTech%EB%A7%88%EC%BC%80%ED%8C%85%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D/",
+    "categories": "GM, Report",
+    "tags": "GM, 그로스마케팅",
+    "date": "2025-03-14 14:00:00 +0900",
+    "content": "GreenTech 기업 마케팅 분석 보고서 마케터 : 이 * * 2025.03.14    1. 개요  본 보고서는 회사 “GreenTech”는 친환경 제품을 판매하는 기업으로, 최근 6개월 동안 온라인과 오프라인에서 다양한 마케팅 전략을 시행하였다. 회사는 제품 판매량 증가와 고객 반응 분석을 기반으로 향후 마케팅 전략을 수립하고자 한다.  Green..."
+  },
+  {
+    "title": "[GM 예제] 기업 마케팅 성과 분석",
+    "url": "/posts/%EC%98%88%EC%A0%9C-GreenTech%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D/",
+    "categories": "GM, Scenario | Analysis",
+    "tags": "GM, 그로스마케팅, Python, Pandas, EDA",
+    "date": "2025-03-14 13:30:00 +0900",
+    "content": "GreenTech 기업 마케팅 성과 분석  📝시나리오 개요  가상의 회사 “GreenTech”는 친환경 제품을 판매하는 기업으로, 최근 6개월 동안 온라인과 오프라인에서 다양한 마케팅 활동을 통해 매출 성장을 달성하였다. 본 보고서는 월별 매출 변화, 광고 유형별 효과, 고객 분석 및 리뷰 데이터를 기반으로 향후 마케팅 전략을 제안하고자 한다.  주요..."
+  },
+  {
     "title": "[회귀분석] 고객 활동 기반 구독 플랜 추천",
     "url": "/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%ED%94%8C%EB%9E%9C%EC%B6%94%EC%B2%9C/",
     "categories": "GM, Scenario | Analysis",
@@ -128,6 +144,14 @@
     "content": "📑설문조사 데이터 &amp;amp; 외부 데이터셋 활용  데이터 설명    설문조사 데이터: 고객들의 광고 인식 및 제품 만족도   외부 데이터: 구글 트렌드 검색량, SNS 언급량, 온라인 판매량   import pandas as pd  # 설문조사 데이터 (고객 만족도 및 광고 효과 조사) survey_data = pd.DataFrame({     &quot;연령..."
   },
   {
+    "title": "[GM 보고서] 장치 및 지역 데이터 분석",
+    "url": "/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EC%9E%A5%EC%B9%98%EB%B0%8F%EC%A7%80%EC%97%AD%EB%B6%84%EC%84%9D/",
+    "categories": "GM, Report",
+    "tags": "GM, 그로스마케팅, API",
+    "date": "2025-02-17 22:00:00 +0900",
+    "content": "장치 및 지역 데이터 분석 보고서 마케터 : 이 * * 2025.02.17    분석 항목                 분석 항목       설명                       Device Category (기기 유형)       데스크톱, 모바일, 태블릿 등 방문자가 사용한 기기 유형                 Operating Syste..."
+  },
+  {
     "title": "[GM 보고서] 사용자 행동 흐름 분석",
     "url": "/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EC%82%AC%EC%9A%A9%EC%9E%90%ED%96%89%EB%8F%99%ED%9D%90%EB%A6%84%EB%B6%84%EC%84%9D/",
     "categories": "GM, Report",
@@ -141,7 +165,7 @@
     "categories": "GM, Report",
     "tags": "GM, 그로스마케팅, API",
     "date": "2025-02-17 20:00:00 +0900",
-    "content": "트래픽 소스 데이터 분석 보고서 마케터 : 이 * * 2025.02.17    주요 지표 요약                 지표       값                       총 방문자 수       66,300                 평균 전환율       3.21%           1. 트래픽 소스별 방문자 수 분석  주요 내용   ..."
+    "content": "트래픽 소스 데이터 분석 보고서 마케터 : 이 * * 2025.02.17    주요 지표 요약                 지표       값                       총 방문자 수       66,300                 평균 전환율       3.21%             1. 트래픽 소스별 방문자 수 분석  주요 내용 ..."
   },
   {
     "title": "[GM 보고서] 사용자 행동 데이터 분석",

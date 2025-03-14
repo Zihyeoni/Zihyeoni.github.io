@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-03-13T23:20:35+09:00</updated>
+  <updated>2025-03-14T17:02:36+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -20,11 +20,63 @@
 
   
   <entry>
+    <title>[GM 보고서] 기업 마케팅 성과 분석</title>
+    <link href="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-GreenTech%EB%A7%88%EC%BC%80%ED%8C%85%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D/" rel="alternate" type="text/html" title="[GM 보고서] 기업 마케팅 성과 분석" />
+    <published>2025-03-14T14:00:00+09:00</published>
+  
+    <updated>2025-03-14T14:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-GreenTech%EB%A7%88%EC%BC%80%ED%8C%85%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-GreenTech%EB%A7%88%EC%BC%80%ED%8C%85%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Report" />
+    
+  
+
+  <summary>GreenTech 기업 마케팅 분석 보고서 마케터 : 이 * * 2025.03.14    1. 개요  본 보고서는 회사 “GreenTech”는 친환경 제품을 판매하는 기업으로, 최근 6개월 동안 온라인과 오프라인에서 다양한 마케팅 전략을 시행하였다. 회사는 제품 판매량 증가와 고객 반응 분석을 기반으로 향후 마케팅 전략을 수립하고자 한다.  GreenTech의 마케팅 팀은 다음과 같은 주요 목표를 가지고 있다.    온라인 광고 (SNS, 검색 광고)를 활용한 브랜드 인지도 향상   오프라인 매장에서의 고객 유입 증가   고객 리뷰 및 피드백을 활용한 제품 개선   연령대 및 지역별 고객 분석을 통한 맞춤 마케팅 전략 수립   2. 데이터 개요  최근 6개월간(2024년 8월~2025년 1월)의 데이터...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[GM 예제] 기업 마케팅 성과 분석</title>
+    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-GreenTech%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D/" rel="alternate" type="text/html" title="[GM 예제] 기업 마케팅 성과 분석" />
+    <published>2025-03-14T13:30:00+09:00</published>
+  
+    <updated>2025-03-14T13:30:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-GreenTech%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-GreenTech%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="GM" />
+    
+    <category term="Scenario | Analysis" />
+    
+  
+
+  <summary>GreenTech 기업 마케팅 성과 분석  📝시나리오 개요  가상의 회사 “GreenTech”는 친환경 제품을 판매하는 기업으로, 최근 6개월 동안 온라인과 오프라인에서 다양한 마케팅 활동을 통해 매출 성장을 달성하였다. 본 보고서는 월별 매출 변화, 광고 유형별 효과, 고객 분석 및 리뷰 데이터를 기반으로 향후 마케팅 전략을 제안하고자 한다.  주요 목표     온라인 광고 (SNS, 검색 광고)를 활용한 브랜드 인지도 향상   오프라인 매장에서의 고객 유입 증가   고객 리뷰 및 피드백을 활용한 제품 개선   연령대 및 지역별 고객 분석을 통한 맞춤 마케팅 전략 수립   분석 항목  최근 6개월간(2024년 8월 ~ 2025년 1월)의 데이터가 수집되었으며, 주요 분석 항목은 다음과 같다.     ...</summary>
+
+  </entry>
+
+  
+  <entry>
     <title>[회귀분석] 고객 활동 기반 구독 플랜 추천</title>
     <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%ED%94%8C%EB%9E%9C%EC%B6%94%EC%B2%9C/" rel="alternate" type="text/html" title="[회귀분석] 고객 활동 기반 구독 플랜 추천" />
     <published>2025-03-12T18:15:00+09:00</published>
   
-    <updated>2025-03-12T18:15:00+09:00</updated>
+    <updated>2025-03-13T23:21:21+09:00</updated>
   
     <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%ED%94%8C%EB%9E%9C%EC%B6%94%EC%B2%9C/</id>
     <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%ED%94%8C%EB%9E%9C%EC%B6%94%EC%B2%9C/" />
@@ -50,7 +102,7 @@
     <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%EA%B8%B0%EA%B0%84%EC%98%88%EC%B8%A1/" rel="alternate" type="text/html" title="[회귀분석] 구독 기간 예측" />
     <published>2025-03-12T18:15:00+09:00</published>
   
-    <updated>2025-03-12T18:15:00+09:00</updated>
+    <updated>2025-03-13T23:21:21+09:00</updated>
   
     <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%EA%B8%B0%EA%B0%84%EC%98%88%EC%B8%A1/</id>
     <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%EA%B8%B0%EA%B0%84%EC%98%88%EC%B8%A1/" />
@@ -76,7 +128,7 @@
     <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%9D%B4%EB%A9%94%EC%9D%BC%EC%BA%A0%ED%8E%98%EC%9D%B8-%EB%B0%98%EC%9D%91%EC%98%88%EC%B8%A1/" rel="alternate" type="text/html" title="[회귀분석] 이메일 마케팅 캠페인 반응 예측" />
     <published>2025-03-12T18:00:00+09:00</published>
   
-    <updated>2025-03-12T18:00:00+09:00</updated>
+    <updated>2025-03-13T23:21:21+09:00</updated>
   
     <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%9D%B4%EB%A9%94%EC%9D%BC%EC%BA%A0%ED%8E%98%EC%9D%B8-%EB%B0%98%EC%9D%91%EC%98%88%EC%B8%A1/</id>
     <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%9D%B4%EB%A9%94%EC%9D%BC%EC%BA%A0%ED%8E%98%EC%9D%B8-%EB%B0%98%EC%9D%91%EC%98%88%EC%B8%A1/" />
@@ -93,58 +145,6 @@
   
 
   <summary>이메일 마케팅 캠페인의 반응 예측  📝마케팅 시나리오    “B사는 이메일 마케팅을 통해 고객들에게 새로운 프로모션을 안내하고 있다. 하지만 모든 고객이 이메일을 열어보거나 클릭하는 것은 아니다. 이에 따라 특정 고객이 이메일을 열어볼 가능성이 높은지를 예측하는 모델을 구축하여, 반응 가능성이 높은 고객에게 더 많은 마케팅 자원을 집중하고, 낮은 고객에게는 다른 접근 방식을 시도하려 한다.”   목표    고객의 과거 이메일 반응 및 인구통계 데이터를 바탕으로 이메일 오픈 가능성 예측   로지스틱 회귀를 활용하여 이메일 오픈 확률 계산   타겟 마케팅 전략을 개선하여 효과적인 이메일 캠페인 실행   데이터 설명    고객 특성 데이터            age (나이)       num_emails_r...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[회귀분석] 광고 캠페인 전환율 예측</title>
-    <link href="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B4%91%EA%B3%A0%EC%A0%84%ED%99%98%EC%9C%A8%EC%98%88%EC%B8%A1/" rel="alternate" type="text/html" title="[회귀분석] 광고 캠페인 전환율 예측" />
-    <published>2025-03-12T17:30:00+09:00</published>
-  
-    <updated>2025-03-12T17:30:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B4%91%EA%B3%A0%EC%A0%84%ED%99%98%EC%9C%A8%EC%98%88%EC%B8%A1/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B4%91%EA%B3%A0%EC%A0%84%ED%99%98%EC%9C%A8%EC%98%88%EC%B8%A1/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="Scenario | Analysis" />
-    
-  
-
-  <summary>광고 캠페인 전환율 예측  📝마케팅 시나리오    “A사의 마케팅팀은 신규 온라인 광고 캠페인을 실행하고 있으며, 특정 고객이 광고를 본 후 실제 구매(전환)를 할 가능성이 높은지를 예측하고 싶다. 이를 통해 광고 예산을 최적화하고, 전환 가능성이 높은 고객에게 더 많은 마케팅 자원을 집중할 수 있다.”   목표    고객의 인구통계 및 행동 데이터를 기반으로 전환(구매) 여부 예측   로지스틱 회귀를 활용하여 고객이 전환할 확률 계산   예측 결과를 기반으로 맞춤형 마케팅 전략 수립   데이터 설명    고객 특성 데이터            age (나이)       income (소득 수준)       browsing_time (웹사이트 체류 시간)       num_clicks (클릭 횟수)   ...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[Web] 고객 충성도 등급 예측</title>
-    <link href="http://localhost:4000/posts/Web-%EA%B3%A0%EA%B0%9D%EC%B6%A9%EC%84%B1%EB%8F%84%EB%93%B1%EA%B8%89%EC%98%88%EC%B8%A1/" rel="alternate" type="text/html" title="[Web] 고객 충성도 등급 예측" />
-    <published>2025-03-12T17:00:00+09:00</published>
-  
-    <updated>2025-03-12T17:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/Web-%EA%B3%A0%EA%B0%9D%EC%B6%A9%EC%84%B1%EB%8F%84%EB%93%B1%EA%B8%89%EC%98%88%EC%B8%A1/</id>
-    <content type="text/html" src="http://localhost:4000/posts/Web-%EA%B3%A0%EA%B0%9D%EC%B6%A9%EC%84%B1%EB%8F%84%EB%93%B1%EA%B8%89%EC%98%88%EC%B8%A1/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="Web Service" />
-    
-  
-
-  <summary>🛍️고객 충성도 등급 예측 웹사이트  고객의 충성도 예측이 가능하도록 Flask를 활용해 Web service를 구축해 보겠다.  고객 충성도 등급                 0 (낮음)       구매 빈도가 낮고, 재방문 가능성 낮음                 1 (중간)       일정 수준의 구매와 재방문 기록이 있음                 2 (높음)       높은 구매 빈도와 충성도를 보이며, 장기 고객이 될 가능성 큼           Directory 구조   DataFrame   app.py from flask import Flask, request, jsonify, render_template import numpy as np import pandas as pd from s...</summary>
 
   </entry>
 

@@ -4,6 +4,38 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-GreenTech%EB%A7%88%EC%BC%80%ED%8C%85%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D/</loc>
+        
+        <lastmod>2025-03-14T14:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-GreenTech%EC%84%B1%EA%B3%BC%EB%B6%84%EC%84%9D/</loc>
+        
+        <lastmod>2025-03-14T13:30:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B5%AC%EB%8F%85%ED%94%8C%EB%9E%9C%EC%B6%94%EC%B2%9C/</loc>
         
         <lastmod>2025-03-12T18:15:00+09:00</lastmod>
@@ -247,6 +279,22 @@
         <loc>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC%EB%B6%84%EC%84%9D/</loc>
         
         <lastmod>2025-02-18T20:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EC%9E%A5%EC%B9%98%EB%B0%8F%EC%A7%80%EC%97%AD%EB%B6%84%EC%84%9D/</loc>
+        
+        <lastmod>2025-02-17T22:00:00+09:00</lastmod>
         
 
         
