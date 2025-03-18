@@ -128,6 +128,14 @@
     "content": "📊고객 행동 패턴 분석 및 인사이트 도출  EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해 고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출해 보겠다.  1. EDA 활용한 그로스 마케팅 분석 시나리오  그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다. ⬇️ 마케팅에서 중요한 5가지 분석 ..."
   },
   {
+    "title": "[GM 예제] 멋사 만족도 설문조사 분석",
+    "url": "/posts/%EC%98%88%EC%A0%9C-%EB%A9%8B%EC%82%AC%EB%A7%8C%EC%A1%B1%EB%8F%84%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC/",
+    "categories": "GM, Scenario | Analysis",
+    "tags": "GM, 그로스마케팅, 설문조사",
+    "date": "2025-02-18 23:00:00 +0900",
+    "content": "🦁멋사 교육 프로그램 만족도 설문조사 분석  데이터 생성  !pip install koreanize-matplotlib import koreanize_matplotlib import pandas as pd import matplotlib.pyplot as plt import numpy as np   # 교육 프로그램 만족도 조사 데이터 생성 (하드코딩..."
+  },
+  {
     "title": "[GM 예제] 캠페인별 설문조사 분석",
     "url": "/posts/%EC%98%88%EC%A0%9C-%EC%BA%A0%ED%8E%98%EC%9D%B8%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC/",
     "categories": "GM, Scenario | Analysis",
