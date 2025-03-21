@@ -228,6 +228,22 @@
     </url>
     
     <url>
+        <loc>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-KPI%EB%B6%84%EC%84%9D/</loc>
+        
+        <lastmod>2025-02-20T19:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/</loc>
         
         <lastmod>2025-02-20T19:00:00+09:00</lastmod>
@@ -247,6 +263,22 @@
         <loc>http://localhost:4000/posts/%EC%98%88%EC%A0%9C-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%ED%8C%A8%ED%84%B4/</loc>
         
         <lastmod>2025-02-20T10:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/posts/%EB%B3%B4%EA%B3%A0%EC%84%9C-%EA%BD%83%EC%9D%84%EB%93%A0%EB%82%A8%EC%9E%90-%EA%B3%A0%EA%B0%9D%ED%96%89%EB%8F%99%EB%B6%84%EC%84%9D/</loc>
+        
+        <lastmod>2025-02-19T23:00:00+09:00</lastmod>
         
 
         
