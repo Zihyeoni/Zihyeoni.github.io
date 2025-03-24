@@ -112,6 +112,14 @@
     "content": "📊Tableau 기본 사용법 및 데이터 연결  Tableau 란? 데이터를 시각적으로 분석하고 대시보드를 생성하는 강력한 데이터 시각화 도구 비즈니스 인텔리전스(BI), 데이터 분석, 마케팅 인사이트, 재무 분석 등에 널리 활용  Tableau 주요 기능  ① 데이터 연결    다양한 데이터 소스 연결 가능            Excel, CSV, G..."
   },
   {
+    "title": "[회귀분석] 통계 분석 예제",
+    "url": "/posts/%EC%98%88%EC%A0%9C-%ED%86%B5%EA%B3%84%EB%B6%84%EC%84%9D/",
+    "categories": "GM, Scenario | Analysis",
+    "tags": "GM, 그로스마케팅, 선형, Linear, 회귀분석",
+    "date": "2025-02-21 20:00:00 +0900",
+    "content": "📊통계 분석 예제  1. A/B 테스트 (T-검정 활용)  시나리오    이메일 마케팅 캠페인에서 제목을 다르게 설정하여 두 그룹(A/B)으로 테스트   A 그룹(기존 제목)과 B 그룹(새로운 제목)에서 이메일을 연 클릭률(CTR)을 비교하여 어떤 제목이 더 효과적인지 확인   import numpy as np from scipy import stat..."
+  },
+  {
     "title": "[GM 예제] KPI 분석 종합 실습",
     "url": "/posts/%EC%98%88%EC%A0%9C-KPI%EB%B6%84%EC%84%9D/",
     "categories": "GM, Scenario | Analysis",
