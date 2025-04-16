@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-04-15T09:37:36+09:00</updated>
+  <updated>2025-04-16T15:16:23+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -20,11 +20,89 @@
 
   
   <entry>
+    <title>[GCF Project] 최종 정리</title>
+    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-%EC%B5%9C%EC%A2%85/" rel="alternate" type="text/html" title="[GCF Project] 최종 정리" />
+    <published>2025-04-14T19:30:00+09:00</published>
+  
+    <updated>2025-04-14T19:30:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-%EC%B5%9C%EC%A2%85/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-%EC%B5%9C%EC%A2%85/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="대외활동" />
+    
+    <category term="GM 부트캠프" />
+    
+  
+
+  <summary>📌프로젝트 최종 정리</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[GCF Project] SMS 발송 전략</title>
+    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-SMS/" rel="alternate" type="text/html" title="[GCF Project] SMS 발송 전략" />
+    <published>2025-04-11T19:30:00+09:00</published>
+  
+    <updated>2025-04-11T19:30:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-SMS/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-SMS/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="대외활동" />
+    
+    <category term="GM 부트캠프" />
+    
+  
+
+  <summary>📱SMS 광고 발송 전략  기획    즉각 반응 유도   간결한 CTA 중심   콘텐츠 유형 : 혜택 알림 • 마감 안내     [Seq 1] Greeting     [Seq 2-1] 캠핑권 (관심기반 타겟팅)     [Seq 2-2] 호텔권 (관심기반 타겟팅)     [Seq 3] 마지막 긴급</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[GCF Project] Email 발송 전략</title>
+    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Email/" rel="alternate" type="text/html" title="[GCF Project] Email 발송 전략" />
+    <published>2025-04-11T19:00:00+09:00</published>
+  
+    <updated>2025-04-11T19:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Email/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Email/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="대외활동" />
+    
+    <category term="GM 부트캠프" />
+    
+  
+
+  <summary>📧Email 광고 발송 전략  목적    예매 전환 유도, 관심 고객의 이탈 방지, 브랜드 신뢰 형성   호텔권/캠핑권 클릭 이후 관심 기반 콘텐츠 제공으로 기대감 유지   꾸준한 노출로 구매를 놓치지 않도록 유도   구성 1-1) Greeting : 페스티벌에 대한 소개 1-2) 숙박 옵션 소개 : 호텔권 • 캠핑권에 대한 내용 안내 2) 관심기반 타겟팅 : 고객의 클릭 행동(호텔/캠핑)에 따라 콘텐츠 전달 3) 마지막 긴급 : 전 고객 대상 남은 기간 및 한정 수량 강조    [Seq 1] Greeting     [Seq 2] 숙박 옵션 소개     [Seq 3-1] 캠핑권 (관심기반 타겟팅)     [Seq 3-2] 호텔권 (관심기반 타겟팅)     [Seq 4] 마지막 긴급</summary>
+
+  </entry>
+
+  
+  <entry>
     <title>[GCF Project] Zapier 자동화</title>
     <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Zapier/" rel="alternate" type="text/html" title="[GCF Project] Zapier 자동화" />
     <published>2025-04-11T18:00:00+09:00</published>
   
-    <updated>2025-04-11T18:00:00+09:00</updated>
+    <updated>2025-04-15T09:38:31+09:00</updated>
   
     <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Zapier/</id>
     <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Zapier/" />
@@ -67,84 +145,6 @@
   
 
   <summary>🎨광고 기획 디자인  광고 기획 (소구점)    광고 디자인</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GCF Project] Landing Page B버전</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-B/" rel="alternate" type="text/html" title="[GCF Project] Landing Page B버전" />
-    <published>2025-04-03T18:40:00+09:00</published>
-  
-    <updated>2025-04-03T18:40:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-B/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-B/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="대외활동" />
-    
-    <category term="GM 부트캠프" />
-    
-  
-
-  <summary>LP 🅱️버전</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GCF Project] Landing Page A버전</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-A/" rel="alternate" type="text/html" title="[GCF Project] Landing Page A버전" />
-    <published>2025-04-03T18:30:00+09:00</published>
-  
-    <updated>2025-04-03T18:30:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-A/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-A/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="대외활동" />
-    
-    <category term="GM 부트캠프" />
-    
-  
-
-  <summary>LP 🅰️버전</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GCF Project] 캠페인 기획서</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-%EA%B8%B0%ED%9A%8D%EC%84%9C/" rel="alternate" type="text/html" title="[GCF Project] 캠페인 기획서" />
-    <published>2025-03-26T19:30:00+09:00</published>
-  
-    <updated>2025-04-14T20:48:57+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-%EA%B8%B0%ED%9A%8D%EC%84%9C/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-%EA%B8%B0%ED%9A%8D%EC%84%9C/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="대외활동" />
-    
-    <category term="GM 부트캠프" />
-    
-  
-
-  <summary>🍀그린캠프 페스티벌 티켓 판매를 위한 마케팅🎉      캠페인 기획서  6조 우리조만 레벨업 2025.03.26  1. 캠페인 개요     캠페인 이름: 그린캠프 페스티벌   캠페인 배경: 캠핑과 친환경을 결합한 페스티벌을 통해 시그니처 아티스트 공연, 웰니스프로그램, 지역경제활성화, 캠핑 스타트업 지원 등 다양한 콘텐츠를 경험하는 캠페인   목표: 티켓 판매를 위한 전략 수립 및 실행   타겟 오디언스 정의:            인천 시민, 인천 소재 대학생       환경 보호에 관심있는 사람들       캠핑, 피크닉에 관심있는 3040 가족       음악 페스티벌에 관심있는 2030           가설: 캠핑이 가능하다는 점을 강조하면 티켓이 더 잘 판매될 것임   2. 캠페인 전략    ...</summary>
 
   </entry>
 
