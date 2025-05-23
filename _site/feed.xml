@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-05-22T15:36:22+09:00</updated>
+  <updated>2025-05-23T14:40:12+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,84 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[멋사 사전알림 Project] Zapier 자동화</title>
+    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Zapier/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] Zapier 자동화" />
+    <published>2025-05-12T18:00:00+09:00</published>
+  
+    <updated>2025-05-12T18:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Zapier/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Zapier/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="대외활동" />
+    
+    <category term="GM 부트캠프" />
+    
+  
+
+  <summary>🔁Zapier 자동화  자동화 Tool은 Zapier를 사용하였다.  사전알림 신청이후 단순히 정보를 제공하는 수준에서 끝나지 않고, 최대한 고객이 멋사 부트캠프를 수강할 의도가 있는지 파악하는 방향으로 리텐션 플로우를 설계하였다.      발송 시간은 주말에 Email과 SMS를 많이 읽는 시간을 토대로 세팅하였다.  시간대별 발송 전략    10 ~ 12시 (주말에 하루를 시작하는 시간)   16 ~ 18시 (주말 계획에 대한 마지막 결정 시간)   21시 이전 (SMS 광고 발송 가능 시간)   1) 8 ~ 21시 제출한 경우    2) 8시 이전 제출한 경우    3) 21시 이후 제출한 경우      KIT Sequence 발송 위한 날짜별 태그 추가</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[멋사 사전알림 Project] Landing Page B버전</title>
+    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-B/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] Landing Page B버전" />
+    <published>2025-05-09T18:00:00+09:00</published>
+  
+    <updated>2025-05-09T18:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-B/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-B/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="대외활동" />
+    
+    <category term="GM 부트캠프" />
+    
+  
+
+  <summary>LP 🅱️버전  리드폼을 Social Proof 전에 배치하는 구조</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>[멋사 사전알림 Project] Landing Page A버전</title>
+    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-A/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] Landing Page A버전" />
+    <published>2025-05-01T19:00:00+09:00</published>
+  
+    <updated>2025-05-01T19:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-A/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-A/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="대외활동" />
+    
+    <category term="GM 부트캠프" />
+    
+  
+
+  <summary>LP 🅰️버전  리드폼을 가장 마지막에 배치하는 구조</summary>
+
+  </entry>
 
   
   <entry>
@@ -67,84 +145,6 @@
   
 
   <summary>📌프로젝트 최종 정리</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GCF Project] SMS 발송 전략</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-SMS/" rel="alternate" type="text/html" title="[GCF Project] SMS 발송 전략" />
-    <published>2025-04-11T19:30:00+09:00</published>
-  
-    <updated>2025-04-11T19:30:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-SMS/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-SMS/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="대외활동" />
-    
-    <category term="GM 부트캠프" />
-    
-  
-
-  <summary>📱SMS 광고 발송 전략  기획    즉각 반응 유도   간결한 CTA 중심   콘텐츠 유형 : 혜택 알림 • 마감 안내     [Seq 1] Greeting     [Seq 2-1] 캠핑권 (관심기반 타겟팅)     [Seq 2-2] 호텔권 (관심기반 타겟팅)     [Seq 3] 마지막 긴급</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GCF Project] Email 발송 전략</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Email/" rel="alternate" type="text/html" title="[GCF Project] Email 발송 전략" />
-    <published>2025-04-11T19:00:00+09:00</published>
-  
-    <updated>2025-04-11T19:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Email/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Email/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="대외활동" />
-    
-    <category term="GM 부트캠프" />
-    
-  
-
-  <summary>📧Email 광고 발송 전략  목적    예매 전환 유도, 관심 고객의 이탈 방지, 브랜드 신뢰 형성   호텔권/캠핑권 클릭 이후 관심 기반 콘텐츠 제공으로 기대감 유지   꾸준한 노출로 구매를 놓치지 않도록 유도   구성 1-1) Greeting : 페스티벌에 대한 소개 1-2) 숙박 옵션 소개 : 호텔권 • 캠핑권에 대한 내용 안내 2) 관심기반 타겟팅 : 고객의 클릭 행동(호텔/캠핑)에 따라 콘텐츠 전달 3) 마지막 긴급 : 전 고객 대상 남은 기간 및 한정 수량 강조    [Seq 1] Greeting     [Seq 2] 숙박 옵션 소개     [Seq 3-1] 캠핑권 (관심기반 타겟팅)     [Seq 3-2] 호텔권 (관심기반 타겟팅)     [Seq 4] 마지막 긴급</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GCF Project] Zapier 자동화</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Zapier/" rel="alternate" type="text/html" title="[GCF Project] Zapier 자동화" />
-    <published>2025-04-11T18:00:00+09:00</published>
-  
-    <updated>2025-04-15T09:38:31+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Zapier/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-Zapier/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="대외활동" />
-    
-    <category term="GM 부트캠프" />
-    
-  
-
-  <summary>🔁Zapier 자동화  자동화 Tool은 Zapier를 사용하였다.  발송 시간은 주말에 Email과 SMS를 많이 읽는 시간을 토대로 세팅하였다.  시간대별 발송 전략    10 ~ 12시 (주말에 하루를 시작하는 시간)   16 ~ 18시 (주말 계획에 대한 마지막 결정 시간)   21시 이전 (SMS 광고 발송 가능 시간)   발송 타이밍    4/11(금): 폼 제출 즉시 Greeting 메일 &amp;amp;amp; 문자 (초기 관심 유지)            3시간 후 숙박 옵션 소개 메일           4/12(토): 관심 기반 시퀀스            호텔 CTA 클릭 시: 호텔권 관련 콘텐츠       캠핑 CTA 클릭 시: 캠핑권 관련 콘텐츠           4/13(일): 마지막 전체 메일...</summary>
 
   </entry>
 
