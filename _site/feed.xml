@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-05-23T14:40:12+09:00</updated>
+  <updated>2025-05-26T16:54:39+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[멋사 사전알림 Project] 광고기획</title>
+    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B4%91%EA%B3%A0%EA%B8%B0%ED%9A%8D/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] 광고기획" />
+    <published>2025-05-14T21:00:00+09:00</published>
+  
+    <updated>2025-05-14T21:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B4%91%EA%B3%A0%EA%B8%B0%ED%9A%8D/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B4%91%EA%B3%A0%EA%B8%B0%ED%9A%8D/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="대외활동" />
+    
+    <category term="GM 부트캠프" />
+    
+  
+
+  <summary>🎨광고 기획 디자인  광고 소재  1. 실무 중심 프로젝트    부트캠프 통한 스킬 up + 포트폴리오 완성   신뢰감 확보, 참여 유도   2. 직무 유형 테스트    관심 유도 및 부트캠프 매칭 연결   흥미 유발, 참여 유도   3. KDT 프로그램 강조    실시간 소통 + 온라인 강의 + 전액 무료   경쟁력 확보 및 진입 장벽 제거   4. 회원가입 혜택 제공    IT 취업 가이드북 + IT 강의 90% 할인 혜택   신규 리드젠 확보   5. 교육 성과 비교    A/B 대조되는 이미지   멋사 부트캠프를 수료한 취준생 모습 시각적 강조   6. 비전공자 밀착 케어    개발자로 성장 가능 어필   공감 자극, 불안 해소</summary>
+
+  </entry>
 
   
   <entry>
@@ -74,9 +100,9 @@
   <entry>
     <title>[멋사 사전알림 Project] Landing Page A버전</title>
     <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-A/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] Landing Page A버전" />
-    <published>2025-05-01T19:00:00+09:00</published>
+    <published>2025-05-08T19:00:00+09:00</published>
   
-    <updated>2025-05-01T19:00:00+09:00</updated>
+    <updated>2025-05-08T19:00:00+09:00</updated>
   
     <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-A/</id>
     <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-A/" />
@@ -98,14 +124,14 @@
 
   
   <entry>
-    <title>[멋사 사전알림 Project] 캠페인 기획서</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B8%B0%ED%9A%8D%EC%84%9C/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] 캠페인 기획서" />
-    <published>2025-04-22T19:30:00+09:00</published>
+    <title>[멋사 사전알림 Project] Email 발송 전략</title>
+    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Email/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] Email 발송 전략" />
+    <published>2025-05-02T21:30:00+09:00</published>
   
-    <updated>2025-04-22T19:30:00+09:00</updated>
+    <updated>2025-05-02T21:30:00+09:00</updated>
   
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B8%B0%ED%9A%8D%EC%84%9C/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B8%B0%ED%9A%8D%EC%84%9C/" />
+    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Email/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Email/" />
     <author>
       <name>ZI</name>
     </author>
@@ -116,35 +142,11 @@
     
     <category term="GM 부트캠프" />
     
-  
-
-  <summary>🦁멋쟁이사자처럼 부트캠프 사전알림 리드 확보 마케팅🦁      1. 캠페인 개요     캠페인: 멋쟁이사자처럼 소프트웨어 개발 부트캠프 마케팅   문제 정의:            K-Digital Training(KDT) 부트캠프의 확산으로 경쟁 과열       멋사만의 차별화된 가치 제안 통한 관심도 제고                목표: 사전알림 신청 리드 확보 &amp;amp;amp; 회원가입 유도      주요 타겟층:            졸업은 했지만 경력이 없어 정체된 취준생       갈팡질팡 막막한 비전공자 대학생       학점은 높지만 스펙이 없어 고민인 개발 전공 대학생       지방에 거주해 정보 접근이 어렵고 커뮤니티가 필요한 취준생                슬로건: ‘POSSIBILITY...</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[GCF Project] 최종 정리</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-%EC%B5%9C%EC%A2%85/" rel="alternate" type="text/html" title="[GCF Project] 최종 정리" />
-    <published>2025-04-14T19:30:00+09:00</published>
-  
-    <updated>2025-04-14T19:30:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-%EC%B5%9C%EC%A2%85/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B81-%EC%B5%9C%EC%A2%85/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="대외활동" />
-    
-    <category term="GM 부트캠프" />
+    <category term="project02" />
     
   
 
-  <summary>📌프로젝트 최종 정리</summary>
+  <summary>📧Email 광고 발송 전략  전략    멋사 홈페이지 링크 삽입하여 관심도 확인   이후 링크 클릭 여부 바탕으로 이메일 시퀀스 진행   타겟팅한 사람들이 관심 갖도록 구성       [Seq 1] Greeting      [Seq 2-1] 수강생 인터뷰      [Seq 2-2] 비전공자 성공 사례      [Seq 2-3] 멋사 부트캠프 장점      [Broadcasting] 마지막 긴급</summary>
 
   </entry>
 
