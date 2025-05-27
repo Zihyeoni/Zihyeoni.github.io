@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EC%B5%9C%EC%A2%85/</loc>
+        
+        <lastmod>2025-05-22T18:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B4%91%EA%B3%A0%EA%B8%B0%ED%9A%8D/</loc>
         
         <lastmod>2025-05-14T21:00:00+09:00</lastmod>
@@ -55,6 +71,22 @@
         <loc>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-A/</loc>
         
         <lastmod>2025-05-08T19:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-LMS/</loc>
+        
+        <lastmod>2025-05-02T22:30:00+09:00</lastmod>
         
 
         

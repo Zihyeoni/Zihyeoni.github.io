@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-05-26T16:54:39+09:00</updated>
+  <updated>2025-05-27T22:46:35+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[멋사 사전알림 Project] 최종 정리</title>
+    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EC%B5%9C%EC%A2%85/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] 최종 정리" />
+    <published>2025-05-22T18:00:00+09:00</published>
+  
+    <updated>2025-05-22T18:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EC%B5%9C%EC%A2%85/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EC%B5%9C%EC%A2%85/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="대외활동" />
+    
+    <category term="GM 부트캠프" />
+    
+  
+
+  <summary>📌프로젝트 최종 정리  LP 데모 영상 📽️</summary>
+
+  </entry>
 
   
   <entry>
@@ -119,34 +145,6 @@
   
 
   <summary>LP 🅰️버전  리드폼을 가장 마지막에 배치하는 구조</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[멋사 사전알림 Project] Email 발송 전략</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Email/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] Email 발송 전략" />
-    <published>2025-05-02T21:30:00+09:00</published>
-  
-    <updated>2025-05-02T21:30:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Email/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Email/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="대외활동" />
-    
-    <category term="GM 부트캠프" />
-    
-    <category term="project02" />
-    
-  
-
-  <summary>📧Email 광고 발송 전략  전략    멋사 홈페이지 링크 삽입하여 관심도 확인   이후 링크 클릭 여부 바탕으로 이메일 시퀀스 진행   타겟팅한 사람들이 관심 갖도록 구성       [Seq 1] Greeting      [Seq 2-1] 수강생 인터뷰      [Seq 2-2] 비전공자 성공 사례      [Seq 2-3] 멋사 부트캠프 장점      [Broadcasting] 마지막 긴급</summary>
 
   </entry>
 
