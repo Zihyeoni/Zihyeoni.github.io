@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2025-05-27T22:46:35+09:00</updated>
+  <updated>2025-05-28T00:39:35+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[회고] 그로스 마케팅 수료</title>
+    <link href="http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%9A%8C%EA%B3%A0/" rel="alternate" type="text/html" title="[회고] 그로스 마케팅 수료" />
+    <published>2025-05-24T21:30:00+09:00</published>
+  
+    <updated>2025-05-24T21:30:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%9A%8C%EA%B3%A0/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EB%A9%8B%EC%82%AC-%ED%9A%8C%EA%B3%A0/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="대외활동" />
+    
+    <category term="GM 부트캠프" />
+    
+  
+
+  <summary>🦁멋쟁이사자처럼 그로스 마케팅 부트캠프 수료🎓    4개월의 수료 과정이 드디어 끝이 났다..! 시원섭섭🥹 첫 수업을 들으며 두근두근 했던게 엊그제 같은데 벌써 5월이라니  데이터 분석부터 마케팅까지 모든 과정을 배웠다. 마케팅의 ㅁ도 모르던 내가 프로젝트를 2개나 완성한게 새삼 신기하다.  마케팅 업무 역량을 키운 것 뿐만 아니라, 실무에서 일하는 방식을 배운 것이 인상 깊다. 강사님의 노하우를 배우고 따라하며 효율적인 업무 방법을 알아갈 수 있었다.  초보자도 따라갈 수 있도록 차근차근 상세하게, 그리고 계속 리마인드를 해주셔서 이해도 레벨이 멈추지 않고 올라간 것 같다.  실무 프로젝트 수행 외에도 여러 프레임워크를 알게 되었고, “체크인•체크아웃” 방식 &amp;amp;amp; WBS &amp;amp;amp; ICE-Sco...</summary>
+
+  </entry>
 
   
   <entry>
@@ -119,32 +145,6 @@
   
 
   <summary>LP 🅱️버전  리드폼을 Social Proof 전에 배치하는 구조</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[멋사 사전알림 Project] Landing Page A버전</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-A/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] Landing Page A버전" />
-    <published>2025-05-08T19:00:00+09:00</published>
-  
-    <updated>2025-05-08T19:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-A/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-A/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="대외활동" />
-    
-    <category term="GM 부트캠프" />
-    
-  
-
-  <summary>LP 🅰️버전  리드폼을 가장 마지막에 배치하는 구조</summary>
 
   </entry>
 
