@@ -3,7 +3,7 @@
 {
   "name": "Z._.LOG",
   "short_name": "Z._.LOG",
-  "description": "A minimal, responsive and feature-rich Jekyll theme for technical writing.",
+  "description": "ZI's 공부 기록용 블로그",
   "icons": [
     {
       "src": "/assets/img/favicons/android-chrome-192x192.png",
