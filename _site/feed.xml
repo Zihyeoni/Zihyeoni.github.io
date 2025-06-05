@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>ZI's 공부 기록용 블로그</subtitle>
-  <updated>2025-06-04T21:19:15+09:00</updated>
+  <updated>2025-06-05T17:33:58+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[자격증] 45회 ADsP 합격 후기</title>
+    <link href="http://localhost:4000/posts/%EC%9E%90%EA%B2%A9%EC%A6%9D-ADsP/" rel="alternate" type="text/html" title="[자격증] 45회 ADsP 합격 후기" />
+    <published>2025-06-05T16:15:00+09:00</published>
+  
+    <updated>2025-06-05T16:15:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EC%9E%90%EA%B2%A9%EC%A6%9D-ADsP/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EC%9E%90%EA%B2%A9%EC%A6%9D-ADsP/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="대외활동" />
+    
+    <category term="ADsP" />
+    
+  
+
+  <summary>ADsP 합격 후기🏆  데이터분석 준전문가 (Advanced Data Analytics Semi-Professional)        멋사 부트캠프를 수료 중에 데이터 분석 자격증 필요성을 느껴 45회 ADsP를 신청하였다.    필기시험은 PBT(Paper Based Test) 방식으로 자격을 검정하며, 시험 시간은 총 90분이고, 30분 이후부터 퇴실 가능하다. 합격 기준은 총점 60점 이상, 과락 기준은 과목별 40% 미만 취득 시 적용된다. 즉, 1과목 및 2과목은 과목당 최소 8점 이상, 3과목에서는 24점을 넘겨야 한다.  공부 방법               교재는 미어캣 도서를 사용하였다.     공부는 2주 전부터 시작했다.     평일 9~18시는 부트캠프를 들어야 했기 때문에 시간이 ...</summary>
+
+  </entry>
 
   
   <entry>
@@ -50,7 +76,7 @@
     <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EC%B5%9C%EC%A2%85/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] 최종 정리" />
     <published>2025-05-22T18:00:00+09:00</published>
   
-    <updated>2025-05-22T18:00:00+09:00</updated>
+    <updated>2025-06-04T21:23:06+09:00</updated>
   
     <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EC%B5%9C%EC%A2%85/</id>
     <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EC%B5%9C%EC%A2%85/" />
@@ -76,7 +102,7 @@
     <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B4%91%EA%B3%A0%EA%B8%B0%ED%9A%8D/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] 광고기획" />
     <published>2025-05-14T21:00:00+09:00</published>
   
-    <updated>2025-05-14T21:00:00+09:00</updated>
+    <updated>2025-06-04T21:23:06+09:00</updated>
   
     <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B4%91%EA%B3%A0%EA%B8%B0%ED%9A%8D/</id>
     <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B4%91%EA%B3%A0%EA%B8%B0%ED%9A%8D/" />
@@ -102,7 +128,7 @@
     <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Zapier/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] Zapier 자동화" />
     <published>2025-05-12T18:00:00+09:00</published>
   
-    <updated>2025-05-12T18:00:00+09:00</updated>
+    <updated>2025-06-04T21:23:06+09:00</updated>
   
     <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Zapier/</id>
     <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-Zapier/" />
@@ -119,32 +145,6 @@
   
 
   <summary>🔁Zapier 자동화  자동화 Tool은 Zapier를 사용하였다.  사전알림 신청이후 단순히 정보를 제공하는 수준에서 끝나지 않고, 최대한 고객이 멋사 부트캠프를 수강할 의도가 있는지 파악하는 방향으로 리텐션 플로우를 설계하였다.      발송 시간은 주말에 Email과 SMS를 많이 읽는 시간을 토대로 세팅하였다.  시간대별 발송 전략    10 ~ 12시 (주말에 하루를 시작하는 시간)   16 ~ 18시 (주말 계획에 대한 마지막 결정 시간)   21시 이전 (SMS 광고 발송 가능 시간)   1) 8 ~ 21시 제출한 경우    2) 8시 이전 제출한 경우    3) 21시 이후 제출한 경우      KIT Sequence 발송 위한 날짜별 태그 추가</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[멋사 사전알림 Project] Landing Page B버전</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-B/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] Landing Page B버전" />
-    <published>2025-05-09T18:00:00+09:00</published>
-  
-    <updated>2025-05-09T18:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-B/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-B/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="Project" />
-    
-  
-
-  <summary>LP 🅱️버전  리드폼을 Social Proof 전에 배치하는 구조</summary>
 
   </entry>
 
