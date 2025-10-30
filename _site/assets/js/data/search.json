@@ -1,5 +1,13 @@
 [
   {
+    "title": "[Project] Chatbot",
+    "url": "/posts/%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88-chatbot/",
+    "categories": "Growth Log, P-Project",
+    "tags": "AI, 비전모델, NLP, chatbot, project, docent, 프론트엔드, 백엔드, 음성인식",
+    "date": "2025-10-27 23:00:00 +0900",
+    "content": "🤖Chatbot  “텍스트 → 의미 분석 → 답변 생성”     🎙️ 음성입력 (STT) ↓ 📄 텍스트 (“모나리자는 누가 그렸어?”) ↓ 🧠 자연어 처리 파이프라인 (LangChain) ├─ ① Intent 분석 (“작가 질문”) ├─ ② Entity 추출 (“모나리자”) ├─ ③ 지식 검색 (DB / 웹 검색) ├─ ④ 답변 생성 (LLM) ↓ 🗣..."
+  },
+  {
     "title": "[자격증] AICE Associate",
     "url": "/posts/%EC%9E%90%EA%B2%A9%EC%A6%9D-AICE/",
     "categories": "대외활동, AICE",

@@ -1,0 +1,212 @@
+<h1 id="sql-활용한-마케팅-성과-분석"><strong>SQL 활용한 마케팅 성과 분석</strong></h1>
+
+<h2 id="마케팅-시나리오-개요"><strong>📝마케팅 시나리오 개요</strong></h2>
+<blockquote>
+  <p>“e커머스 스타트업 A사는 마케팅 데이터를 활용하여 매출을 극대화하고 광고 효율성을 높이기 위해 고도화된 데이터 분석 시스템을 구축하려 한다. 광고 비용 대비 <strong><em>전환율 최적화, 사용자 리텐션 분석, 마케팅 채널별 ROI 비교, 고객 생애 가치(LTV) 예측, 캠페인 자동 최적화, A/B 테스트 결과 비교, 퍼널 분석, 추천 시스템 최적화, 구독 모델 분석</em></strong> 등의 전략을 적용하려 한다.”</p>
+</blockquote>
+
+<h3 id="광고-채널별-전환-최적화"><span style="color:orange"><strong>광고 채널별 전환 최적화</strong></span></h3>
+
+<p><strong>시나리오</strong></p>
+<blockquote>
+  <p>광고 채널별 전환율(Conversion Rate)을 분석하여, 최적의 광고 채널 결정 및 예산 효과적으로 배분</p>
+</blockquote>
+
+<p><strong>📊 전환율 = (전환 수 / 클릭 수) × 100</strong></p>
+
+<p>테이블 생성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">ad_performance2</span> <span class="p">(</span>
+    <span class="n">ad_id</span> <span class="nb">INT</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">channel</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">budget</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">impressions</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">clicks</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">conversions</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">start_date</span> <span class="nb">DATE</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>테이블 삽입</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">ad_performance2</span> <span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">budget</span><span class="p">,</span> <span class="n">impressions</span><span class="p">,</span> <span class="n">clicks</span><span class="p">,</span> <span class="n">conversions</span><span class="p">,</span> <span class="n">start_date</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">'Google Ads'</span><span class="p">,</span> <span class="mi">5000000</span><span class="p">,</span> <span class="mi">200000</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="s1">'2024-01-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'Facebook Ads'</span><span class="p">,</span> <span class="mi">6000000</span><span class="p">,</span> <span class="mi">250000</span><span class="p">,</span> <span class="mi">18000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="s1">'2024-02-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'Instagram Ads'</span><span class="p">,</span> <span class="mi">5500000</span><span class="p">,</span> <span class="mi">220000</span><span class="p">,</span> <span class="mi">17000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="s1">'2024-03-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'YouTube Ads'</span><span class="p">,</span> <span class="mi">7000000</span><span class="p">,</span> <span class="mi">300000</span><span class="p">,</span> <span class="mi">22000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="s1">'2024-04-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'TikTok Ads'</span><span class="p">,</span> <span class="mi">4000000</span><span class="p">,</span> <span class="mi">180000</span><span class="p">,</span> <span class="mi">14000</span><span class="p">,</span> <span class="mi">2800</span><span class="p">,</span> <span class="s1">'2024-05-01'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/37cb37d9-8eff-494e-85bc-621f5c81c9c3" alt="Image" /><br />
+<img src="https://github.com/user-attachments/assets/fc464ed5-75dd-4383-bd60-d043f6b7a981" alt="Image" /></p>
+
+<h3 id="고객-생애-가치-ltv-예측"><span style="color:orange"><strong>고객 생애 가치 (LTV) 예측</strong></span></h3>
+
+<p><strong>시나리오</strong></p>
+<blockquote>
+  <p>고객의 LTV(Lifetime Value)를 분석하여, 마케팅 예산을 가장 효과적으로 사용할 고객 그룹 식별</p>
+</blockquote>
+
+<p><strong>📊 LTV = 평균 구매 금액 × 구매 빈도 × 평균 고객 유지 기간</strong></p>
+
+<p>테이블 생성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">customer_purchases</span> <span class="p">(</span>
+    <span class="n">order_id</span> <span class="nb">INT</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">order_value</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">retention_period</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">order_date</span> <span class="nb">DATE</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>테이블 삽입</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">customer_purchases</span> <span class="p">(</span><span class="n">customer_id</span><span class="p">,</span> <span class="n">order_value</span><span class="p">,</span> <span class="n">retention_period</span><span class="p">,</span> <span class="n">order_date</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">'2024-01-10'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">70000</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">'2024-02-15'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">'2024-03-20'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">150000</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'2024-01-05'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">120000</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'2024-03-12'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">30000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'2024-04-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'2024-04-15'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">35000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'2024-05-10'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/ba592364-889e-4969-a0cd-ca8eeb99f166" alt="Image" /><br />
+<img src="https://github.com/user-attachments/assets/6d357daa-5b41-4702-aac6-dff1d86a2abc" alt="Image" /></p>
+
+<h3 id="ab-테스트-분석"><span style="color:orange"><strong>A/B 테스트 분석</strong></span></h3>
+
+<p><strong>시나리오</strong></p>
+<blockquote>
+  <p>광고 캠페인 A와 B를 비교하여 클릭율(CTR)이 더 높은 캠페인 선택</p>
+</blockquote>
+
+<p><strong>📊 CTR(Click-Through Rate) = (클릭 수 / 노출 수) × 100</strong></p>
+
+<p>테이블 생성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">ab_test_campaigns</span> <span class="p">(</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">campaign_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">impressions</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">clicks</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>테이블 삽입</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">ab_test_campaigns</span> <span class="p">(</span><span class="n">campaign_name</span><span class="p">,</span> <span class="n">impressions</span><span class="p">,</span> <span class="n">clicks</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">'캠페인 A'</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">12000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'캠페인 B'</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">15000</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/1756c332-3d40-4a49-9e25-a0d31fffbe14" alt="Image" /><br />
+<img src="https://github.com/user-attachments/assets/15226ab4-66d2-4e39-b008-25e9ca6243a1" alt="Image" /></p>
+
+<h3 id="퍼널-분석"><span style="color:orange"><strong>퍼널 분석</strong></span></h3>
+
+<p><strong>시나리오</strong></p>
+<blockquote>
+  <p>사용자가 제품 페이지에서 결제까지 진행하는 흐름을 분석하여 이탈이 많은 단계 개선</p>
+</blockquote>
+
+<p><strong>📊 각 단계별 이탈률 = (이전 단계 방문자 - 현재 단계 방문자) / 이전 단계 방문자 × 100</strong></p>
+
+<p>테이블 생성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">user_behavior2</span> <span class="p">(</span>
+    <span class="n">session_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">page_viewed</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">visit_date</span> <span class="nb">DATETIME</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>테이블 삽입</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">user_behavior2</span> <span class="p">(</span><span class="n">session_id</span><span class="p">,</span> <span class="n">page_viewed</span><span class="p">,</span> <span class="n">visit_date</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">'S101'</span><span class="p">,</span> <span class="s1">'홈페이지'</span><span class="p">,</span> <span class="s1">'2024-06-01 10:00:00'</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'S102'</span><span class="p">,</span> <span class="s1">'상품 상세'</span><span class="p">,</span> <span class="s1">'2024-06-02 14:30:00'</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'S103'</span><span class="p">,</span> <span class="s1">'장바구니'</span><span class="p">,</span> <span class="s1">'2024-06-03 09:50:00'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/c2945b76-b999-404b-bb45-396a9bb6ec98" alt="Image" /><br />
+<img src="https://github.com/user-attachments/assets/ee49929c-adad-4709-8836-e5937cb90301" alt="Image" /></p>
+
+<h3 id="마케팅-채널별-roi-비교"><span style="color:orange"><strong>마케팅 채널별 ROI 비교</strong></span></h3>
+
+<p><strong>시나리오</strong></p>
+<blockquote>
+  <p>마케팅 채널별 ROI(Return on Investment)를 계산하여 가장 효율적인 채널 파악</p>
+</blockquote>
+
+<p><strong>📊 ROI = ((매출 - 광고비) / 광고비) × 100</strong></p>
+
+<p>테이블 생성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">marketing_roi</span> <span class="p">(</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">channel</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">budget</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">revenue</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>테이블 삽입</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">marketing_roi</span> <span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">budget</span><span class="p">,</span> <span class="n">revenue</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">'Google Ads'</span><span class="p">,</span> <span class="mi">5000000</span><span class="p">,</span> <span class="mi">15000000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'Facebook Ads'</span><span class="p">,</span> <span class="mi">6000000</span><span class="p">,</span> <span class="mi">18000000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'Instagram Ads'</span><span class="p">,</span> <span class="mi">5500000</span><span class="p">,</span> <span class="mi">14000000</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/53f8599c-3492-46ef-ab5b-e0574e74aca0" alt="Image" /><br />
+<img src="https://github.com/user-attachments/assets/930c3a1c-f4c0-41bf-8d29-32827bd016d3" alt="Image" /></p>
+
+<h3 id="구독-서비스-유지율-분석"><span style="color:orange"><strong>구독 서비스 유지율 분석</strong></span></h3>
+
+<p><strong>시나리오</strong></p>
+<blockquote>
+  <p>구독 모델에서 사용자들의 유지율을 분석하고, 해지 가능성이 높은 고객 예측</p>
+</blockquote>
+
+<p><strong>📊 Retention Rate = (잔존 고객 수 / 최초 가입 고객 수) × 100</strong></p>
+
+<p>테이블 생성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">subscription_data</span> <span class="p">(</span>
+    <span class="n">user_id</span> <span class="nb">INT</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">cohort_month</span> <span class="nb">DATE</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">months_active</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>테이블 삽입</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">subscription_data</span> <span class="p">(</span><span class="n">cohort_month</span><span class="p">,</span> <span class="n">months_active</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">'2024-01-01'</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'2024-02-01'</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'2024-03-01'</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'2024-04-01'</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/69a9a72b-5546-47d9-941e-cbe7baa1056a" alt="Image" /><br />
+<img src="https://github.com/user-attachments/assets/bbc4017e-081f-4a01-bd16-64670cf5cf08" alt="Image" /></p>
+
+<h3 id="광고-효율성-비교-cpc-cpa-분석"><span style="color:orange"><strong>광고 효율성 비교 (CPC, CPA 분석)</strong></span></h3>
+
+<p><strong>시나리오</strong></p>
+<blockquote>
+  <p>광고별 클릭당 비용(CPC) 및 전환당 비용(CPA)를 비교하여 가장 비용 효율적인 광고 찾기</p>
+</blockquote>
+
+<p><strong>📊 CPC = 광고비 / 클릭 수</strong><br />
+<strong>📊 CPA = 광고비 / 전환 수</strong></p>
+
+<p>테이블 생성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">ad_cost_analysis</span> <span class="p">(</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">campaign_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">budget</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">clicks</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">conversions</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>테이블 삽입</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">ad_cost_analysis</span> <span class="p">(</span><span class="n">campaign_name</span><span class="p">,</span> <span class="n">budget</span><span class="p">,</span> <span class="n">clicks</span><span class="p">,</span> <span class="n">conversions</span><span class="p">)</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">'Google Ads'</span><span class="p">,</span> <span class="mi">5000000</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'Facebook Ads'</span><span class="p">,</span> <span class="mi">6000000</span><span class="p">,</span> <span class="mi">18000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'Instagram Ads'</span><span class="p">,</span> <span class="mi">5500000</span><span class="p">,</span> <span class="mi">17000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/3a178524-0d27-4c8d-a48e-f6272f528340" alt="Image" /><br />
+<img src="https://github.com/user-attachments/assets/030b3264-81cf-46f5-acaa-5b6101e43e96" alt="Image" /></p>

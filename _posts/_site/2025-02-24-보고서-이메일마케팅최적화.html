@@ -1,0 +1,121 @@
+<h1 id="이메일-마케팅-최적화-전략--회귀-분석을-통한-클릭률-예측-및-마케팅-전략-보고서"><strong><center>이메일 마케팅 최적화 전략 : 회귀 분석을 통한 클릭률 예측 및 마케팅 전략 보고서</center></strong></h1>
+<center>마케터 : 이 * *</center>
+<center>2025.02.24</center>
+
+<hr />
+
+<h4 id="1-개요"><strong>1. 개요</strong></h4>
+
+<p>본 보고서는 온라인 쇼핑몰의 이메일 발송 수가 클릭률에 미치는 영향을 분석하여, 효율적인 마케팅 전략 수립을 위한 인사이트를 도출하는 것을 목적으로 한다. 단순 회귀 분석을 활용하여 이메일 발송 수와 클릭률 간의 관계를 정량적으로 파악하고, 이를 바탕으로 예산 배분 및 캠페인 전략을 재검토한다.</p>
+
+<h4 id="2-데이터-개요"><strong>2. 데이터 개요</strong></h4>
+
+<ul>
+  <li>데이터 수집 기간: 최근 3개월 간의 광고 캠페인 데이터</li>
+  <li>주요 변수
+    <ul>
+      <li>이메일 발송 수: 각 캠페인별 집행한 광고 예산</li>
+      <li>클릭률: 광고 캠페인으로 인해 발생한 신규 고객(또는 구매 건수)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://Zihyeoni.github.io/assets/img/0224/데이터.png" alt="Image" /></p>
+
+<h4 id="3-분석-방법"><strong>3. 분석 방법</strong></h4>
+
+<ul>
+  <li>모델 선택: 단순 회귀 분석 (이메일 발송 수를 독립 변수, 클릭률을 종속 변수로 설정)</li>
+  <li>추정 방법: 최소제곱법(OLS)을 사용하여 회귀계수(절편, 기울기) 추정</li>
+  <li>모델 평가: 결정계수(R²)를 통해 모델의 설명력 평가</li>
+</ul>
+
+<p><strong>분석 코드</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="n">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="n">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+
+<span class="c1"># 1. 가상의 데이터 준비
+</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">emails_sent</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">7000</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="mi">9000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">],</span>
+    <span class="sh">'</span><span class="s">click_rate</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">7.8</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">,</span> <span class="mf">9.2</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># 2. 독립 변수(X)와 종속 변수(y) 설정
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="sh">'</span><span class="s">emails_sent</span><span class="sh">'</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">click_rate</span><span class="sh">'</span><span class="p">]</span>
+
+<span class="c1"># 3. 단순 회귀 모델 생성 및 학습
+</span><span class="n">model</span> <span class="o">=</span> <span class="nc">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># 4. 모델 파라미터 및 결정계수(R²) 출력
+</span><span class="n">intercept</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">intercept_</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="nf">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">회귀식: 클릭률 = {:.2f} + {:.5f} * 이메일 발송건수</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">결정계수 (R²): {:.4f}</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">r2</span><span class="p">))</span>
+
+<span class="c1"># 5. 예측 및 시각화
+</span><span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">predicted_click_rate</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">emails_sent</span><span class="sh">'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">click_rate</span><span class="sh">'</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">실제 클릭률</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">emails_sent</span><span class="sh">'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">predicted_click_rate</span><span class="sh">'</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">회귀 직선</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">이메일 발송건수 대비 클릭률 분석</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">이메일 발송 수</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">클릭률 (%)</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="4-분석-결과"><strong>4. 분석 결과</strong></h4>
+
+<ul>
+  <li>
+    <p>회귀식 도출:<br />
+클릭률 = 0.77 + 0.000087 × 이메일 발송건수</p>
+
+    <ul>
+      <li>해석: 이메일 발송 건수 1개가 증가할 때마다 클릭률이 평균적으로 0.00087 증가</li>
+    </ul>
+  </li>
+  <li>
+    <p>결정계수 (R²): 0.99</p>
+    <ul>
+      <li>해석: 모델이 클릭률의 변동성 중 99%를 설명할 수 있으므로, 이메일 발송 건수와 클릭률 간의 선형관계가 매우 강하다는 결론을 도출할 수 있음</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://Zihyeoni.github.io/assets/img/0224/분석결과.png" alt="Image" /></p>
+
+<h4 id="5-마케팅-전략-시사점"><strong>5. 마케팅 전략 시사점</strong></h4>
+
+<p><strong>1.  이메일 발송 건수 증가의 효과</strong></p>
+<ul>
+  <li>이메일 발송 건수를 10,000개 추가 집행할 경우, 약 9-10%의 클릭률 증대를 기대할 수 있음</li>
+  <li>예산 배분 시 이메일 발송 건수 증가가 클릭률 향상에 효과적일 가능성이 높으므로, ROI(투자 대비 수익)를 고려하여 추가 예산 배분을 검토할 필요가 있음</li>
+</ul>
+
+<p><strong>2.  모델 신뢰도</strong></p>
+<ul>
+  <li>결정계수(R²) 값이 0.99로 매우 높아, 이메일 발송 건수와 클릭률 간의 관계를 안정적으로 설명할 수 있음을 확인함</li>
+  <li>다만, 본 분석은 과거 데이터를 기반으로 하므로, 미래 캠페인 실행 시에도 외부 요인(경쟁, 시장 변화 등)을 함께 고려해야 함</li>
+</ul>
+
+<h4 id="6-결론-및-제언"><strong>6. 결론 및 제언</strong></h4>
+<ul>
+  <li><strong>결론</strong><br />
+본 회귀 분석 결과, 이메일 발송 건수와 클릭률 간의 선형적 관계가 매우 명확하게 나타났으며, 추가 이메일 발송 집행 시 클릭률 증대 효과가 기대됨</li>
+  <li><strong>제언</strong>
+    <ol>
+      <li>이메일 발송 건수 증가을 통한 클릭률 향상 전략을 적극 검토할 것</li>
+      <li>이메일 발송 외에도 브랜드 인지도 제고를 위한 다양한 마케팅 채널을 복합적으로 운영할 것</li>
+      <li>정기적으로 회귀 분석을 수행하여 시장 상황 변화에 따른 모델의 유효성을 검증할 것</li>
+    </ol>
+  </li>
+</ul>

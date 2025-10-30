@@ -1,0 +1,212 @@
+<h1 id="python--sql-연동"><strong>Python &amp; SQL 연동</strong></h1>
+
+<h4 id="환경-설정"><strong>환경 설정</strong></h4>
+<ul>
+  <li>Python 라이브러리: <code class="language-plaintext highlighter-rouge">mysql-connector-python</code>, <code class="language-plaintext highlighter-rouge">pandas</code></li>
+  <li>데이터베이스: MariaDB</li>
+  <li>기능:
+    <ol>
+      <li>MariaDB에 연결</li>
+      <li>테이블 생성</li>
+      <li><code class="language-plaintext highlighter-rouge">pandas</code> DataFrame 사용하여 데이터 삽입</li>
+      <li><code class="language-plaintext highlighter-rouge">pandas</code> 활용하여 데이터 조회 및 출력</li>
+    </ol>
+  </li>
+</ul>
+
+<p>Maria database를 설치하기 위한 Linux 명령</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">upgrade</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">mariadb</span><span class="o">-</span><span class="n">server</span>
+</code></pre></div></div>
+
+<p>MariaDB(Mysql) 데이터베이스 생성 및 계정 생성</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sudo</span> <span class="n">mysql</span> <span class="err">–</span><span class="n">u</span> <span class="n">root</span> <span class="err">–</span><span class="n">p</span>
+<span class="n">_________</span>
+<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">backend</span> <span class="n">default</span> <span class="n">CHARACTER</span> <span class="n">SET</span> <span class="n">UTF8</span><span class="p">;</span>
+<span class="n">show</span> <span class="n">databases</span><span class="p">;</span>
+<span class="n">use</span> <span class="n">backend</span><span class="p">;</span>
+<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">PRIVILEGES</span> <span class="n">ON</span> <span class="n">backend</span><span class="p">.</span><span class="o">*</span> <span class="n">TO</span> <span class="n">user</span><span class="nd">@localhost</span> <span class="n">IDENTIFIED</span> <span class="n">BY</span> <span class="sh">'</span><span class="s">1234</span><span class="sh">'</span><span class="p">;</span>
+
+<span class="nb">exit</span>
+<span class="n">mysql</span> <span class="err">–</span><span class="n">u</span> <span class="n">user</span> <span class="err">–</span><span class="n">p</span>
+<span class="n">_________</span>
+</code></pre></div></div>
+
+<p><strong>Python 설치</strong></p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="k">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span>
+</code></pre></div></div>
+
+<p><strong>필요한 라이브러리 설치</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>mysql-connector-python pandas
+</code></pre></div></div>
+
+<p>VM 인스턴스의 외부 IP 복사 후, FTP 호스트에 삽입<br />
+<img src="https://github.com/user-attachments/assets/bfbc7368-2b0d-4a2c-90c8-fc7575a91b87" alt="Image" /></p>
+
+<p>main_0213.py (employees 테이블)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">mysql.connector</span>
+<span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># 1. MariaDB 연결 설정
+</span><span class="n">db_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">host</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">localhost</span><span class="sh">"</span><span class="p">,</span>      <span class="c1"># MariaDB 서버 주소
+</span>    <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">hj</span><span class="sh">"</span><span class="p">,</span>           <span class="c1"># 사용자 이름
+</span>    <span class="sh">"</span><span class="s">password</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">1234</span><span class="sh">"</span><span class="p">,</span>   <span class="c1"># 비밀번호
+</span>    <span class="sh">"</span><span class="s">database</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">backend</span><span class="sh">"</span>     <span class="c1"># 사용할 데이터베이스
+</span><span class="p">}</span>
+
+<span class="c1"># MariaDB 연결
+</span><span class="n">conn</span> <span class="o">=</span> <span class="n">mysql</span><span class="p">.</span><span class="n">connector</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="o">**</span><span class="n">db_config</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="nf">cursor</span><span class="p">()</span>
+
+<span class="c1"># 2. 테이블 생성 (이미 존재하면 삭제 후 생성)
+</span><span class="n">cursor</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="sh">"</span><span class="s">DROP TABLE IF EXISTS employees;</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">cursor</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="sh">"""</span><span class="s">
+CREATE TABLE employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    department VARCHAR(50),
+    salary DECIMAL(10,2)
+);
+</span><span class="sh">"""</span><span class="p">)</span>
+
+<span class="c1"># 3. 샘플 데이터 생성 (pandas DataFrame 활용)
+</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">Alice</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Bob</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Charlie</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">David</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Eve</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">age</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">department</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">HR</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">IT</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Finance</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Marketing</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">IT</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">salary</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">70000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">90000</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># 4. 데이터 삽입
+</span><span class="n">insert_query</span> <span class="o">=</span> <span class="sh">"</span><span class="s">INSERT INTO employees (name, age, department, salary) VALUES (%s, %s, %s, %s)</span><span class="sh">"</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nf">tuple</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">.</span><span class="nf">to_numpy</span><span class="p">()]</span>
+
+<span class="n">cursor</span><span class="p">.</span><span class="nf">executemany</span><span class="p">(</span><span class="n">insert_query</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">데이터 삽입 완료</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 5. 데이터 조회 및 pandas DataFrame으로 변환
+</span><span class="n">cursor</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="sh">"</span><span class="s">SELECT * FROM employees</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="p">.</span><span class="nf">fetchall</span><span class="p">()</span>
+
+<span class="c1"># 컬럼명 가져오기
+</span><span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">desc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">.</span><span class="n">description</span><span class="p">]</span>
+<span class="n">df_result</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">column_names</span><span class="p">)</span>
+
+<span class="c1"># 6. 결과 출력 (pandas 기본 출력 방식 사용)
+</span><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">=== Employees Table Data ===</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">df_result</span><span class="p">.</span><span class="nf">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>  <span class="c1"># 인덱스 없이 출력
+</span>
+<span class="c1"># CSV로 저장 (필요한 경우)
+</span><span class="n">df_result</span><span class="p">.</span><span class="nf">to_csv</span><span class="p">(</span><span class="sh">"</span><span class="s">employees_data.csv</span><span class="sh">"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="sh">"</span><span class="s">utf-8</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">데이터를 </span><span class="sh">'</span><span class="s">employees_data.csv</span><span class="sh">'</span><span class="s"> 파일로 저장하였습니다.</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 연결 종료
+</span><span class="n">cursor</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+<span class="n">conn</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>FTP 원격 사이트에 ‘main_0213.py’ 넣기<br />
+<img src="https://github.com/user-attachments/assets/32c8f8ef-9348-4af2-8af9-849474a9748b" alt="Image" /></p>
+
+<p><img src="https://github.com/user-attachments/assets/c81a9e34-ddf1-46dc-8431-fa65841d7baa" alt="Image" /></p>
+
+<p>FTP에서 ‘employees_data.csv’ 다운받기<br />
+<img src="https://github.com/user-attachments/assets/f43019eb-6d65-45cd-8920-7c727e5f63d4" alt="Image" /></p>
+
+<p>MariaDB에서 확인<br />
+<img src="https://github.com/user-attachments/assets/ebd20ac5-2d96-4b66-a1f8-d1a5a9b456a7" alt="Image" /><br />
+<img src="https://github.com/user-attachments/assets/84cf891d-2edd-4446-be4a-e0cc73049c5d" alt="Image" /></p>
+
+<hr />
+
+<p>‼️ 한 번 더 연습 ‼️</p>
+
+<p>main2_0213.py (growth_marketing 테이블)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">mysql.connector</span>
+<span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># 1. MariaDB 연결 설정
+</span><span class="n">db_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">host</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">localhost</span><span class="sh">"</span><span class="p">,</span>      <span class="c1"># MariaDB 서버 주소
+</span>    <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">hj</span><span class="sh">"</span><span class="p">,</span>             <span class="c1"># 사용자 이름
+</span>    <span class="sh">"</span><span class="s">password</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">1234</span><span class="sh">"</span><span class="p">,</span>       <span class="c1"># 비밀번호
+</span>    <span class="sh">"</span><span class="s">database</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">backend</span><span class="sh">"</span>     <span class="c1"># 사용할 데이터베이스
+</span><span class="p">}</span>
+
+<span class="c1"># MariaDB 연결
+</span><span class="n">conn</span> <span class="o">=</span> <span class="n">mysql</span><span class="p">.</span><span class="n">connector</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="o">**</span><span class="n">db_config</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="nf">cursor</span><span class="p">()</span>
+
+<span class="c1"># 2. 테이블 생성 (이미 존재하면 삭제 후 생성)
+</span><span class="n">cursor</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="sh">"</span><span class="s">DROP TABLE IF EXISTS growth_marketing;</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">cursor</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="sh">"""</span><span class="s">
+CREATE TABLE growth_marketing (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    channel VARCHAR(50),
+    budget INT,
+    impressions INT,
+    clicks INT,
+    conversions INT,
+    start_date DATE DEFAULT CURRENT_DATE
+);
+</span><span class="sh">"""</span><span class="p">)</span>
+
+<span class="c1"># 3. 샘플 데이터 생성 (pandas DataFrame 활용)
+</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">channel</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">Google Ads</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Facebook Ads</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Instagram Ads</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">budget</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">8000000</span><span class="p">,</span> <span class="mi">7000000</span><span class="p">,</span> <span class="mi">6500000</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">impressions</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">300000</span><span class="p">,</span> <span class="mi">250000</span><span class="p">,</span> <span class="mi">230000</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">clicks</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">18000</span><span class="p">,</span> <span class="mi">17000</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">conversions</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">3400</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">start_date</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">2024-06-01</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2024-07-01</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2024-08-01</span><span class="sh">"</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># 4. 데이터 삽입
+</span><span class="n">insert_query</span> <span class="o">=</span> <span class="sh">"</span><span class="s">INSERT INTO growth_marketing (channel, budget, impressions, clicks, conversions, start_date) VALUES (%s, %s, %s, %s, %s, %s)</span><span class="sh">"</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nf">tuple</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">.</span><span class="nf">to_numpy</span><span class="p">()]</span>
+
+<span class="n">cursor</span><span class="p">.</span><span class="nf">executemany</span><span class="p">(</span><span class="n">insert_query</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">데이터 삽입 완료</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 5. 데이터 조회 및 pandas DataFrame으로 변환
+</span><span class="n">cursor</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="sh">"</span><span class="s">SELECT * FROM growth_marketing</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="p">.</span><span class="nf">fetchall</span><span class="p">()</span>
+
+<span class="c1"># 컬럼명 가져오기
+</span><span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">desc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">.</span><span class="n">description</span><span class="p">]</span>
+<span class="n">df_result</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">column_names</span><span class="p">)</span>
+
+<span class="c1"># 6. 결과 출력 (pandas 기본 출력 방식 사용)
+</span><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">=== Growth Marketing Table Data ===</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">df_result</span><span class="p">.</span><span class="nf">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>  <span class="c1"># 인덱스 없이 출력
+</span>
+<span class="c1"># CSV로 저장 (필요한 경우)
+</span><span class="n">df_result</span><span class="p">.</span><span class="nf">to_csv</span><span class="p">(</span><span class="sh">"</span><span class="s">growth_marketing_data.csv</span><span class="sh">"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="sh">"</span><span class="s">utf-8</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">데이터를 </span><span class="sh">'</span><span class="s">growth_marketing_data.csv</span><span class="sh">'</span><span class="s"> 파일로 저장하였습니다.</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 연결 종료
+</span><span class="n">cursor</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+<span class="n">conn</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>FTP 원격 사이트에 ‘main2_0213.py’ 넣기<br />
+<img src="https://github.com/user-attachments/assets/5fa7351f-5aef-4095-8355-faaa0b2064f7" alt="Image" /><br />
+<img src="https://github.com/user-attachments/assets/f4f8b835-63bf-4f77-87ae-018630288ba0" alt="Image" /></p>
+
+<p>FTP에서 ‘growth_marketing.csv’ 다운받기<br />
+<img src="https://github.com/user-attachments/assets/d8cf3064-bd70-4c7e-a13d-0260cfa5dfa6" alt="Image" /></p>
+
+<p>MariaDB에서 확인<br />
+<img src="https://github.com/user-attachments/assets/6645c415-d12c-463c-8583-1d52607e671b" alt="Image" /><br />
+<img src="https://github.com/user-attachments/assets/1a0454a5-d092-45b7-aa66-6dbd794a6367" alt="Image" /></p>

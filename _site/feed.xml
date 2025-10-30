@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>ZI's 공부 기록용 블로그</subtitle>
-  <updated>2025-07-22T13:51:43+09:00</updated>
+  <updated>2025-10-30T14:58:26+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,32 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[Project] Chatbot</title>
+    <link href="http://localhost:4000/posts/%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88-chatbot/" rel="alternate" type="text/html" title="[Project] Chatbot" />
+    <published>2025-10-27T23:00:00+09:00</published>
+  
+    <updated>2025-10-27T23:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88-chatbot/</id>
+    <content type="text/html" src="http://localhost:4000/posts/%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88-chatbot/" />
+    <author>
+      <name>ZI</name>
+    </author>
+
+  
+    
+    <category term="Growth Log" />
+    
+    <category term="P-Project" />
+    
+  
+
+  <summary>🤖Chatbot  “텍스트 → 의미 분석 → 답변 생성”     🎙️ 음성입력 (STT) ↓ 📄 텍스트 (“모나리자는 누가 그렸어?”) ↓ 🧠 자연어 처리 파이프라인 (LangChain) ├─ ① Intent 분석 (“작가 질문”) ├─ ② Entity 추출 (“모나리자”) ├─ ③ 지식 검색 (DB / 웹 검색) ├─ ④ 답변 생성 (LLM) ↓ 🗣️ TTS 변환 → 음성 출력      음성(Client) → 텍스트(App)     음성 녹음, 파일 생성   백엔드 API ‘/stt’   STT 모델 실행   텍스트 결과 반환   챗봇 로직 연동   챗봇  ① Intent(의도) 분석  user가 질문한 유형 분류     “누가 그렸나요?” → artist_info   “언제 만들어졌나요?” → ye...</summary>
+
+  </entry>
 
   
   <entry>
@@ -119,32 +145,6 @@
   
 
   <summary>📌프로젝트 최종 정리  LP 데모 영상 📽️</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>[멋사 사전알림 Project] 광고기획</title>
-    <link href="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B4%91%EA%B3%A0%EA%B8%B0%ED%9A%8D/" rel="alternate" type="text/html" title="[멋사 사전알림 Project] 광고기획" />
-    <published>2025-05-14T21:00:00+09:00</published>
-  
-    <updated>2025-06-04T21:23:06+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B4%91%EA%B3%A0%EA%B8%B0%ED%9A%8D/</id>
-    <content type="text/html" src="http://localhost:4000/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%EA%B4%91%EA%B3%A0%EA%B8%B0%ED%9A%8D/" />
-    <author>
-      <name>ZI</name>
-    </author>
-
-  
-    
-    <category term="GM" />
-    
-    <category term="Project" />
-    
-  
-
-  <summary>🎨광고 기획 디자인  광고 소재  1. 실무 중심 프로젝트    부트캠프 통한 스킬 up + 포트폴리오 완성   신뢰감 확보, 참여 유도   2. 직무 유형 테스트    관심 유도 및 부트캠프 매칭 연결   흥미 유발, 참여 유도   3. KDT 프로그램 강조    실시간 소통 + 온라인 강의 + 전액 무료   경쟁력 확보 및 진입 장벽 제거   4. 회원가입 혜택 제공    IT 취업 가이드북 + IT 강의 90% 할인 혜택   신규 리드젠 확보   5. 교육 성과 비교    A/B 대조되는 이미지   멋사 부트캠프를 수료한 취준생 모습 시각적 강조   6. 비전공자 밀착 케어    개발자로 성장 가능 어필   공감 자극, 불안 해소</summary>
 
   </entry>
 

@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/posts/%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88-chatbot/</loc>
+        
+        <lastmod>2025-10-27T23:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/posts/%EC%9E%90%EA%B2%A9%EC%A6%9D-AICE/</loc>
         
         <lastmod>2025-07-12T10:00:00+09:00</lastmod>

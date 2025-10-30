@@ -1,0 +1,155 @@
+<h1 id="고객-행동-패턴-분석-및-인사이트-도출"><strong>📊고객 행동 패턴 분석 및 인사이트 도출</strong></h1>
+
+<p>EDA(탐색적 데이터 분석, Exploratory Data Analysis)을 통해<br />
+<strong><em>고객의 행동 패턴을 시각적으로 분석하고 인사이트를 도출</em></strong>해 보겠다.</p>
+
+<h3 id="1-eda-활용한-그로스-마케팅-분석-시나리오"><strong>1. EDA 활용한 그로스 마케팅 분석 시나리오</strong></h3>
+
+<p>그로스 마케팅에서는 다양한 KPI(핵심 성과 지표) 분석을 해야 한다.</p>
+<h6 id="️-마케팅에서-중요한-5가지-분석-항목--그래프">⬇️ 마케팅에서 중요한 5가지 분석 항목 &amp; 그래프</h6>
+<p><img src="https://github.com/user-attachments/assets/c475b35d-3373-4025-a447-61314d89fb75" alt="Image" /></p>
+
+<h3 id="2-분석-시나리오"><strong>2. 분석 시나리오</strong></h3>
+
+<p><strong>시나리오 개요</strong><br />
+한 올라인 쇼핑몰에서 고객 데이터를 활용하여 그로스 마케팅 전략을 개선하고자 한다.<br />
+특히, <span style="background-color: #F7DDBE;">신규 고객의 행동 패턴을 파악하고 충성 고객을 분석하여 <strong>재구매율을 높이는 전략</strong>을 세우려 한다.</span></p>
+
+<h6 id="️-dataset-설명">⬇️ Dataset 설명</h6>
+<p><img src="https://github.com/user-attachments/assets/083cb002-e310-40c1-b770-1b0a41f341db" alt="Image" /></p>
+
+<h3 id="3-eda를-위한-시각화-코드"><strong>3. EDA를 위한 시각화 코드</strong></h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">koreanize</span><span class="o">-</span><span class="n">matplotlib</span>
+<span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="n">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="n">koreanize_matplotlib</span> <span class="c1"># 한글 깨짐 방지
+</span>
+<span class="c1"># 랜덤 시드 고정
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 데이터 크기 설정
+</span><span class="n">num_customers</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># 고객 데이터 생성
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span>
+    <span class="sh">"</span><span class="s">고객ID</span><span class="sh">"</span><span class="p">:</span> <span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_customers</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="sh">"</span><span class="s">신규고객여부</span><span class="sh">"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">num_customers</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]),</span>  <span class="c1"># 70% 기존, 30% 신규
+</span>    <span class="sh">"</span><span class="s">LTV</span><span class="sh">"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_customers</span><span class="p">),</span>  <span class="c1"># 고객 생애 가치(Lifetime Value)
+</span>    <span class="sh">"</span><span class="s">이탈여부</span><span class="sh">"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">num_customers</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]),</span>  <span class="c1"># 80% 유지, 20% 이탈
+</span>    <span class="sh">"</span><span class="s">광고채널</span><span class="sh">"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">([</span><span class="sh">"</span><span class="s">구글</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">페이스북</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">인스타그램</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">유튜브</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">블로그</span><span class="sh">"</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">num_customers</span><span class="p">),</span>
+    <span class="sh">"</span><span class="s">소득</span><span class="sh">"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">5000000</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1500000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_customers</span><span class="p">),</span>  <span class="c1"># 월 소득
+</span>    <span class="sh">"</span><span class="s">총구매금액</span><span class="sh">"</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">500000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_customers</span><span class="p">)</span>  <span class="c1"># 총 구매 금액
+</span><span class="p">})</span>
+
+<span class="c1"># 일부 데이터 정리
+</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">소득</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">abs</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">소득</span><span class="sh">"</span><span class="p">])</span>  <span class="c1"># 음수 방지
+</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">총구매금액</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">abs</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">총구매금액</span><span class="sh">"</span><span class="p">])</span>  <span class="c1"># 음수 방지
+</span>
+<span class="nf">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/7e8a8bf5-8714-4dd7-bcfd-ef0692901a8d" alt="Image" /></p>
+
+<h3 id="4-데이터-분석-및-그래프-시각화"><strong>4. 데이터 분석 및 그래프 시각화</strong></h3>
+
+<h4 id="1-신규-고객-vs-기존-고객-비율-분석-pie-chart"><span style="color:orange"><strong>1) 신규 고객 vs 기존 고객 비율 분석 (Pie Chart)</strong></span></h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">신규고객여부</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">().</span><span class="n">plot</span><span class="p">.</span><span class="nf">pie</span><span class="p">(</span><span class="n">autopct</span><span class="o">=</span><span class="sh">"</span><span class="s">%.1f%%</span><span class="sh">"</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">기존 고객</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">신규 고객</span><span class="sh">"</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">skyblue</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">lightcoral</span><span class="sh">"</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">신규 고객 vs 기존 고객 비율</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">""</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/683c7a11-1da4-4148-9767-a1e7d6db6abb" alt="Image" /></p>
+
+<h4 id="활용-인사이트"><strong>활용 인사이트</strong></h4>
+<ul>
+  <li>신규 고객이 차지하는 비율을 확인하고, <strong>고객 확보 전략</strong>을 개선하는 데 활용</li>
+</ul>
+
+<h4 id="2-고객별-ltv-분포-histogram"><span style="color:orange"><strong>2) 고객별 LTV 분포 (Histogram)</strong></span></h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="nf">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">LTV</span><span class="sh">"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">고객 생애 가치(LTV) 분포</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">LTV</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">고객 수</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/54030ae6-0750-41d6-8237-f1709b0f357a" alt="Image" /></p>
+
+<h4 id="활용-인사이트-1"><strong>활용 인사이트</strong></h4>
+<ul>
+  <li>LTV가 높은 고객에게 추가적인 마케팅 비용을 투자하여 <strong>VIP 고객을 확보</strong>할 수 있음</li>
+</ul>
+
+<h4 id="3-고객-이탈률-분석-box-plot"><span style="color:orange"><strong>3) 고객 이탈률 분석 (Box Plot)</strong></span></h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="nf">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">이탈여부</span><span class="sh">"</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">총구매금액</span><span class="sh">"</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="sh">"</span><span class="s">유지 고객</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">이탈 고객</span><span class="sh">"</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">이탈 고객 vs 유지 고객의 구매 금액 차이</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">이탈 여부</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">총 구매 금액</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/f8363995-785d-4701-82d0-d30df1940696" alt="Image" /></p>
+
+<h4 id="활용-인사이트-2"><strong>활용 인사이트</strong></h4>
+<ul>
+  <li>이탈 고객이 평균적으로 구매액이 낮다면 <strong>이탈을 방지하기 위한 리텐션 마케팅</strong>이 필요</li>
+</ul>
+
+<h4 id="4-광고-채널별-전환율-비교-bar-chart"><span style="color:orange"><strong>4) 광고 채널별 전환율 비교 (Bar Chart)</strong></span></h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="nf">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">광고채널</span><span class="sh">"</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">총구매금액</span><span class="sh">"</span><span class="p">],</span> <span class="n">estimator</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">광고 채널별 평균 구매 금액</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">광고 채널</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">평균 구매 금액</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/98731164-a750-446f-8bb3-3bd9204c3758" alt="Image" /></p>
+
+<h4 id="활용-인사이트-3"><strong>활용 인사이트</strong></h4>
+<ul>
+  <li>광고 채널 중 <strong>전환율이 높은 채널</strong>을 집중적으로 활용하여 광고 ROI를 최적화</li>
+</ul>
+
+<h4 id="5-소득-vs-구매-금액-관계-분석-scatter-plot"><span style="color:orange"><strong>5) 소득 vs 구매 금액 관계 분석 (Scatter Plot)</strong></span></h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="nf">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">소득</span><span class="sh">"</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="sh">"</span><span class="s">총구매금액</span><span class="sh">"</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">소득 vs 총 구매 금액 관계</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">소득</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">총 구매 금액</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/0db8787a-0403-4cda-8e16-1bab2e3de249" alt="Image" /></p>
+
+<h4 id="활용-인사이트-4"><strong>활용 인사이트</strong></h4>
+<ul>
+  <li>소득이 높은 고객이 실제로 더 많이 구매하는지 분석하여 <strong>타겟팅 전략</strong>을 개선</li>
+</ul>
+
+<hr />
+
+<h3 id="분석을-통한-전략-수립"><strong>분석을 통한 전략 수립</strong></h3>
+
+<blockquote>
+  <ol>
+    <li><strong>신규 고객 유입이 적음</strong> → 신규 고객 확보를 위한 프로모션 강화</li>
+    <li><strong>LTV 높은 고객</strong> → VIP 고객 대상으로 로열티 프로그램 운영</li>
+    <li><strong>이탈 고객이 적은 구매액</strong> → 맞춤형 할인 및 재구매 유도 캠페인 진행</li>
+    <li><strong>광고 채널별 성과 분석</strong>  → 효율이 높은 광고 채널에 집중 투자</li>
+    <li><strong>소득과 구매 금액 간 관계 분석</strong> → 특정 고객층을 타겟팅하는 전략 수립</li>
+  </ol>
+</blockquote>

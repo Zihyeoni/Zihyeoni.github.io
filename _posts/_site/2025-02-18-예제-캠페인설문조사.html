@@ -1,0 +1,228 @@
+<h1 id="그로스-마케팅-캠페인별-설문조사"><strong>📋그로스 마케팅 캠페인별 설문조사</strong></h1>
+
+<p><img src="https://github.com/user-attachments/assets/b3b6c93c-94ac-48fb-a39f-22116d9e03c5" alt="Image" /></p>
+
+<h4 id="1-설문조사-응답-데이터를-하드코딩하여-csv-파일로-저장">1. 설문조사 응답 데이터를 하드코딩하여 CSV 파일로 저장</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># 설문조사 데이터 생성 (하드코딩된 응답 포함)
+</span><span class="n">survey_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span>
+    <span class="sh">"</span><span class="s">캠페인명</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">SNS 광고</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">유튜브 광고</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">이메일 마케팅</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">인플루언서 협업</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">검색 광고</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">연령대</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">20대</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">30대</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">40대</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">20대</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">50대</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">성별</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">남성</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">여성</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">여성</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">남성</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">남성</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">광고_시청</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">예</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">예</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">아니오</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">예</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">예</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">광고_채널</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">인스타그램</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">유튜브</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">없음</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">페이스북</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">구글 검색</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">광고_영향</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">제품_만족도</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">재구매_의향</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">예</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">예</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">아니오</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">예</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">아니오</span><span class="sh">"</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># CSV 파일로 저장
+</span><span class="n">csv_filename</span> <span class="o">=</span> <span class="sh">"</span><span class="s">growth_marketing_survey.csv</span><span class="sh">"</span>
+<span class="n">survey_data</span><span class="p">.</span><span class="nf">to_csv</span><span class="p">(</span><span class="n">csv_filename</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="sh">'</span><span class="s">utf-8-sig</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="2-csv-파일을-로드하여-데이터-분석">2. CSV 파일을 로드하여 데이터 분석</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 저장된 CSV 파일 불러오기
+</span><span class="n">loaded_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">read_csv</span><span class="p">(</span><span class="n">csv_filename</span><span class="p">)</span>
+
+<span class="c1"># 데이터 개요 출력
+</span><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">데이터 개요:</span><span class="se">\n</span><span class="sh">"</span><span class="p">,</span> <span class="n">loaded_data</span><span class="p">.</span><span class="nf">info</span><span class="p">())</span>
+
+<span class="c1"># 광고 시청 여부별 응답자 수 확인
+</span><span class="n">ad_view_counts</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">[</span><span class="sh">"</span><span class="s">광고_시청</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">광고 시청 여부 분포:</span><span class="se">\n</span><span class="sh">"</span><span class="p">,</span> <span class="n">ad_view_counts</span><span class="p">)</span>
+
+<span class="c1"># 광고 채널별 응답자 수 확인
+</span><span class="n">ad_channel_counts</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">[</span><span class="sh">"</span><span class="s">광고_채널</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">광고 채널별 분포:</span><span class="se">\n</span><span class="sh">"</span><span class="p">,</span> <span class="n">ad_channel_counts</span><span class="p">)</span>
+
+<span class="c1"># 제품 만족도 평균 값 계산
+</span><span class="n">avg_satisfaction</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">[</span><span class="sh">"</span><span class="s">제품_만족도</span><span class="sh">"</span><span class="p">].</span><span class="nf">mean</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">제품 만족도 평균 값:</span><span class="sh">"</span><span class="p">,</span> <span class="n">avg_satisfaction</span><span class="p">)</span>
+
+<span class="c1"># 광고 영향도와 제품 만족도의 상관관계 확인
+</span><span class="n">correlation</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">[[</span><span class="sh">"</span><span class="s">광고_영향</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">제품_만족도</span><span class="sh">"</span><span class="p">]].</span><span class="nf">corr</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">광고 영향도와 제품 만족도의 상관관계:</span><span class="se">\n</span><span class="sh">"</span><span class="p">,</span> <span class="n">correlation</span><span class="p">)</span>
+
+<span class="c1"># 캠페인별 광고 영향도 평균 계산
+</span><span class="n">campaign_impact</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">.</span><span class="nf">groupby</span><span class="p">(</span><span class="sh">"</span><span class="s">캠페인명</span><span class="sh">"</span><span class="p">)[</span><span class="sh">"</span><span class="s">광고_영향</span><span class="sh">"</span><span class="p">].</span><span class="nf">mean</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">캠페인별 광고 영향도 평균:</span><span class="se">\n</span><span class="sh">"</span><span class="p">,</span> <span class="n">campaign_impact</span><span class="p">)</span>
+
+<span class="c1"># 캠페인별 제품 만족도 평균 계산
+</span><span class="n">campaign_satisfaction</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">.</span><span class="nf">groupby</span><span class="p">(</span><span class="sh">"</span><span class="s">캠페인명</span><span class="sh">"</span><span class="p">)[</span><span class="sh">"</span><span class="s">제품_만족도</span><span class="sh">"</span><span class="p">].</span><span class="nf">mean</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">캠페인별 제품 만족도 평균:</span><span class="se">\n</span><span class="sh">"</span><span class="p">,</span> <span class="n">campaign_satisfaction</span><span class="p">)</span>
+
+<span class="c1"># 재구매 의향 비율 계산
+</span><span class="n">repurchase_rate</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">[</span><span class="sh">"</span><span class="s">재구매_의향</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">재구매 의향 비율(%):</span><span class="se">\n</span><span class="sh">"</span><span class="p">,</span> <span class="n">repurchase_rate</span><span class="p">)</span>
+
+<span class="c1"># 광고 영향도 평균값
+</span><span class="n">avg_ad_influence</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">[</span><span class="sh">"</span><span class="s">광고_영향</span><span class="sh">"</span><span class="p">].</span><span class="nf">mean</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">광고 영향도 평균 값:</span><span class="sh">"</span><span class="p">,</span> <span class="n">avg_ad_influence</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/16534153-0d90-4369-bea8-9f8f4692be67" alt="Image" /></p>
+
+<p><img src="https://github.com/user-attachments/assets/014dd1d1-91af-45b9-9bff-bf760ef9f9d3" alt="Image" /></p>
+
+<h4 id="3-데이터-시각화">3. 데이터 시각화</h4>
+
+<p><span style="background-color: #F7DDBE;"><strong>광고 시청 여부 비교</strong></span></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="n">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+
+<span class="c1"># 광고 시청 여부별 응답자 수 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ad_view_counts</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="sh">'</span><span class="s">bar</span><span class="sh">'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">orange</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Ad Viewing Distribution</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Ad Viewed</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Number of Respondents</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/3f9b8f6a-c2f4-4382-9d0d-8d6e087a34a7" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;"><strong>각 광고 채널별 응답자 수 비교</strong></span></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 광고 채널별 응답자 수 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ad_channel_counts</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="sh">'</span><span class="s">bar</span><span class="sh">'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">green</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">purple</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">orange</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Ad Channel Distribution</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Ad Channel</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Number of Respondents</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/bdba1b19-e91e-4fa3-9de3-a31223c734eb" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;"><strong>응답자들의 평균 만족도 확인</strong></span></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 제품 만족도 평균값 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">([</span><span class="sh">"</span><span class="s">Average Product Satisfaction</span><span class="sh">"</span><span class="p">],</span> <span class="p">[</span><span class="n">avg_satisfaction</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">cyan</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Average Product Satisfaction Score</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Satisfaction Score</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/5a72ca04-e28f-41c3-be9b-0f0f19c26213" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;"><strong>상관관계 히트맵 시각화</strong></span></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 광고 영향도와 제품 만족도의 상관관계 히트맵 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="nf">heatmap</span><span class="p">(</span><span class="n">correlation</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sh">"</span><span class="s">Blues</span><span class="sh">"</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="sh">"</span><span class="s">.2f</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Correlation: Ad Influence vs. Product Satisfaction</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/056cf66d-129d-4046-8f72-79720e5b72e9" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;"><strong>캠페인별 광고 영향 비교</strong></span></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 캠페인별 광고 영향도 평균 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">campaign_impact</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="sh">'</span><span class="s">bar</span><span class="sh">'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">skyblue</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Average Ad Influence by Campaign</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Campaign Name</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Average Ad Influence Score</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/05aa34db-f58a-4b0a-8f07-1b4070eb3069" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;"><strong>캠페인별 만족도 비교</strong></span></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 캠페인별 제품 만족도 평균 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">campaign_satisfaction</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="sh">'</span><span class="s">bar</span><span class="sh">'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">lightcoral</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Average Product Satisfaction by Campaign</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Campaign Name</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Average Satisfaction Score</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/3fb33554-0b53-4234-8673-76eb99756c95" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;"><strong>재구매 여부</strong></span></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 재구매 의향 비율 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">repurchase_rate</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="sh">'</span><span class="s">pie</span><span class="sh">'</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="sh">'</span><span class="s">%1.1f%%</span><span class="sh">'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">lightblue</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">salmon</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Repurchase Intention Rate</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">""</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/ef44da5b-a781-4aa3-9f07-65319f81beed" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;"><strong>전체 광고 영향도 평균 확인</strong></span></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 광고 영향도 평균값 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">([</span><span class="sh">"</span><span class="s">Average Ad Influence</span><span class="sh">"</span><span class="p">],</span> <span class="p">[</span><span class="n">avg_ad_influence</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">gold</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Average Ad Influence Score</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Ad Influence Score</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://github.com/user-attachments/assets/1ebec7d7-0de4-4489-9541-834dca4d489e" alt="Image" /></p>
+
+<hr />
+
+<h3 id="분석-결과-해석"><strong>분석 결과 해석</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>분석 내용</th>
+      <th>결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>광고 시청 여부</strong></td>
+      <td>광고를 본 응답자가 많지만, 일부 응답자는 광고를 보지 않음</td>
+    </tr>
+    <tr>
+      <td><strong>광고 채널별 효과</strong></td>
+      <td>인스타그램과 유튜브에서 광고를 본 응답자가 많음</td>
+    </tr>
+    <tr>
+      <td><strong>제품 만족도 평균</strong></td>
+      <td>3.8점으로 중간 이상의 만족도를 보임</td>
+    </tr>
+    <tr>
+      <td><strong>광고 영향도 &amp; 제품 만족도 상관관계</strong></td>
+      <td>0.57로 긍정적인 연관성 있음</td>
+    </tr>
+    <tr>
+      <td><strong>캠페인별 광고 영향도</strong></td>
+      <td>SNS 광고(5점), 유튜브 광고(4점)에서 광고 영향도 가장 높음</td>
+    </tr>
+    <tr>
+      <td><strong>캠페인별 제품 만족도</strong></td>
+      <td>유튜브 광고(5점), 인플루언서 협업(5점)에서 가장 높음</td>
+    </tr>
+    <tr>
+      <td><strong>재구매 의향</strong></td>
+      <td>60%가 제품을 다시 구매할 의향이 있음</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><strong>SNS 광고 및 유튜브 광고의 광고 영향도 높음</strong> → 향후 광고 예산을 집중 투자 가능</li>
+  <li><strong>제품 만족도 &amp; 광고 영향도 상관관계 존재</strong> → 광고를 효과적으로 진행하면 만족도가 증가할 가능성 높음</li>
+  <li><strong>재구매 의향이 높은 고객 비율 60%</strong> → 고객 유지 전략을 강화하면 장기적인 성장 가능</li>
+</ul>
+
+<h3 id="활용-방안"><strong>활용 방안</strong></h3>
+
+<ul>
+  <li><strong>가장 효과적인 광고 채널 강화</strong>: SNS 및 유튜브 광고 집중 운영</li>
+  <li><strong>광고 노출 후 제품 경험 연결 강화</strong>: 무료 샘플 제공, 트라이얼 서비스 추가</li>
+  <li><strong>고객 리텐션 프로그램 운영</strong>: 재구매 의향이 높은 고객을 대상으로 멤버십, 할인 프로모션 제공</li>
+</ul>

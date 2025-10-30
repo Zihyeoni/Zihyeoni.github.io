@@ -1,0 +1,456 @@
+<h1 id="통계-분석-예제"><strong>📊통계 분석 예제</strong></h1>
+
+<h3 id="1-ab-테스트-t-검정-활용"><strong>1. A/B 테스트 (T-검정 활용)</strong></h3>
+
+<p><strong>시나리오</strong></p>
+<ul>
+  <li>이메일 마케팅 캠페인에서 제목을 다르게 설정하여 두 그룹(A/B)으로 테스트</li>
+  <li>A 그룹(기존 제목)과 B 그룹(새로운 제목)에서 이메일을 연 클릭률(CTR)을 비교하여 어떤 제목이 더 효과적인지 확인</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="n">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># A/B 테스트 데이터 (CTR %)
+</span><span class="n">group_A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>  <span class="c1"># 기존 제목
+</span><span class="n">group_B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>  <span class="c1"># 새로운 제목
+</span>
+<span class="c1"># 독립표본 T-검정 수행
+</span><span class="n">t_stat</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="p">.</span><span class="nf">ttest_ind</span><span class="p">(</span><span class="n">group_A</span><span class="p">,</span> <span class="n">group_B</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">T-검정 통계량: </span><span class="si">{</span><span class="n">t_stat</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">P-값: </span><span class="si">{</span><span class="n">p_value</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">귀무가설 기각: 새로운 제목(B)이 기존 제목(A)보다 유의미하게 CTR이 높음</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">귀무가설 채택: 두 제목 간 CTR 차이가 없음</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0221/1.png" alt="Image" /></p>
+
+<hr />
+
+<h3 id="2-고객-유지율-분석-카이제곱-검정-활용"><strong>2. 고객 유지율 분석 (카이제곱 검정 활용)</strong></h3>
+
+<p><strong>시나리오</strong></p>
+<ul>
+  <li>신규 고객 중 30일 후에도 서비스를 사용하는 고객 &amp; 그렇지 않은 고객 분석</li>
+  <li>가입한 고객 중에서 지속 사용 여부가 광고 유형에 따라 차이가 있는지 검증</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">scipy.stats</span> <span class="k">as</span> <span class="n">stats</span>
+
+<span class="c1"># 광고 유형별 고객 유지 여부 (예: 유지(Yes), 이탈(No))
+# [유지, 이탈]
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>  <span class="c1"># 광고 A
+</span>                 <span class="p">[</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">],</span>  <span class="c1"># 광고 B
+</span>                 <span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">350</span><span class="p">]])</span> <span class="c1"># 광고 C
+</span>
+<span class="c1"># 카이제곱 검정 수행
+</span><span class="n">chi2</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="p">.</span><span class="nf">chi2_contingency</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">카이제곱 검정 통계량: </span><span class="si">{</span><span class="n">chi2</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">p-값: </span><span class="si">{</span><span class="n">p_value</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+  <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">귀무가설 기각: 광고 유형에 따라 고객 유지율이 다름</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">귀무가설 채택: 광고 유형과 고객 유지율 간 유의미한 차이가 없음</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0221/2.png" alt="Image" /></p>
+
+<blockquote>
+  <p><img src="https://Zihyeoni.github.io/assets/img/0221/2-2.png" alt="Image" /></p>
+</blockquote>
+
+<hr />
+
+<h3 id="3-광고-roi-예측-회귀-분석-활용"><strong>3. 광고 ROI 예측 (회귀 분석 활용)</strong></h3>
+
+<p><strong>시나리오</strong></p>
+<ul>
+  <li>광고비 지출에 따라 웹사이트 방문자 수가 증가하는 패턴 분석</li>
+  <li>선형 회귀 분석을 사용하여 광고비가 방문자 수에 미치는 영향 예측</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">koreanize</span><span class="o">-</span><span class="n">matplotlib</span>
+<span class="kn">import</span> <span class="n">koreanize_matplotlib</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="n">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># 광고비(x)와 방문자 수(y) 데이터 (단위: 만원)
+</span><span class="n">ad_spend</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">visitors</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">280</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">620</span><span class="p">,</span> <span class="mi">700</span><span class="p">])</span>
+
+<span class="c1"># 선형 회귀 모델 생성 및 학습
+</span><span class="n">model</span> <span class="o">=</span> <span class="nc">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">ad_spend</span><span class="p">,</span> <span class="n">visitors</span><span class="p">)</span>
+
+<span class="c1"># 예측 수행
+</span><span class="n">predicted_visitors</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">ad_spend</span><span class="p">)</span>
+
+<span class="c1"># 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">ad_spend</span><span class="p">,</span> <span class="n">visitors</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Actual Data</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">ad_spend</span><span class="p">,</span> <span class="n">predicted_visitors</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Regression Line</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">Ad Spend (만원)</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">Visitors</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">광고비와 방문자 수의 관계</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">회귀 계수 (광고비 영향): </span><span class="si">{</span><span class="n">model</span><span class="p">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">절편: </span><span class="si">{</span><span class="n">model</span><span class="p">.</span><span class="n">intercept_</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0221/3-1.png" alt="Image" /><br />
+<img src="https://Zihyeoni.github.io/assets/img/0221/3-2.png" alt="Image" /></p>
+
+<h4 id="1-광고비--매출-관계-분석"><strong>1) 광고비 &amp; 매출 관계 분석</strong></h4>
+
+<p><strong>시나리오</strong></p>
+<blockquote>
+  <p>한 회사는 광고비가 매출에 미치는 영향을 분석하고자 한다.<br />
+아래 데이터를 사용하여 다중 회귀 분석을 수행할 것이다.<br />
+<img src="https://Zihyeoni.github.io/assets/img/0221/4-1.png" alt="Image" /></p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="n">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># 광고비(x)와 매출(y) 데이터 (단위: 만원)
+</span><span class="n">sns_ad</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">search_ad</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">banner_ad</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sales</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">180</span><span class="p">])</span>
+
+<span class="c1"># 각 광고 유형별 단순 선형 회귀 모델 학습
+</span><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">SNS 광고비</span><span class="sh">"</span><span class="p">:</span> <span class="nc">LinearRegression</span><span class="p">(),</span>
+    <span class="sh">"</span><span class="s">검색 광고비</span><span class="sh">"</span><span class="p">:</span> <span class="nc">LinearRegression</span><span class="p">(),</span>
+    <span class="sh">"</span><span class="s">배너 광고비</span><span class="sh">"</span><span class="p">:</span> <span class="nc">LinearRegression</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">ads</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">SNS 광고비</span><span class="sh">"</span><span class="p">:</span> <span class="n">sns_ad</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">검색 광고비</span><span class="sh">"</span><span class="p">:</span> <span class="n">search_ad</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">배너 광고비</span><span class="sh">"</span><span class="p">:</span> <span class="n">banner_ad</span>
+<span class="p">}</span>
+
+<span class="c1"># 모델 학습
+</span><span class="n">coefficients</span> <span class="o">=</span><span class="p">{}</span>
+<span class="n">intercepts</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">ad_type</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+  <span class="n">model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">ads</span><span class="p">[</span><span class="n">ad_type</span><span class="p">],</span> <span class="n">sales</span><span class="p">)</span> <span class="c1"># 학습
+</span>  <span class="n">coefficients</span><span class="p">[</span><span class="n">ad_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">intercepts</span><span class="p">[</span><span class="n">ad_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">intercept_</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">기울기: </span><span class="si">{</span><span class="n">coefficients</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">절편: </span><span class="si">{</span><span class="n">intercepts</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 광고비 설정
+</span><span class="n">sns_budget</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">search_budget</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">banner_budget</span> <span class="o">=</span> <span class="mi">13</span>
+
+<span class="c1"># 매출 예측
+</span><span class="n">sns_sales</span> <span class="o">=</span> <span class="n">coefficients</span><span class="p">[</span><span class="sh">"</span><span class="s">SNS 광고비</span><span class="sh">"</span><span class="p">]</span> <span class="o">*</span> <span class="n">sns_budget</span> <span class="o">+</span> <span class="n">intercepts</span><span class="p">[</span><span class="sh">"</span><span class="s">SNS 광고비</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">search_sales</span> <span class="o">=</span> <span class="n">coefficients</span><span class="p">[</span><span class="sh">"</span><span class="s">검색 광고비</span><span class="sh">"</span><span class="p">]</span> <span class="o">*</span> <span class="n">search_budget</span> <span class="o">+</span> <span class="n">intercepts</span><span class="p">[</span><span class="sh">"</span><span class="s">검색 광고비</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">banner_sales</span> <span class="o">=</span> <span class="n">coefficients</span><span class="p">[</span><span class="sh">"</span><span class="s">배너 광고비</span><span class="sh">"</span><span class="p">]</span> <span class="o">*</span> <span class="n">banner_budget</span> <span class="o">+</span> <span class="n">intercepts</span><span class="p">[</span><span class="sh">"</span><span class="s">배너 광고비</span><span class="sh">"</span><span class="p">]</span>
+
+<span class="c1"># 최종 매출 평균값으로 계산
+</span><span class="n">predicted_sales</span> <span class="o">=</span> <span class="p">(</span><span class="n">sns_sales</span> <span class="o">+</span> <span class="n">search_sales</span> <span class="o">+</span> <span class="n">banner_sales</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
+
+<span class="c1"># 예측 결과 출력
+</span><span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">광고비 설정: SNS=</span><span class="si">{</span><span class="n">sns_budget</span><span class="si">}</span><span class="s">만원, 검색=</span><span class="si">{</span><span class="n">search_budget</span><span class="si">}</span><span class="s">만원, 배너=</span><span class="si">{</span><span class="n">banner_budget</span><span class="si">}</span><span class="s">만원</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">예상 평균 매출액: </span><span class="si">{</span><span class="n">predicted_sales</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s"> 만원</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">SNS 광고비 : </span><span class="si">{</span><span class="n">sns_sales</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">검색 광고비 : </span><span class="si">{</span><span class="n">search_sales</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">배너 광고비 : </span><span class="si">{</span><span class="n">banner_sales</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0221/4-2.png" alt="Image" /></p>
+
+<p><strong>질문</strong></p>
+<ol>
+  <li>광고 유형별 영향력이 가장 큰 변수는?
+    <ul>
+      <li>배너 광고 (coefficient(기울기)가 가장 크므로 투자 대비 매출이 가장 높음)</li>
+    </ul>
+  </li>
+  <li>광고비를 증가시키면 매출은?
+    <ul>
+      <li>광고비를 증가시키면 매출도 증가 (선형 회귀 모델에 따라 기울기 모두 양수)</li>
+    </ul>
+  </li>
+  <li>광고비 투자 최적화 전략 제안
+    <ul>
+      <li>영향력이 가장 큰 배너 광고에 집중 투자하여 매출 증가 기대</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="2-웹사이트-방문--구매-금액-관계-분석"><strong>2) 웹사이트 방문 &amp; 구매 금액 관계 분석</strong></h4>
+
+<p><strong>시나리오</strong></p>
+<blockquote>
+  <p>한 이커머스 사이트에서 고객의 행동이 구매 금액에 미치는 영향을 분석하고자 한다.<br />
+<img src="https://Zihyeoni.github.io/assets/img/0221/5-1.png" alt="Image" /></p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="n">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># 웹사이트 방문(x)과 구매 금액(y) 데이터 (단위: 만원)
+</span><span class="n">visit</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">stay</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">150</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">add</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">purchase_amount</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+
+<span class="c1"># 각 광고 유형별 단순 선형 회귀 모델 학습
+</span><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">방문 횟수</span><span class="sh">"</span><span class="p">:</span> <span class="nc">LinearRegression</span><span class="p">(),</span>
+    <span class="sh">"</span><span class="s">체류 시간</span><span class="sh">"</span><span class="p">:</span> <span class="nc">LinearRegression</span><span class="p">(),</span>
+    <span class="sh">"</span><span class="s">장바구니 추가 횟수</span><span class="sh">"</span><span class="p">:</span> <span class="nc">LinearRegression</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">sites</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">방문 횟수</span><span class="sh">"</span><span class="p">:</span> <span class="n">visit</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">체류 시간</span><span class="sh">"</span><span class="p">:</span> <span class="n">stay</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">장바구니 추가 횟수</span><span class="sh">"</span><span class="p">:</span> <span class="n">add</span>
+<span class="p">}</span>
+
+<span class="c1"># 모델 학습
+</span><span class="n">coefficients</span> <span class="o">=</span><span class="p">{}</span>
+<span class="n">intercepts</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">site</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+  <span class="n">model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">sites</span><span class="p">[</span><span class="n">site</span><span class="p">],</span> <span class="n">purchase_amount</span><span class="p">)</span> <span class="c1"># 학습
+</span>  <span class="n">coefficients</span><span class="p">[</span><span class="n">site</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">intercepts</span><span class="p">[</span><span class="n">site</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">intercept_</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">기울기: </span><span class="si">{</span><span class="n">coefficients</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">절편: </span><span class="si">{</span><span class="n">intercepts</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 예측
+</span><span class="n">predicted_visit</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">visit</span><span class="p">)</span>
+<span class="n">predicted_stay</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">stay</span><span class="p">)</span>
+<span class="n">predicted_add</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
+
+<span class="c1"># 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">visit</span><span class="p">,</span> <span class="n">purchase_amount</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Actual Data</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">visit</span><span class="p">,</span> <span class="n">predicted_visit</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Regression Line</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">방문 횟수</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">구매 금액 (만원)</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">방문 횟수와 구매 금액의 관계</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">stay</span><span class="p">,</span> <span class="n">purchase_amount</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Actual Data</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">stay</span><span class="p">,</span> <span class="n">predicted_stay</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Regression Line</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">체류 시간(초)</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">구매 금액 (만원)</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">체류 시간과 구매 금액의 관계</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">purchase_amount</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Actual Data</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">predicted_add</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Regression Line</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">장바구니 추가 횟수</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">구매 금액 (만원)</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">장바구니 추가 횟수와 구매 금액의 관계</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0221/5-2.png" alt="Image" /></p>
+
+<p><img src="https://Zihyeoni.github.io/assets/img/0221/5-3.png" alt="Image" /></p>
+
+<p><strong>질문</strong></p>
+<ol>
+  <li>방문 횟수와 체류 시간 중 어느 변수가 더 중요?
+    <ul>
+      <li>방문 횟수(7.6)가 더 중요함 (회귀 계수(기울기)가 체류 시간(1.26)보다 더 높음)</li>
+    </ul>
+  </li>
+  <li>장바구니 추가 횟수가 구매 금액에 미치는 영향은 무엇인가?
+    <ul>
+      <li>장바구니 추가를 많이 할수록, 구매 금액이 높아짐 (양의 상관관계)</li>
+    </ul>
+  </li>
+  <li>고객 참여를 높이기 위한 마케팅 전략 제안
+    <ul>
+      <li>방문을 많이 할수록 할인 쿠폰, 혜택 프로모션 제공 (체류 시간보다 영향 크기 때문)</li>
+      <li>장바구니 추가 횟수가 중요한 영향을 미치므로 장바구니에 추가할 때마다 적용 가능한 할인 혜택 제공, 장바구니 추가 후 장기간 비구매 시 알림 발송 (“상품이 얼마 남지 않았습니다”, “오늘 구매 시 5000원 할인” 등)</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="3-앱-리뷰--평점--다운로드-수-관계-분석"><strong>3) 앱 리뷰 &amp; 평점 &amp; 다운로드 수 관계 분석</strong></h4>
+
+<p><strong>시나리오</strong></p>
+<blockquote>
+  <p>모바일 앱의 다운로드 수가 어떤 요인에 의해 영향을 받는지 분석하고자 한다.<br />
+<img src="https://Zihyeoni.github.io/assets/img/0221/6-1.png" alt="Image" /></p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="n">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># 모바일 앱(x)과 다운로드 수(y) 데이터 (단위: 만원)
+</span><span class="n">review</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">gpa</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">click</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">download</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">])</span>
+
+<span class="c1"># 각 모바일 앱의 단순 선형 회귀 모델 학습
+</span><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">리뷰수</span><span class="sh">"</span><span class="p">:</span> <span class="nc">LinearRegression</span><span class="p">(),</span>
+    <span class="sh">"</span><span class="s">평균평점</span><span class="sh">"</span><span class="p">:</span> <span class="nc">LinearRegression</span><span class="p">(),</span>
+    <span class="sh">"</span><span class="s">푸시알림 클릭횟수</span><span class="sh">"</span><span class="p">:</span> <span class="nc">LinearRegression</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">apps</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">리뷰수</span><span class="sh">"</span><span class="p">:</span><span class="n">review</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">평균평점</span><span class="sh">"</span><span class="p">:</span> <span class="n">gpa</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">푸시알림 클릭횟수</span><span class="sh">"</span><span class="p">:</span> <span class="n">click</span>
+<span class="p">}</span>
+
+<span class="c1"># 모델 학습
+</span><span class="n">coefficients</span> <span class="o">=</span><span class="p">{}</span>
+<span class="n">intercepts</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">app</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+  <span class="n">model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">apps</span><span class="p">[</span><span class="n">app</span><span class="p">],</span> <span class="n">download</span><span class="p">)</span> <span class="c1"># 학습
+</span>  <span class="n">coefficients</span><span class="p">[</span><span class="n">app</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">intercepts</span><span class="p">[</span><span class="n">app</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">intercept_</span>
+
+<span class="c1"># 예측
+</span><span class="n">predicted_review</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">review</span><span class="p">)</span>
+<span class="n">predicted_gpa</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">gpa</span><span class="p">)</span>
+<span class="n">predicted_click</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">click</span><span class="p">)</span>
+
+<span class="c1"># 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">review</span><span class="p">,</span> <span class="n">download</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Actual Data</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">review</span><span class="p">,</span> <span class="n">predicted_review</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Regression Line</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">리뷰 개수</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">다운로드 수</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">리뷰 개수와 다운로드 수의 관계</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">gpa</span><span class="p">,</span> <span class="n">download</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Actual Data</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">gpa</span><span class="p">,</span> <span class="n">predicted_gpa</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Regression Line</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">평균 평점</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">다운로드 수</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">평균 평점과 다운로드 수의 관계</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">click</span><span class="p">,</span> <span class="n">download</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Actual Data</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">click</span><span class="p">,</span> <span class="n">predicted_click</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Regression Line</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">푸시 알림 클릭 횟수</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">다운로드 수</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">푸시 알림 클릭 횟수와 다운로드 수의 관계</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+
+<span class="c1"># 데이터 설정
+</span><span class="n">review_data</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">gpa_data</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">click_data</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="c1"># 다운로드 수 예측
+</span><span class="n">review_download</span> <span class="o">=</span> <span class="n">coefficients</span><span class="p">[</span><span class="sh">"</span><span class="s">리뷰수</span><span class="sh">"</span><span class="p">]</span> <span class="o">*</span> <span class="n">review_data</span> <span class="o">+</span> <span class="n">intercepts</span><span class="p">[</span><span class="sh">"</span><span class="s">리뷰수</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">gpa_download</span> <span class="o">=</span> <span class="n">coefficients</span><span class="p">[</span><span class="sh">"</span><span class="s">평균평점</span><span class="sh">"</span><span class="p">]</span> <span class="o">*</span> <span class="n">gpa_data</span> <span class="o">+</span> <span class="n">intercepts</span><span class="p">[</span><span class="sh">"</span><span class="s">평균평점</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">click_download</span> <span class="o">=</span> <span class="n">coefficients</span><span class="p">[</span><span class="sh">"</span><span class="s">푸시알림 클릭횟수</span><span class="sh">"</span><span class="p">]</span> <span class="o">*</span> <span class="n">click_data</span> <span class="o">+</span> <span class="n">intercepts</span><span class="p">[</span><span class="sh">"</span><span class="s">푸시알림 클릭횟수</span><span class="sh">"</span><span class="p">]</span>
+
+<span class="c1"># 최종 다운로드 수 평균값으로 계산
+</span><span class="n">predicted_download</span> <span class="o">=</span> <span class="p">(</span><span class="n">review_download</span> <span class="o">+</span> <span class="n">gpa_download</span> <span class="o">+</span> <span class="n">click_download</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
+
+<span class="c1"># 예측 결과 출력
+</span><span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">기울기: </span><span class="si">{</span><span class="n">coefficients</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">절편: </span><span class="si">{</span><span class="n">intercepts</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">데이터 설정: SNS=</span><span class="si">{</span><span class="n">review_data</span><span class="si">}</span><span class="s">만원, 검색=</span><span class="si">{</span><span class="n">gpa_data</span><span class="si">}</span><span class="s">만원, 배너=</span><span class="si">{</span><span class="n">click_data</span><span class="si">}</span><span class="s">만원</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">예상 평균 다운로드 수: </span><span class="si">{</span><span class="n">predicted_download</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">리뷰 개수 : </span><span class="si">{</span><span class="n">review_download</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">평균 평점 : </span><span class="si">{</span><span class="n">gpa_download</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">푸시알림 클릭 횟수 : </span><span class="si">{</span><span class="n">click_download</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0221/6-3.png" alt="Image" /></p>
+
+<p><img src="https://Zihyeoni.github.io/assets/img/0221/6-2.png" alt="Image" /></p>
+
+<hr />
+
+<h3 id="4-고객-이탈-예측-로지스틱-회귀-활용"><strong>4. 고객 이탈 예측 (로지스틱 회귀 활용)</strong></h3>
+
+<p><strong>시나리오</strong></p>
+<ul>
+  <li>고객의 서비스 사용 데이터를 기반으로 이탈 가능성 예측</li>
+  <li>로지스틱 회귀를 사용하여 고객 유지(1) 또는 이탈(0) 여부 분석</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="n">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="c1"># 고객의 사용 기간(월)과 이탈 여부(1: 유지, 0: 이탈)
+</span><span class="n">usage_period</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">churn_status</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># 로지스틱 회귀 모델 생성 및 학습
+</span><span class="n">model</span> <span class="o">=</span> <span class="nc">LogisticRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">usage_period</span><span class="p">,</span> <span class="n">churn_status</span><span class="p">)</span>
+
+<span class="c1"># 예측 확률 계산
+</span><span class="n">predicted_probs</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict_proba</span><span class="p">(</span><span class="n">usage_period</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># 시각화
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">usage_period</span><span class="p">,</span> <span class="n">churn_status</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Actual Data</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">usage_period</span><span class="p">,</span> <span class="n">predicted_probs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Logistic Regression</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">Usage Period (Months)</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">고객 이탈 확률 예측</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">회귀 계수: </span><span class="si">{</span><span class="n">model</span><span class="p">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">절편: </span><span class="si">{</span><span class="n">model</span><span class="p">.</span><span class="n">intercept_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0221/7-1.png" alt="Image" /> 
+<img src="https://Zihyeoni.github.io/assets/img/0221/7-2.png" alt="Image" /></p>
+
+<hr />
+
+<h3 id="5-할인-캠페인-효과-분석-t-검정-활용"><strong>5. 할인 캠페인 효과 분석 (T-검정 활용)</strong></h3>
+
+<p><strong>시나리오</strong></p>
+<ul>
+  <li>특정 할인 프로모션을 받은 고객과 받지 않은 고객의 평균 구매 금액 차이 분석</li>
+  <li>두 그룹 간 평균 차이가 유의미한지 T-검정 수행</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># 할인 프로모션을 받은 그룹 (평균 구매 금액)
+</span><span class="n">discount_group</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
+<span class="c1"># 할인 프로모션을 받지 않은 그룹
+</span><span class="n">no_discount_group</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+
+<span class="c1"># 독립표본 T-검정 수행
+</span><span class="n">t_stat</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="p">.</span><span class="nf">ttest_ind</span><span class="p">(</span><span class="n">discount_group</span><span class="p">,</span> <span class="n">no_discount_group</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">T-검정 통계량: </span><span class="si">{</span><span class="n">t_stat</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">P-값: </span><span class="si">{</span><span class="n">p_value</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">귀무가설 기각: 할인 캠페인이 평균 구매 금액 증가에 유의미한 영향을 줌</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">귀무가설 채택: 할인 캠페인이 평균 구매 금액에 유의미한 차이를 만들지 않음</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0221/8.png" alt="Image" /></p>

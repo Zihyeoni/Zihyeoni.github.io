@@ -1,0 +1,225 @@
+<h1 id="greentech-기업-마케팅-성과-분석"><strong>GreenTech 기업 마케팅 성과 분석</strong></h1>
+
+<h3 id="시나리오-개요"><strong>📝시나리오 개요</strong></h3>
+
+<p>가상의 회사 “GreenTech”는 친환경 제품을 판매하는 기업으로, 최근 6개월 동안 온라인과 오프라인에서 다양한 마케팅 활동을 통해 매출 성장을 달성하였다. 본 보고서는 월별 매출 변화, 광고 유형별 효과, 고객 분석 및 리뷰 데이터를 기반으로 향후 마케팅 전략을 제안하고자 한다.</p>
+
+<h3 id="주요-목표"><strong>주요 목표</strong></h3>
+
+<ul>
+  <li>온라인 광고 (SNS, 검색 광고)를 활용한 브랜드 인지도 향상</li>
+  <li>오프라인 매장에서의 고객 유입 증가</li>
+  <li>고객 리뷰 및 피드백을 활용한 제품 개선</li>
+  <li>연령대 및 지역별 고객 분석을 통한 맞춤 마케팅 전략 수립</li>
+</ul>
+
+<h3 id="분석-항목"><strong>분석 항목</strong></h3>
+
+<p>최근 6개월간(2024년 8월 ~ 2025년 1월)의 데이터가 수집되었으며, 주요 분석 항목은 다음과 같다.</p>
+
+<ol>
+  <li>월별 매출 및 판매량 변화</li>
+  <li>광고 유형별 마케팅 비용 및 효과</li>
+  <li>고객 연령대 및 지역별 판매 트렌드</li>
+  <li>고객 리뷰 및 만족도 분석</li>
+  <li>재구매율 및 충성 고객 분석</li>
+</ol>
+
+<hr />
+
+<h3 id="데이터-및-시각화-코드"><strong>데이터 및 시각화 코드</strong></h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">koreanize</span><span class="o">-</span><span class="n">matplotlib</span>
+<span class="kn">import</span> <span class="n">koreanize_matplotlib</span>
+<span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="n">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<p><span style="background-color: #F7DDBE;">1) 월별 매출 및 판매량</span></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 월별 매출 및 판매량 데이터
+</span><span class="n">sales_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span>
+    <span class="sh">"</span><span class="s">월</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">2024-08</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2024-09</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2024-10</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2024-11</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2024-12</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2025-01</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">온라인 매출(만원)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">1350</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1650</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="mi">1950</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">오프라인 매출(만원)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">950</span><span class="p">,</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">1400</span><span class="p">,</span> <span class="mi">1550</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">총 판매량(개)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">380</span><span class="p">,</span> <span class="mi">420</span><span class="p">,</span> <span class="mi">460</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nf">display</span><span class="p">(</span><span class="n">sales_data</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/52e334d0-8647-43bf-a08a-4938e2d5ea5d" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="nf">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="sh">'</span><span class="s">월</span><span class="sh">'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="sh">'</span><span class="s">온라인 매출(만원)</span><span class="sh">'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sales_data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">온라인 매출</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="nf">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="sh">'</span><span class="s">월</span><span class="sh">'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="sh">'</span><span class="s">오프라인 매출(만원)</span><span class="sh">'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sales_data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">오프라인 매출</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">월별 매출 변화</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">월</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">온·오프라인 매출(만원)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/dd9b9107-3f70-49b5-9b2b-f7dab9df4a61" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="nf">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="sh">'</span><span class="s">월</span><span class="sh">'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="sh">'</span><span class="s">총 판매량(개)</span><span class="sh">'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sales_data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">lightsteelblue</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">월별 판매량 비교</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">월</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">총 판매량(개)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/8803b887-51c4-449f-9165-f34bff2bbfd9" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;">2) 광고 유형별 마케팅 비용 및 효과</span></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ad_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span>
+    <span class="sh">"</span><span class="s">광고 유형</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">SNS 광고</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">검색 광고</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">이메일 마케팅</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">오프라인 홍보</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">마케팅 비용(만원)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">600</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">클릭률(%)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.2</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">전환율(%)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.8</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nf">display</span><span class="p">(</span><span class="n">ad_data</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/058694a7-88a3-4cda-a784-797c302b2c08" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 마케팅 비용 및 성과 지표
+</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="p">.</span><span class="nf">add_subplot</span><span class="p">()</span>
+<span class="n">ax1</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">ad_data</span><span class="p">[</span><span class="sh">'</span><span class="s">광고 유형</span><span class="sh">'</span><span class="p">],</span> <span class="n">ad_data</span><span class="p">[</span><span class="sh">'</span><span class="s">마케팅 비용(만원)</span><span class="sh">'</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">lightpink</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">ax1</span><span class="p">.</span><span class="nf">set_xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">광고 유형</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">ax1</span><span class="p">.</span><span class="nf">set_ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">마케팅 비용(만원)</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="p">.</span><span class="nf">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">ad_data</span><span class="p">[</span><span class="sh">'</span><span class="s">광고 유형</span><span class="sh">'</span><span class="p">],</span> <span class="n">ad_data</span><span class="p">[</span><span class="sh">'</span><span class="s">클릭률(%)</span><span class="sh">'</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">steelblue</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">클릭률(%)</span><span class="sh">'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">o</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">ax2</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">ad_data</span><span class="p">[</span><span class="sh">'</span><span class="s">광고 유형</span><span class="sh">'</span><span class="p">],</span> <span class="n">ad_data</span><span class="p">[</span><span class="sh">'</span><span class="s">전환율(%)</span><span class="sh">'</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">orangered</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">전환율(%)</span><span class="sh">'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="sh">'</span><span class="s">o</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">ax2</span><span class="p">.</span><span class="nf">set_ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">성과 지표(%)</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">광고 유형별 마케팅 비용 및 성과 지표</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/a5712d5b-7afc-4b9a-82d9-05cfd11511a4" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 클릭률 vs 전환율
+</span><span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">ad_data</span><span class="p">[</span><span class="sh">'</span><span class="s">클릭률(%)</span><span class="sh">'</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">클릭률(%)</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="n">ad_data</span><span class="p">[</span><span class="sh">'</span><span class="s">전환율(%)</span><span class="sh">'</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">전환율(%)</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">광고 유형별 클릭률 vs 전환율</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">광고 유형</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">클릭률 vs 전환율</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">ad_data</span><span class="p">[</span><span class="sh">'</span><span class="s">광고 유형</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/22ab06fc-7774-4e5b-a76a-e4f5690a7c83" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;">3) 연령대 및 지역별 판매량</span></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">customer_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span>
+    <span class="sh">"</span><span class="s">연령대</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">20대</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">30대</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">40대</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">50대</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">서울 판매량(개)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">부산 판매량(개)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">80</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">대구 판매량(개)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">광주 판매량(개)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nf">display</span><span class="p">(</span><span class="n">customer_data</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/67a7bb47-0672-4f15-a403-7812c741628b" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">index</span><span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="n">customer_data</span><span class="p">[</span><span class="sh">'</span><span class="s">서울 판매량(개)</span><span class="sh">'</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">서울</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">customer_data</span><span class="p">[</span><span class="sh">'</span><span class="s">부산 판매량(개)</span><span class="sh">'</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">부산</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">customer_data</span><span class="p">[</span><span class="sh">'</span><span class="s">대구 판매량(개)</span><span class="sh">'</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">대구</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="n">w</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">customer_data</span><span class="p">[</span><span class="sh">'</span><span class="s">광주 판매량(개)</span><span class="sh">'</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">광주</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">연령대별 지역 판매량(개)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">연령대</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">지역별 판매량(개)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">customer_data</span><span class="p">[</span><span class="sh">'</span><span class="s">연령대</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/32a325dc-d85a-4bcd-91f6-1568265b70c8" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;">4) 고객 리뷰 및 만족도</span></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">review_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span>
+    <span class="sh">"</span><span class="s">평점</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">리뷰 수</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">주요 피드백</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">제품 품질 만족</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">가격 대비 우수</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">보통 만족</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">배송 지연</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">불량 제품</span><span class="sh">"</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nf">display</span><span class="p">(</span><span class="n">review_data</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/37386290-67fb-49b1-963b-94198db75218" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="nf">pie</span><span class="p">(</span><span class="n">review_data</span><span class="p">[</span><span class="sh">'</span><span class="s">리뷰 수</span><span class="sh">'</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">review_data</span><span class="p">[</span><span class="sh">'</span><span class="s">평점</span><span class="sh">'</span><span class="p">],</span><span class="n">autopct</span><span class="o">=</span><span class="sh">'</span><span class="s">%.1f%%</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">리뷰 평점 비율</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/bcdf4e7f-08cb-47b3-99d8-3c700f5221a0" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">palettes</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="nf">color_palette</span><span class="p">(</span><span class="sh">'</span><span class="s">Set2</span><span class="sh">'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="nf">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="sh">'</span><span class="s">주요 피드백</span><span class="sh">'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="sh">'</span><span class="s">리뷰 수</span><span class="sh">'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">review_data</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palettes</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">만족도 조사</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">주요 피드백</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">리뷰 수</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/d5bcd5a4-de3b-4996-94c4-4b51eb0d98d5" alt="Image" /></p>
+
+<p><span style="background-color: #F7DDBE;">5) 재구매율 및 충성 고객</span></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">loyalty_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span>
+    <span class="sh">"</span><span class="s">구매 횟수</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="sh">"</span><span class="s">1회</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2회</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">3회 이상</span><span class="sh">"</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">고객 수</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">150</span><span class="p">],</span>
+    <span class="sh">"</span><span class="s">비율(%)</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mf">31.3</span><span class="p">,</span> <span class="mf">18.7</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nf">display</span><span class="p">(</span><span class="n">loyalty_data</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/ff940d3c-0d3e-4c7b-831b-db49c8bdd1d8" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="nf">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="sh">'</span><span class="s">구매 횟수</span><span class="sh">'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="sh">'</span><span class="s">고객 수</span><span class="sh">'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">loyalty_data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">yellowgreen</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">구매 횟수별 고객 수</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">구매 횟수</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">고객 수</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/982ba4f9-c5ac-4c90-8cb2-7b913bb21981" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="nf">pie</span><span class="p">(</span><span class="n">loyalty_data</span><span class="p">[</span><span class="sh">'</span><span class="s">비율(%)</span><span class="sh">'</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">loyalty_data</span><span class="p">[</span><span class="sh">'</span><span class="s">구매 횟수</span><span class="sh">'</span><span class="p">],</span> <span class="n">autopct</span><span class="o">=</span><span class="sh">'</span><span class="s">%.1f%%</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">구매 횟수 비율</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/945ad056-7a26-4efa-8777-e3562d28dc00" alt="Image" /></p>
+
+<hr />
+
+<h3 id="개선-전략-제안"><strong>개선 전략 제안</strong></h3>
+
+<ol>
+  <li><strong>SNS 및 검색 광고 예산 확대</strong>
+    <ul>
+      <li>전환율이 높은 SNS 및 검색 광고에 마케팅 비용을 추가 투자하여 더 많은 고객 유입</li>
+    </ul>
+  </li>
+  <li><strong>충성 고객 프로그램 도입</strong>
+    <ul>
+      <li>재구매율을 높이기 위해 멤버십 프로그램 도입, 2회 이상 구매 고객에게 추가 할인 혜택 제공</li>
+    </ul>
+  </li>
+  <li><strong>배송 프로세스 개선</strong>
+    <ul>
+      <li>고객 불만이 많은 배송 지연 문제를 해결하기 위해 물류 시스템 최적화</li>
+    </ul>
+  </li>
+  <li><strong>리뷰 데이터 활용한 제품 개선</strong>
+    <ul>
+      <li>고객 피드백을 반영하여 제품 품질 개선, 부정적인 리뷰의 주요 원인 분석 및 해결</li>
+    </ul>
+  </li>
+</ol>

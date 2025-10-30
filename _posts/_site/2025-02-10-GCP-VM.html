@@ -1,0 +1,110 @@
+<h1 id="️gcp-vm-instance-생성"><strong>⚙️GCP VM Instance 생성</strong></h1>
+
+<p>GCP(Coogle Cloud Platform)에서 VM Instance를 생성해 볼 것이다.<br />
+먼저, GCP에 가입을 해야 한다. <a href="https://cloud.google.com">Google Cloud 접속</a></p>
+
+<ul>
+  <li>무료로 시작하기 클릭</li>
+  <li>체크카드 준비, 가입을 위한 정보 입력<br />
+(3개월 간 무료 이용 가능)<br />
+<img src="https://github.com/user-attachments/assets/47fcea43-3820-427e-93c5-959d1d0aea0a" alt="Image" /></li>
+</ul>
+
+<p>서버를 생성하고, [인스턴스 만들기]를 클릭한다.
+<img src="https://github.com/user-attachments/assets/20c5cf5e-8dd7-4fbd-ad7b-a42b525c0cca" alt="Image" />
+<img src="https://github.com/user-attachments/assets/3ef7dc05-a476-4780-b382-8f27518ef16c" alt="Image" /></p>
+
+<p>리전은 asia-northeast3(서울)을 선택한다.<br />
+<img src="https://github.com/user-attachments/assets/5e65bd39-b94a-4636-8453-13205450ca70" alt="Image" /></p>
+<ul>
+  <li>이름: 소문자로 시작, 숫자 및 하이픈(-) 가능</li>
+  <li>API 엑세스 모두 설정</li>
+</ul>
+
+<p>“OS 및 스토리지” 에서 부팅 디스크를 Ubuntu 로 변경한다.<br />
+<img src="https://github.com/user-attachments/assets/c6e00a1d-a23e-4255-97e2-52ce4a9714a1" alt="Image" /></p>
+
+<p>이제 [만들기]를 클릭하면 VM이 생성된다 !</p>
+
+<hr />
+
+<h2 id="vm-서버-접속"><strong>VM 서버 접속</strong></h2>
+
+<p>[SSH]를 클릭하면 터미널로 바로 접속이 된다.
+<img src="https://github.com/user-attachments/assets/782bdd92-a191-4ef1-9c04-07ef08aea77e" alt="Image" /> 
+<img src="https://github.com/user-attachments/assets/d05808e0-01d4-4aaf-b2d5-ae0cde3f2801" alt="Image" /></p>
+
+<p>서버를 연결하려면 SSH Key를 생성해야 한다.</p>
+
+<p>먼저, <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY Key Generator</a>를 다운로드하고 실행한다.<br />
+[Generate]를 누르면 생성된 SSH Key가 출력된다.<br />
+<img src="https://github.com/user-attachments/assets/d87e4d69-3828-48e7-9522-75c52316c6ef" alt="Image" /></p>
+
+<ul>
+  <li>Private Key: 파일로 저장</li>
+  <li>Public Key: GCP에 넣어줄 키</li>
+</ul>
+
+<p>다시 GCP 창을 열고 SSH Key를 등록한다.<br />
+<img src="https://github.com/user-attachments/assets/31491d4c-cd08-4beb-9fa5-3c3b6b4c1c86" alt="Image" /> 
+<img src="https://github.com/user-attachments/assets/00f44e2c-82c5-4716-9f68-127c1da4d05a" alt="Image" /></p>
+
+<hr />
+
+<h2 id="ftp-프로그램"><strong>FTP 프로그램</strong></h2>
+
+<p><a href="https://filezilla-project.org/">FileZilla</a>를 다운로드 후 실행한다.</p>
+
+<p>사이트 관리자를 눌러 새로운 사이트를 설정한다.
+<img src="https://github.com/user-attachments/assets/2cdec23a-40ea-4157-808a-3021dede6ff3" alt="Image" /></p>
+
+<ul>
+  <li>[프로토콜(t)] : SFTP</li>
+  <li>[호스트(H)] : VM 인스턴스에서 생성된 외부 IP 입력</li>
+  <li>[사용자(U)] : PuTTY Key Generator에서의 Key comment 입력</li>
+  <li>[키 파일(K)] : 저장했던 Private Key 위치 입력</li>
+</ul>
+
+<p><img src="https://github.com/user-attachments/assets/cdd5fe97-de1f-4635-8a87-46930f2903c5" alt="Image" /><br />
+✅ 연결 성공 !<br />
+앞으로는 VM 인스턴스 추가시 [호스트]만 바꿔주면 된다.</p>
+
+<hr />
+
+<h1 id="vm-실행"><strong>💡VM 실행</strong></h1>
+
+<p><img src="https://github.com/user-attachments/assets/248dbf53-9775-4e9f-9406-2d9522773109" alt="Image" /></p>
+<ul>
+  <li><strong>cd</strong>: change directory (“cd /” → root로 이동)</li>
+  <li><strong>ls -li</strong>: 목록 출력 (list)</li>
+</ul>
+
+<p><img src="https://github.com/user-attachments/assets/423b68a8-d84a-4cb2-8ac2-8a0f3413d6ce" alt="Image" /></p>
+<ul>
+  <li><strong>sudo</strong>: root 권한 부여</li>
+  <li><strong>mkdir</strong>: 디렉토리 생성 (make directory)</li>
+</ul>
+
+<p><img src="https://github.com/user-attachments/assets/426147ca-a13c-4c9f-90a3-b4a66823bcca" alt="Image" /><br />
+<strong>sudo chmod -R 777 (파일이름)</strong></p>
+<ul>
+  <li><strong>-R</strong>: 하위 디텍터리 및 파일까지 전체 지정</li>
+  <li><strong>777</strong>: (rwx) “읽기, 쓰기, 실행” 권한 모두 부여</li>
+</ul>
+
+<p>FTP 연결 확인<br />
+<img src="https://github.com/user-attachments/assets/10c19f14-068a-4615-ac63-d061a05f5e2c" alt="Image" /></p>
+
+<p><img src="https://github.com/user-attachments/assets/395d499e-4a25-4f3a-a8fb-a9b0345314a6" alt="Image" /></p>
+
+<p>로컬에서 원격으로 파일 전송<br />
+<img src="https://github.com/user-attachments/assets/6ce76250-a725-4330-9198-ad3fc5555b9f" alt="Image" /></p>
+
+<p>VM에서 파일 확인<br />
+<img src="https://github.com/user-attachments/assets/9fdea34c-f47d-46ab-81c7-a026c3924dbf" alt="Image" /></p>
+
+<p>삭제<br />
+<img src="https://github.com/user-attachments/assets/03a02e6d-caf6-4354-b141-dfe154ede5d8" alt="Image" /></p>
+<ul>
+  <li><strong>rm -rf</strong>: 하위 파일과 디렉터리까지 삭제</li>
+</ul>

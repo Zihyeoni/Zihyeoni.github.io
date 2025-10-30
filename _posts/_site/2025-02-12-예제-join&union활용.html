@@ -1,0 +1,609 @@
+<h1 id="join--union-활용한-그로스-마케팅"><strong>📑JOIN &amp; UNION 활용한 그로스 마케팅</strong></h1>
+
+<h3 id="join--union"><strong>JOIN &amp; UNION</strong></h3>
+
+<p><strong>JOIN</strong>: 두 개 이상의 테이블을 기준이 되는 공통 필드를 통해 결합하여 새로운 데이터를 생성하는 방식</p>
+<ul>
+  <li>주로 고객 정보, 마케팅 캠페인, 거래 데이터 등을 통합하여 보다 정밀한 분석을 수행할 때 사용</li>
+</ul>
+
+<p><strong>UNION</strong>: 여러 테이블에서 가져온 데이터를 동일한 컬럼 구조를 가진 경우 하나의 결과 집합을 합치는 방식</p>
+<ul>
+  <li>여러 마케팅 채널(이메일, SNS, 광고 등)의 성과 데이터를 하나로 합칠 때 유용</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>UNION</th>
+      <th>JOIN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>데이터 결합 방식</td>
+      <td>여러 테이블의 데이터를 <strong>위아래</strong>로 합침</td>
+      <td>공통 키를 기준으로 <strong>좌우</strong>로 결합</td>
+    </tr>
+    <tr>
+      <td>컬럼 개수</td>
+      <td>결합하려는 테이블의 컬럼 개수와 데이터 타입이 동일해야 함</td>
+      <td>테이블 간의 공통 키를 사용하여 여러 개의 컬럼을 조합</td>
+    </tr>
+    <tr>
+      <td>중복 데이터</td>
+      <td>기본적으로 제거됨 (<code class="language-plaintext highlighter-rouge">UNION ALL</code> 사용 시 제거 안 됨)</td>
+      <td>중복 데이터가 있을 경우 그대로 유지됨</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="join-활용한-그로스-마케팅"><strong>JOIN 활용한 그로스 마케팅</strong></h2>
+
+<h4 id="고객-정보와-구매-데이터를-join하여-vip-고객-분석"><span style="color:orange"><strong>고객 정보와 구매 데이터를 JOIN하여 VIP 고객 분석</strong></span></h4>
+
+<p>데이블 생성</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 고객 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">customers</span> <span class="p">(</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 구매 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">purchases</span> <span class="p">(</span>
+    <span class="n">purchase_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">amount</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">purchase_date</span> <span class="nb">DATE</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>샘플 데이터 삽입</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 고객 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">customers</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'김영희'</span><span class="p">,</span> <span class="s1">'younghee@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'이철수'</span><span class="p">,</span> <span class="s1">'cheolsu@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'박지수'</span><span class="p">,</span> <span class="s1">'jisu@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">'최민수'</span><span class="p">,</span> <span class="s1">'minsu@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">'한지혜'</span><span class="p">,</span> <span class="s1">'jihye@email.com'</span><span class="p">);</span>
+
+<span class="c1">-- 구매 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">purchases</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">'2024-02-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="s1">'2024-02-02'</span><span class="p">),</span> <span class="c1">-- 김영희 총 110,000</span>
+<span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">40000</span><span class="p">,</span> <span class="s1">'2024-02-03'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">104</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">30000</span><span class="p">,</span> <span class="s1">'2024-02-04'</span><span class="p">),</span> <span class="c1">-- 이철수 총 70,000</span>
+<span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">150000</span><span class="p">,</span> <span class="s1">'2024-02-05'</span><span class="p">),</span> <span class="c1">-- 박지수 총 150,000 (VIP)</span>
+<span class="p">(</span><span class="mi">106</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">90000</span><span class="p">,</span> <span class="s1">'2024-02-06'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">107</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">'2024-02-07'</span><span class="p">),</span> <span class="c1">-- 최민수 총 140,000 (VIP)</span>
+<span class="p">(</span><span class="mi">108</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">25000</span><span class="p">,</span> <span class="s1">'2024-02-08'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/b9013771-a68a-4f49-9908-f80d95df4145" alt="Image" /></p>
+
+<p>10만원 이상 구매한 고객(VIP) 식별</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">,</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="k">c</span><span class="p">.</span><span class="n">email</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">total_spent</span>
+<span class="k">FROM</span> <span class="n">customers</span> <span class="k">c</span>
+<span class="k">JOIN</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="n">customer_id</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_spent</span>
+    <span class="k">FROM</span> <span class="n">purchases</span>
+    <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">customer_id</span>
+<span class="p">)</span> <span class="n">p</span> <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">customer_id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="k">WHERE</span> <span class="n">p</span><span class="p">.</span><span class="n">total_spent</span> <span class="o">&gt;</span> <span class="mi">100000</span><span class="p">;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/dd125f61-5682-4c95-8dba-28a27923ca81" alt="Image" /></p>
+
+<h4 id="이메일-캠페인-반응과-구매-데이터-연결"><span style="color:orange"><strong>이메일 캠페인 반응과 구매 데이터 연결</strong></span></h4>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 고객 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">customers</span> <span class="p">(</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 2) 이메일 캠페인 반응 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">email_campaign</span> <span class="p">(</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">campaign_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">clicks</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">customer_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">customers</span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 3) 구매 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">purchases</span> <span class="p">(</span>
+    <span class="n">purchase_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">purchase_amount</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">purchase_date</span> <span class="nb">DATE</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">customer_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">customers</span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 고객 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">customers</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'김영희'</span><span class="p">,</span> <span class="s1">'younghee@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'이철수'</span><span class="p">,</span> <span class="s1">'cheolsu@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'박지수'</span><span class="p">,</span> <span class="s1">'jisu@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">'최민수'</span><span class="p">,</span> <span class="s1">'minsu@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">'한지혜'</span><span class="p">,</span> <span class="s1">'jihye@email.com'</span><span class="p">);</span>
+
+<span class="c1">-- 2) 이메일 캠페인 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">email_campaign</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'겨울 할인 이벤트'</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>  <span class="c1">-- 클릭 수 8 (조건 충족)</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'신규 회원 웰컴 이벤트'</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="c1">-- 클릭 수 5 (조건 미충족)</span>
+<span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'특가 프로모션'</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="c1">-- 클릭 수 12 (조건 충족)</span>
+<span class="p">(</span><span class="mi">104</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'봄맞이 할인'</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="c1">-- 클릭 수 3 (조건 미충족)</span>
+<span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'VIP 고객 혜택'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">-- 클릭 수 10 (조건 충족)</span>
+
+<span class="c1">-- 3) 구매 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">purchases</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">'2024-02-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">202</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">120000</span><span class="p">,</span> <span class="s1">'2024-02-02'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">80000</span><span class="p">,</span> <span class="s1">'2024-02-03'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/ffb6c445-8d36-4713-b4d1-6886320aa8b6" alt="Image" /></p>
+
+<p>특정 이메일 캠페인에서 10번 이상 클릭한 고객의 구매 데이터 결합하여 캠페인 성과 분석</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">email</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">campaign_name</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">clicks</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">purchase_amount</span>
+<span class="k">FROM</span> <span class="n">email_campaign</span> <span class="n">e</span>
+<span class="k">JOIN</span> <span class="n">customers</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">customer_id</span> <span class="o">=</span> <span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">purchases</span> <span class="n">p</span> <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">customer_id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="k">WHERE</span> <span class="n">e</span><span class="p">.</span><span class="n">clicks</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/b4c03f23-5fe6-4783-a820-582e966ceb69" alt="Image" /></p>
+
+<h4 id="유입-채널별-전환율-분석"><span style="color:orange"><strong>유입 채널별 전환율 분석</strong></span></h4>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 방문자 트래킹 테이블 (유입 채널 데이터)</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">user_tracking</span> <span class="p">(</span>
+    <span class="n">tracking_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">user_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">channel</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+    <span class="n">visit_date</span> <span class="nb">DATE</span>
+<span class="p">);</span>
+
+<span class="c1">-- 2) 구매 테이블 (고객 구매 데이터)</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">purchases</span> <span class="p">(</span>
+    <span class="n">purchase_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">purchase_amount</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">purchase_date</span> <span class="nb">DATE</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 방문자 데이터 삽입 (유입 채널별 방문자 ID 포함)</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">user_tracking</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="s1">'Google Ads'</span><span class="p">,</span> <span class="s1">'2024-02-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="s1">'Google Ads'</span><span class="p">,</span> <span class="s1">'2024-02-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="s1">'Facebook Ads'</span><span class="p">,</span> <span class="s1">'2024-02-02'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span> <span class="s1">'Facebook Ads'</span><span class="p">,</span> <span class="s1">'2024-02-02'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="s1">'Instagram Ads'</span><span class="p">,</span> <span class="s1">'2024-02-03'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="s1">'Instagram Ads'</span><span class="p">,</span> <span class="s1">'2024-02-03'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="s1">'Instagram Ads'</span><span class="p">,</span> <span class="s1">'2024-02-03'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="s1">'YouTube Ads'</span><span class="p">,</span> <span class="s1">'2024-02-04'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="s1">'YouTube Ads'</span><span class="p">,</span> <span class="s1">'2024-02-04'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="s1">'YouTube Ads'</span><span class="p">,</span> <span class="s1">'2024-02-04'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="s1">'YouTube Ads'</span><span class="p">,</span> <span class="s1">'2024-02-04'</span><span class="p">);</span>
+
+<span class="c1">-- 2) 구매 데이터 삽입 (일부 방문자가 실제로 구매한 데이터)</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">purchases</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">'2024-02-02'</span><span class="p">),</span> <span class="c1">-- Google Ads 방문자 1명 구매</span>
+<span class="p">(</span><span class="mi">202</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="s1">'2024-02-03'</span><span class="p">),</span> <span class="c1">-- Facebook Ads 방문자 1명 구매</span>
+<span class="p">(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">120000</span><span class="p">,</span> <span class="s1">'2024-02-04'</span><span class="p">),</span> <span class="c1">-- Instagram Ads 방문자 1명 구매</span>
+<span class="p">(</span><span class="mi">204</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">90000</span><span class="p">,</span> <span class="s1">'2024-02-05'</span><span class="p">);</span> <span class="c1">-- YouTube Ads 방문자 1명 구매</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/020fcd1d-fe27-4075-9aee-d85c1b1b0396" alt="Image" /></p>
+
+<p>각 유입 채널의 전환율 분석</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">u</span><span class="p">.</span><span class="n">channel</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">u</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">visitors</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">p</span><span class="p">.</span><span class="n">customer_id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">buyers</span><span class="p">,</span>
+       <span class="p">(</span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">p</span><span class="p">.</span><span class="n">customer_id</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">.</span><span class="mi">0</span> <span class="o">/</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">u</span><span class="p">.</span><span class="n">user_id</span><span class="p">))</span> <span class="k">AS</span> <span class="n">conversion_rate</span>
+<span class="k">FROM</span> <span class="n">user_tracking</span> <span class="n">u</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">purchases</span> <span class="n">p</span> <span class="k">ON</span> <span class="n">u</span><span class="p">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">u</span><span class="p">.</span><span class="n">channel</span><span class="p">;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/01948481-cf3f-481a-bb79-a5d26d433657" alt="Image" /></p>
+
+<h4 id="장바구니-이탈-고객-찾기"><span style="color:orange"><strong>장바구니 이탈 고객 찾기</strong></span></h4>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 고객 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">customers</span> <span class="p">(</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 2) 장바구니 아이템 테이블 (고객이 담은 상품 목록)</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">cart_items</span> <span class="p">(</span>
+    <span class="n">cart_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">product_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">price</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">quantity</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">customer_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">customers</span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 3) 구매 테이블 (구매한 고객 정보)</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">purchases</span> <span class="p">(</span>
+    <span class="n">purchase_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">purchase_amount</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">purchase_date</span> <span class="nb">DATE</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">customer_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">customers</span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 고객 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">customers</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'김영희'</span><span class="p">,</span> <span class="s1">'younghee@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'이철수'</span><span class="p">,</span> <span class="s1">'cheolsu@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'박지수'</span><span class="p">,</span> <span class="s1">'jisu@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">'최민수'</span><span class="p">,</span> <span class="s1">'minsu@email.com'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">'한지혜'</span><span class="p">,</span> <span class="s1">'jihye@email.com'</span><span class="p">);</span>
+
+<span class="c1">-- 2) 장바구니 데이터 삽입 (상품을 담은 고객 정보)</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cart_items</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'노트북'</span><span class="p">,</span> <span class="mi">1200000</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'스마트폰'</span><span class="p">,</span> <span class="mi">800000</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'태블릿'</span><span class="p">,</span> <span class="mi">600000</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">104</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'무선 이어폰'</span><span class="p">,</span> <span class="mi">200000</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'스마트워치'</span><span class="p">,</span> <span class="mi">350000</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">-- 3) 구매 데이터 삽입 (일부 고객만 구매)</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">purchases</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1200000</span><span class="p">,</span> <span class="s1">'2024-02-02'</span><span class="p">),</span> <span class="c1">-- 김영희는 구매 완료</span>
+<span class="p">(</span><span class="mi">202</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">600000</span><span class="p">,</span> <span class="s1">'2024-02-04'</span><span class="p">);</span> <span class="c1">-- 박지수는 구매 완료</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/8424114b-fb23-4a68-94c8-528c51b63ce0" alt="Image" /></p>
+
+<p>장바구니에 상품을 담았지만 구매하지 않은 고객을 식별하여 리마케팅 대상 선정</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">,</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="k">c</span><span class="p">.</span><span class="n">email</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">cart_total</span>
+<span class="k">FROM</span> <span class="n">customers</span> <span class="k">c</span>
+<span class="k">JOIN</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="n">customer_id</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">price</span> <span class="o">*</span> <span class="n">quantity</span><span class="p">)</span> <span class="k">AS</span> <span class="n">cart_total</span>
+    <span class="k">FROM</span> <span class="n">cart_items</span>
+    <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">customer_id</span>
+<span class="p">)</span> <span class="n">b</span> <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">customer_id</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">purchases</span> <span class="n">p</span> <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">customer_id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="k">WHERE</span> <span class="n">p</span><span class="p">.</span><span class="n">customer_id</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/9935e961-53b1-4fb2-8f9a-4c3dcb7f1917" alt="Image" /></p>
+
+<h4 id="마케팅-비용-대비-매출-분석"><span style="color:orange"><strong>마케팅 비용 대비 매출 분석</strong></span></h4>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 마케팅 비용 테이블 (광고 캠페인별 지출 데이터)</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">marketing_spend</span> <span class="p">(</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">campaign_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">ad_spend</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">-- 마케팅 비용</span>
+<span class="p">);</span>
+
+<span class="c1">-- 2) 구매 테이블 (구매 내역 데이터)</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">purchases</span> <span class="p">(</span>
+    <span class="n">purchase_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">amount</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="c1">-- 구매 금액</span>
+    <span class="n">purchase_date</span> <span class="nb">DATE</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">campaign_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">marketing_spend</span><span class="p">(</span><span class="n">campaign_id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 마케팅 비용 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">marketing_spend</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'Google Ads Campaign'</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'Facebook Ads Campaign'</span><span class="p">,</span> <span class="mi">800000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'Instagram Ads Campaign'</span><span class="p">,</span> <span class="mi">600000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">'YouTube Ads Campaign'</span><span class="p">,</span> <span class="mi">1200000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">'TikTok Ads Campaign'</span><span class="p">,</span> <span class="mi">700000</span><span class="p">);</span>
+
+<span class="c1">-- 2) 구매 데이터 삽입 (각 캠페인에서 발생한 매출 데이터)</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">purchases</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">300000</span><span class="p">,</span> <span class="s1">'2024-02-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">400000</span><span class="p">,</span> <span class="s1">'2024-02-02'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="s1">'2024-02-03'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">104</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">250000</span><span class="p">,</span> <span class="s1">'2024-02-01'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">350000</span><span class="p">,</span> <span class="s1">'2024-02-02'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">106</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">700000</span><span class="p">,</span> <span class="s1">'2024-02-03'</span><span class="p">),</span> <span class="c1">-- 광고비보다 높은 매출</span>
+<span class="p">(</span><span class="mi">107</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">800000</span><span class="p">,</span> <span class="s1">'2024-02-04'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">108</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">600000</span><span class="p">,</span> <span class="s1">'2024-02-05'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">109</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="s1">'2024-02-06'</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/7a54e305-078b-44fa-b7d5-bd8f9e362f56" alt="Image" /></p>
+
+<p>캠페인별 투자 대비 수익 (profit) 계산</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">m</span><span class="p">.</span><span class="n">campaign_name</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">ad_spend</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_revenue</span><span class="p">,</span>
+       <span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span><span class="p">.</span><span class="n">ad_spend</span><span class="p">)</span> <span class="k">AS</span> <span class="n">profit</span>
+<span class="k">FROM</span> <span class="n">marketing_spend</span> <span class="n">m</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">purchases</span> <span class="n">p</span> <span class="k">ON</span> <span class="n">m</span><span class="p">.</span><span class="n">campaign_id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">campaign_id</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">m</span><span class="p">.</span><span class="n">campaign_name</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">ad_spend</span><span class="p">;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/f540ce24-ebf0-4bc2-aeb9-08b6b72d7d8e" alt="Image" /></p>
+
+<hr />
+
+<h2 id="union-활용한-그로스-마케팅"><strong>UNION 활용한 그로스 마케팅</strong></h2>
+
+<h4 id="이메일과-sns-캠페인-반응-데이터-통합"><span style="color:orange"><strong>이메일과 SNS 캠페인 반응 데이터 통합</strong></span></h4>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 이메일 캠페인 반응 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">email_campaign</span> <span class="p">(</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">campaign_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">clicks</span> <span class="nb">INT</span>
+<span class="p">);</span>
+
+<span class="c1">-- 2) SNS 캠페인 반응 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">sns_campaign</span> <span class="p">(</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">campaign_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">clicks</span> <span class="nb">INT</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 이메일 캠페인 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">email_campaign</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'겨울 할인 이벤트'</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'신규 회원 웰컴 이벤트'</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'특가 프로모션'</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">104</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'봄맞이 할인'</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'VIP 고객 혜택'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+<span class="c1">-- 2) SNS 캠페인 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">sns_campaign</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'인스타그램 광고'</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">202</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'페이스북 광고'</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'틱톡 바이럴'</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">204</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'유튜브 리뷰'</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">205</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'트위터 프로모션'</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/082fa10c-aba8-4c17-9dc3-f8f40a5e92f4" alt="Image" /></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">campaign_name</span><span class="p">,</span> <span class="n">clicks</span><span class="p">,</span> <span class="s1">'Email'</span> <span class="k">AS</span> <span class="n">channel</span>
+<span class="k">FROM</span> <span class="n">email_campaign</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">campaign_name</span><span class="p">,</span> <span class="n">clicks</span><span class="p">,</span> <span class="s1">'SNS'</span> <span class="k">AS</span> <span class="n">channel</span>
+<span class="k">FROM</span> <span class="n">sns_campaign</span><span class="p">;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/f377b274-c7a4-4e50-ad53-2a02e49993f6" alt="Image" /></p>
+
+<h4 id="여러-국가에서의-마케팅-성과-통합"><span style="color:orange"><strong>여러 국가에서의 마케팅 성과 통합</strong></span></h4>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 한국 마케팅 성과 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">marketing_korea</span> <span class="p">(</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">region</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+    <span class="n">campaign_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">revenue</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 2) 미국 마케팅 성과 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">marketing_usa</span> <span class="p">(</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">region</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+    <span class="n">campaign_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">revenue</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 3) 유럽 마케팅 성과 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">marketing_europe</span> <span class="p">(</span>
+    <span class="n">campaign_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">region</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+    <span class="n">campaign_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">revenue</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 한국 마케팅 성과 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">marketing_korea</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="s1">'Korea'</span><span class="p">,</span> <span class="s1">'겨울 할인 이벤트'</span><span class="p">,</span> <span class="mi">500000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="s1">'Korea'</span><span class="p">,</span> <span class="s1">'신규 회원 웰컴 이벤트'</span><span class="p">,</span> <span class="mi">300000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="s1">'Korea'</span><span class="p">,</span> <span class="s1">'특가 프로모션'</span><span class="p">,</span> <span class="mi">700000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">104</span><span class="p">,</span> <span class="s1">'Korea'</span><span class="p">,</span> <span class="s1">'봄맞이 할인'</span><span class="p">,</span> <span class="mi">400000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="s1">'Korea'</span><span class="p">,</span> <span class="s1">'회원 전용 세일'</span><span class="p">,</span> <span class="mi">550000</span><span class="p">);</span>
+
+<span class="c1">-- 2) 미국 마케팅 성과 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">marketing_usa</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="s1">'USA'</span><span class="p">,</span> <span class="s1">'Winter Sale'</span><span class="p">,</span> <span class="mi">600000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">202</span><span class="p">,</span> <span class="s1">'USA'</span><span class="p">,</span> <span class="s1">'New Member Promo'</span><span class="p">,</span> <span class="mi">350000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">203</span><span class="p">,</span> <span class="s1">'USA'</span><span class="p">,</span> <span class="s1">'Exclusive Deal'</span><span class="p">,</span> <span class="mi">800000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">204</span><span class="p">,</span> <span class="s1">'USA'</span><span class="p">,</span> <span class="s1">'Spring Discount'</span><span class="p">,</span> <span class="mi">450000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">205</span><span class="p">,</span> <span class="s1">'USA'</span><span class="p">,</span> <span class="s1">'VIP Members Only'</span><span class="p">,</span> <span class="mi">600000</span><span class="p">);</span>
+
+<span class="c1">-- 3) 유럽 마케팅 성과 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">marketing_europe</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">301</span><span class="p">,</span> <span class="s1">'Europe'</span><span class="p">,</span> <span class="s1">'Winter Discount'</span><span class="p">,</span> <span class="mi">550000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">302</span><span class="p">,</span> <span class="s1">'Europe'</span><span class="p">,</span> <span class="s1">'Signup Bonus'</span><span class="p">,</span> <span class="mi">320000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">303</span><span class="p">,</span> <span class="s1">'Europe'</span><span class="p">,</span> <span class="s1">'Limited Offer'</span><span class="p">,</span> <span class="mi">750000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">304</span><span class="p">,</span> <span class="s1">'Europe'</span><span class="p">,</span> <span class="s1">'Easter Sale'</span><span class="p">,</span> <span class="mi">430000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">305</span><span class="p">,</span> <span class="s1">'Europe'</span><span class="p">,</span> <span class="s1">'Members-Only Discount'</span><span class="p">,</span> <span class="mi">570000</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/f2b8056c-0fb1-4113-b032-f8ad8bc97cb5" alt="Image" /></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">region</span><span class="p">,</span> <span class="n">campaign_name</span><span class="p">,</span> <span class="n">revenue</span>
+<span class="k">FROM</span> <span class="n">marketing_korea</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">region</span><span class="p">,</span> <span class="n">campaign_name</span><span class="p">,</span> <span class="n">revenue</span>
+<span class="k">FROM</span> <span class="n">marketing_usa</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">region</span><span class="p">,</span> <span class="n">campaign_name</span><span class="p">,</span> <span class="n">revenue</span>
+<span class="k">FROM</span> <span class="n">marketing_europe</span><span class="p">;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/59b7482e-8255-4128-9dad-f1e60bb51adf" alt="Image" /></p>
+
+<h4 id="웹사이트-모바일-앱-오프라인-구매-데이터-통합"><span style="color:orange"><strong>웹사이트, 모바일 앱, 오프라인 구매 데이터 통합</strong></span></h4>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 웹사이트 구매 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">web_purchases</span> <span class="p">(</span>
+    <span class="n">purchase_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">purchase_amount</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 2) 모바일 앱 구매 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">app_purchases</span> <span class="p">(</span>
+    <span class="n">purchase_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">purchase_amount</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 3) 오프라인 구매 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">offline_purchases</span> <span class="p">(</span>
+    <span class="n">purchase_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">purchase_amount</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) 웹사이트 구매 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">web_purchases</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">75000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">160000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">220000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">104</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">85000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">135000</span><span class="p">);</span>
+
+<span class="c1">-- 2) 모바일 앱 구매 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">app_purchases</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">70000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">202</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">140000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">190000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">204</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">72000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">205</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">120000</span><span class="p">);</span>
+
+<span class="c1">-- 3) 오프라인 구매 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">offline_purchases</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">301</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">90000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">302</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">180000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">303</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">230000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">304</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">95000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">305</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">145000</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/306b835d-f259-4a7b-9bf3-ed17483f977b" alt="Image" /></p>
+
+<p>고객별 구매 경로 분석</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">customer_id</span><span class="p">,</span> <span class="s1">'Web'</span> <span class="k">AS</span> <span class="k">source</span><span class="p">,</span> <span class="n">purchase_amount</span>
+<span class="k">FROM</span> <span class="n">web_purchases</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">customer_id</span><span class="p">,</span> <span class="s1">'App'</span> <span class="k">AS</span> <span class="k">source</span><span class="p">,</span> <span class="n">purchase_amount</span>
+<span class="k">FROM</span> <span class="n">app_purchases</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">customer_id</span><span class="p">,</span> <span class="s1">'Offline'</span> <span class="k">AS</span> <span class="k">source</span><span class="p">,</span> <span class="n">purchase_amount</span>
+<span class="k">FROM</span> <span class="n">offline_purchases</span><span class="p">;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/3eb98f30-9892-48cd-ac34-f988486eff4c" alt="Image" /></p>
+
+<h4 id="ab-테스트-그룹별-성과-비교"><span style="color:orange"><strong>A/B 테스트 그룹별 성과 비교</strong></span></h4>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) A/B 테스트 그룹 A 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">ab_test_group_a</span> <span class="p">(</span>
+    <span class="n">user_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="k">conversion</span> <span class="nb">BOOLEAN</span>
+<span class="p">);</span>
+
+<span class="c1">-- 2) A/B 테스트 그룹 B 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">ab_test_group_b</span> <span class="p">(</span>
+    <span class="n">user_id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="k">conversion</span> <span class="nb">BOOLEAN</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) A 그룹 테스트 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">ab_test_group_a</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="k">FALSE</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">104</span><span class="p">,</span> <span class="k">FALSE</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
+
+<span class="c1">-- 2) B 그룹 테스트 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">ab_test_group_b</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="k">FALSE</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">202</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">203</span><span class="p">,</span> <span class="k">FALSE</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">204</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">205</span><span class="p">,</span> <span class="k">FALSE</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/33789fe5-a580-450b-ac90-11bc2e1fe03a" alt="Image" /></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">user_id</span><span class="p">,</span> <span class="s1">'Group A'</span> <span class="k">AS</span> <span class="n">test_group</span><span class="p">,</span> <span class="k">conversion</span>
+<span class="k">FROM</span> <span class="n">ab_test_group_a</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">user_id</span><span class="p">,</span> <span class="s1">'Group B'</span> <span class="k">AS</span> <span class="n">test_group</span><span class="p">,</span> <span class="k">conversion</span>
+<span class="k">FROM</span> <span class="n">ab_test_group_b</span><span class="p">;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/8e6fbef6-39fa-48cd-850a-a3a33fb1fc8e" alt="Image" /></p>
+
+<h4 id="여러-마케팅-채널별-roi-통합"><span style="color:orange"><strong>여러 마케팅 채널별 ROI 통합</strong></span></h4>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) Google Ads 마케팅 성과 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">google_ads</span> <span class="p">(</span>
+    <span class="n">channel</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+    <span class="n">ad_spend</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">revenue</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 2) Facebook Ads 마케팅 성과 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">facebook_ads</span> <span class="p">(</span>
+    <span class="n">channel</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+    <span class="n">ad_spend</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">revenue</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 3) TikTok Ads 마케팅 성과 테이블</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">tiktok_ads</span> <span class="p">(</span>
+    <span class="n">channel</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+    <span class="n">ad_spend</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">revenue</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) Google Ads 성과 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">google_ads</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">'Google Ads'</span><span class="p">,</span> <span class="mi">1500000</span><span class="p">,</span> <span class="mi">4500000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'Google Ads'</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">3200000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'Google Ads'</span><span class="p">,</span> <span class="mi">800000</span><span class="p">,</span> <span class="mi">2500000</span><span class="p">);</span>
+
+<span class="c1">-- 2) Facebook Ads 성과 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">facebook_ads</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">'Facebook Ads'</span><span class="p">,</span> <span class="mi">1200000</span><span class="p">,</span> <span class="mi">3800000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'Facebook Ads'</span><span class="p">,</span> <span class="mi">900000</span><span class="p">,</span> <span class="mi">2900000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'Facebook Ads'</span><span class="p">,</span> <span class="mi">700000</span><span class="p">,</span> <span class="mi">2000000</span><span class="p">);</span>
+
+<span class="c1">-- 3) TikTok Ads 성과 데이터 삽입</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tiktok_ads</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">'TikTok Ads'</span><span class="p">,</span> <span class="mi">1100000</span><span class="p">,</span> <span class="mi">3400000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'TikTok Ads'</span><span class="p">,</span> <span class="mi">950000</span><span class="p">,</span> <span class="mi">2800000</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">'TikTok Ads'</span><span class="p">,</span> <span class="mi">600000</span><span class="p">,</span> <span class="mi">1800000</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/0801bf79-1b88-4ed1-8595-cea715618b00" alt="Image" /></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">channel</span><span class="p">,</span> <span class="n">ad_spend</span><span class="p">,</span> <span class="n">revenue</span>
+<span class="k">FROM</span> <span class="n">google_ads</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">channel</span><span class="p">,</span> <span class="n">ad_spend</span><span class="p">,</span> <span class="n">revenue</span>
+<span class="k">FROM</span> <span class="n">facebook_ads</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">channel</span><span class="p">,</span> <span class="n">ad_spend</span><span class="p">,</span> <span class="n">revenue</span>
+<span class="k">FROM</span> <span class="n">tiktok_ads</span><span class="p">;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/user-attachments/assets/a45b4363-9430-44d5-a071-0f39ebde920e" alt="Image" /></p>
+
+<hr />
+
+<h2 id="그로스-마케팅에서의-활용"><strong>그로스 마케팅에서의 활용</strong></h2>
+
+<p><strong>JOIN</strong>: 데이블 간의 연관 데이터를 연결하여 새로운 의미 있는 정보를 생성하는 데 유용</p>
+<ul>
+  <li>고객 분석, 유입 경로별 전환율, 마케팅 비용 대비 수익 계산 등</li>
+</ul>
+
+<p><strong>UNION</strong>: 여러 테이블의 데이터를 하나의 데이터셋으로 통합하는 데 적합</p>
+<ul>
+  <li>다채널 성과 분석, 국가별 데이터 비교, A/B 테스트 결과 비교 등</li>
+</ul>

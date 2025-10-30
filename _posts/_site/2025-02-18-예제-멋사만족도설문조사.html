@@ -1,0 +1,205 @@
+<h1 id="멋사-교육-프로그램-만족도-설문조사-분석"><strong>🦁멋사 교육 프로그램 만족도 설문조사 분석</strong></h1>
+
+<h3 id="데이터-생성"><strong>데이터 생성</strong></h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">koreanize</span><span class="o">-</span><span class="n">matplotlib</span>
+<span class="kn">import</span> <span class="n">koreanize_matplotlib</span>
+<span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 교육 프로그램 만족도 조사 데이터 생성 (하드코딩된 샘플 응답 포함)
+</span><span class="n">survey_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">({</span>
+    <span class="sh">"</span><span class="s">Program_Usage</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># 멋사 이용 경험 (1: 예, 0: 아니오)
+</span>    <span class="sh">"</span><span class="s">Overall_Satisfaction</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># 멋사 전반 만족도 (1~5)
+</span>    <span class="sh">"</span><span class="s">Most_Satisfying_Aspect</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>  <span class="c1"># 가장 만족스러운 부분 (1~5)
+</span>    <span class="sh">"</span><span class="s">Needs_Improvement</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>  <span class="c1"># 개선 필요 부분 (1~5)
+</span>    <span class="sh">"</span><span class="s">Inconveniences</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>  <span class="c1"># 멋사 이용 중 불편사항 (1~5)
+</span>    <span class="sh">"</span><span class="s">Curriculum</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># 커리큘럼 평가 (1~5)
+</span>    <span class="sh">"</span><span class="s">Improvement_practicalSkills</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>  <span class="c1"># 실무 능력 향상 평가 (1~5)
+</span>    <span class="sh">"</span><span class="s">Program_Satisfaction</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># 프로그램 만족도 (1~5)
+</span>    <span class="sh">"</span><span class="s">Recommend_to_Others</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>  <span class="c1"># 멋사 추천 의향 (1~5)
+</span>    <span class="sh">"</span><span class="s">ReEngagement_Intent</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># 멋사 내 프로그램 재참여 의향 (1~5)
+</span><span class="p">})</span>
+
+<span class="c1"># CSV 파일로 저장
+</span><span class="n">csv_filename</span> <span class="o">=</span> <span class="sh">"</span><span class="s">likelion_satisfaction_survey.csv</span><span class="sh">"</span>
+<span class="n">survey_data</span><span class="p">.</span><span class="nf">to_csv</span><span class="p">(</span><span class="n">csv_filename</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="sh">'</span><span class="s">utf-8-sig</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="c1"># 데이터 출력
+</span><span class="nf">display</span><span class="p">(</span><span class="n">survey_data</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="데이터-분석"><strong>데이터 분석</strong></h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># CSV 파일 불러오기
+</span><span class="n">csv_filename</span> <span class="o">=</span> <span class="sh">"</span><span class="s">likelion_satisfaction_survey.csv</span><span class="sh">"</span>
+<span class="n">survey_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">read_csv</span><span class="p">(</span><span class="n">csv_filename</span><span class="p">)</span>
+
+<span class="c1"># 데이터 개요 출력
+</span><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">데이터 개요:</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">display</span><span class="p">(</span><span class="n">survey_data</span><span class="p">.</span><span class="nf">info</span><span class="p">())</span>
+
+<span class="c1"># 1. 프로그램 참여 경험 분포
+</span><span class="n">usage_counts</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="sh">"</span><span class="s">Program_Usage</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">프로그램 참여 경험 분포 (1: 예, 0: 아니오):</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">display</span><span class="p">(</span><span class="n">usage_counts</span><span class="p">)</span>
+
+<span class="c1"># 2. 전반적인 만족도 분포
+</span><span class="n">satisfaction_counts</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="sh">"</span><span class="s">Overall_Satisfaction</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">().</span><span class="nf">sort_index</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">전반적인 만족도 분포 (1~5 척도):</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">display</span><span class="p">(</span><span class="n">satisfaction_counts</span><span class="p">)</span>
+
+<span class="c1"># 3. 가장 만족스러운 요소 분석
+</span><span class="n">satisfying_aspect_counts</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="sh">"</span><span class="s">Most_Satisfying_Aspect</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">().</span><span class="nf">sort_index</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">가장 만족스러운 요소 분포 (1: 가격, 2: 취업 지원, 3: 교육 내용, 4: 수강생 관리, 5: 기타):</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">display</span><span class="p">(</span><span class="n">satisfying_aspect_counts</span><span class="p">)</span>
+
+<span class="c1"># 4. 가장 개선이 필요한 부분 분석
+</span><span class="n">improvement_counts</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="sh">"</span><span class="s">Needs_Improvement</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">().</span><span class="nf">sort_index</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">개선이 필요한 요소 분포 (1: 가격, 2: 취업 지원, 3: 교육 내용, 4: 수강생 관리, 5: 기타):</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">display</span><span class="p">(</span><span class="n">improvement_counts</span><span class="p">)</span>
+
+<span class="c1"># 5. 프로그램 이용 중 불편함 분석
+</span><span class="n">inconvenience_counts</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="sh">"</span><span class="s">Inconveniences</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">().</span><span class="nf">sort_index</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">프로그램 이용 중 불편사항 분포 (1: 가격, 2: 취업 지원, 3: 교육 내용, 4: 수강생 관리, 5: 기타):</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">display</span><span class="p">(</span><span class="n">inconvenience_counts</span><span class="p">)</span>
+
+<span class="c1"># 6. 커리큘럼 평가
+</span><span class="n">avg_curriculum</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="sh">"</span><span class="s">Curriculum</span><span class="sh">"</span><span class="p">].</span><span class="nf">mean</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">커리큘럼 점수:</span><span class="sh">"</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">avg_curriculum</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 7. 실무 능력 향상 평균 평가
+</span><span class="n">avg_Improvement_skills</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="sh">"</span><span class="s">Improvement_practicalSkills</span><span class="sh">"</span><span class="p">].</span><span class="nf">mean</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">실무 능력 향상 점수:</span><span class="sh">"</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">avg_Improvement_skills</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 8. 프로그램 만족도 평균 평가
+</span><span class="n">avg_program_satisfaction</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="sh">"</span><span class="s">Program_Satisfaction</span><span class="sh">"</span><span class="p">].</span><span class="nf">mean</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">프로그램 만족도 평균 점수:</span><span class="sh">"</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">avg_program_satisfaction</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 9. 프로그램 참여 여부별 만족도 비교
+</span><span class="n">usage_satisfaction</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">.</span><span class="nf">groupby</span><span class="p">(</span><span class="sh">"</span><span class="s">Program_Usage</span><span class="sh">"</span><span class="p">)[</span><span class="sh">"</span><span class="s">Overall_Satisfaction</span><span class="sh">"</span><span class="p">].</span><span class="nf">mean</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">프로그램 경험별 평균 만족도:</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">display</span><span class="p">(</span><span class="n">usage_satisfaction</span><span class="p">)</span>
+
+<span class="c1"># 10. 추천 및 재참여 의향 분석
+</span><span class="n">recommend_counts</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="sh">"</span><span class="s">Recommend_to_Others</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">().</span><span class="nf">sort_index</span><span class="p">()</span>
+<span class="n">reEngagement_counts</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="sh">"</span><span class="s">ReEngagement_Intent</span><span class="sh">"</span><span class="p">].</span><span class="nf">value_counts</span><span class="p">().</span><span class="nf">sort_index</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">멋사 추천 의향 분포 (1~5 척도):</span><span class="sh">"</span><span class="p">),</span> <span class="nf">display</span><span class="p">(</span><span class="n">recommend_counts</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">멋사 내 프로그램 재참여 의향 분포 (1~5 척도):</span><span class="sh">"</span><span class="p">),</span> <span class="nf">display</span><span class="p">(</span><span class="n">reEngagement_counts</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/10.png" alt="Image" /></p>
+
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/11.png" alt="Image" /></p>
+
+<h3 id="데이터-시각화"><strong>데이터 시각화</strong></h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1. 프로그램 참여 경험 분포
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">usage_counts</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="nf">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">usage_counts</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">orange</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Program Usage Distribution</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Used (1: Yes, 0: No)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Number of Respondents</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/1.png" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2. 전반적인 만족도 분포
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">satisfaction_counts</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="nf">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">satisfaction_counts</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">green</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Overall Satisfaction Distribution</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Satisfaction Score (1-5)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Number of Respondents</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/2.png" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 3. 가장 만족스러운 요소 분석
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">satisfying_aspect_counts</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="nf">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">satisfying_aspect_counts</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">purple</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Most Satisfying Aspect</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Aspect (1: Price, 2: Support, 3: Contents, 4: Management, 5: Others)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Number of Respondents</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/3.png" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 4. 가장 개선이 필요한 부분 분석
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">improvement_counts</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="nf">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">improvement_counts</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">red</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Needs Improvement</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Improvement (1: Price, 2: Support, 3: Contents, 4: Management, 5: Others)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Number of Respondents</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/4.png" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 5. 프로그램 이용 중 불편함 분석
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">inconvenience_counts</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="nf">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">inconvenience_counts</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">brown</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Inconveniences Experienced</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Inconvenience (1: Price, 2: Support, 3: Contents, 4: Management, 5: Others)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Number of Respondents</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/5.png" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 6. 커리큘럼 평균 평가
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">([</span><span class="sh">"</span><span class="s">Average Curriculum</span><span class="sh">"</span><span class="p">],</span> <span class="p">[</span><span class="n">avg_curriculum</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">cyan</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Average Curriculum Score</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Score (1-5)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/6.png" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 7. 실무 능력 향상 평균 평가
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">([</span><span class="sh">"</span><span class="s">Improvement Skills</span><span class="sh">"</span><span class="p">],</span> <span class="p">[</span><span class="n">avg_Improvement_skills</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">gold</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Improvement Skills Score</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Score (1-5)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/7.png" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 8. 프로그램 만족도 평균 평가
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">([</span><span class="sh">"</span><span class="s">Program Satisfaction</span><span class="sh">"</span><span class="p">],</span> <span class="p">[</span><span class="n">avg_program_satisfaction</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">lightcoral</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Average Program Satisfaction Score</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Score (1-5)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/8.png" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 9. 프로그램 참여 여부별 만족도 비교
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">usage_satisfaction</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="nf">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">usage_satisfaction</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">magenta</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Satisfaction by Program Usage</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Used (1: Yes, 0: No)</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Average Satisfaction Score</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/12.png" alt="Image" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 10. 추천 및 재참여 의향 분석
+</span><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">pie</span><span class="p">(</span><span class="n">recommend_counts</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">recommend_counts</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="nf">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">autopct</span><span class="o">=</span><span class="sh">'</span><span class="s">%1.1f%%</span><span class="sh">'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">lightblue</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">salmon</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Recommend to Others</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">pie</span><span class="p">(</span><span class="n">reEngagement_counts</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">reEngagement_counts</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="nf">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">autopct</span><span class="o">=</span><span class="sh">'</span><span class="s">%1.1f%%</span><span class="sh">'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">lightgreen</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">gray</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Re-Engagement Intent</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://Zihyeoni.github.io/assets/img/0218/9.png" alt="Image" /></p>
