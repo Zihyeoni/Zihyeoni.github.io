@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Z._.LOG</title>
   <subtitle>ZI's 공부 기록용 블로그</subtitle>
-  <updated>2025-10-30T14:58:26+09:00</updated>
+  <updated>2025-10-30T15:10:56+09:00</updated>
   <author>
     <name>ZI</name>
     <uri>http://localhost:4000/</uri>
@@ -60,7 +60,7 @@
 
   
     
-    <category term="대외활동" />
+    <category term="Growth Log" />
     
     <category term="AICE" />
     
@@ -86,7 +86,7 @@
 
   
     
-    <category term="대외활동" />
+    <category term="Growth Log" />
     
     <category term="ADsP" />
     
@@ -112,7 +112,7 @@
 
   
     
-    <category term="대외활동" />
+    <category term="Growth Log" />
     
     <category term="GM 부트캠프" />
     
